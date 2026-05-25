@@ -1,43 +1,58 @@
-# multi_view_zmq_client.py
+"""Live preview of all ZMQ camera streams from the teleimager server.
+
+Usage:
+    python multi_view_client.py                         # server on localhost
+    python multi_view_client.py --host 192.168.1.10     # remote server
+    python multi_view_client.py --config path/to/cam_config_server.yaml
+    # Press q in any window to quit.
+"""
+from __future__ import annotations
+
+import argparse
+
 import cv2
-import zmq
 import numpy as np
+import zmq
 
-# ZMQ context and subscriber setup
-context = zmq.Context()
+from cam_streams import load_streams
 
-# Each camera has its own ZMQ port from the server config
-ports = {
-    "cam_left": 55555,
-    "cam_center": 55556,
-    "cam_right": 55557,
-}
 
-# Create a socket for each port
-sockets = {}
-for name, port in ports.items():
-    socket = context.socket(zmq.SUB)
-    socket.connect(f"tcp://127.0.0.1:{port}")
-    socket.setsockopt_string(zmq.SUBSCRIBE, "")  # Receive all messages
-    sockets[name] = socket
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--host", default="127.0.0.1",
+                    help="IP of the camera server (default: 127.0.0.1)")
+    ap.add_argument("--config", default=None,
+                    help="Path to cam_config_server.yaml (auto-detected if omitted)")
+    args = ap.parse_args()
 
-print("Connected to ZMQ streams. Press 'q' in any window to exit.")
+    streams = load_streams(args.config)
+    print(f"Connecting to {len(streams)} stream(s) on {args.host}: "
+          + ", ".join(f"{n}:{p}" for n, p in streams.items()))
 
-while True:
-    for name, socket in sockets.items():
-        # Non-blocking receive with timeout to prevent freezing
-        try:
-            raw = socket.recv(flags=zmq.NOBLOCK)
-            # Decode JPEG to OpenCV BGR image
-            img_array = np.frombuffer(raw, dtype=np.uint8)
-            frame = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
-            if frame is not None:
-                cv2.imshow(name, frame)
-        except zmq.Again:
-            # No new frame available for this camera right now
-            pass
+    context = zmq.Context()
+    sockets = {}
+    for name, port in streams.items():
+        s = context.socket(zmq.SUB)
+        s.connect(f"tcp://{args.host}:{port}")
+        s.setsockopt_string(zmq.SUBSCRIBE, "")
+        sockets[name] = s
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
+    print("Connected. Press 'q' in any window to exit.")
+    while True:
+        for name, socket in sockets.items():
+            try:
+                raw = socket.recv(flags=zmq.NOBLOCK)
+                frame = cv2.imdecode(np.frombuffer(raw, dtype=np.uint8), cv2.IMREAD_COLOR)
+                if frame is not None:
+                    cv2.imshow(name, frame)
+            except zmq.Again:
+                pass
 
-cv2.destroyAllWindows()
+        if cv2.waitKey(1) & 0xFF == ord("q"):
+            break
+
+    cv2.destroyAllWindows()
+
+
+if __name__ == "__main__":
+    main()

@@ -18,14 +18,10 @@ import cv2
 import numpy as np
 import zmq
 
+from cam_streams import load_streams
+
 COCO_CUP_CLASS = 41
 YOLO_WEIGHTS = "yolo11n-seg.pt"
-
-PORTS = {
-    "cam_left": 55555,
-    "cam_center": 55556,
-    "cam_right": 55557,
-}
 
 SYNC_WINDOW_S = 0.10   # all three frames must arrive within this window
 
@@ -103,19 +99,27 @@ def main() -> None:
     ap.add_argument("out_dir", nargs="?", default="captures", type=Path)
     ap.add_argument("--yolo", action="store_true",
                     help="Start with the live YOLO overlay enabled")
+    ap.add_argument("--host", default="127.0.0.1",
+                    help="IP of the camera server (default: 127.0.0.1)")
+    ap.add_argument("--config", default=None,
+                    help="Path to cam_config_server.yaml (auto-detected if omitted)")
     args = ap.parse_args()
     out_dir = args.out_dir
     out_dir.mkdir(parents=True, exist_ok=True)
     yolo_on = args.yolo
     model = None
 
+    streams = load_streams(args.config)
+    print(f"Connecting to {len(streams)} stream(s) on {args.host}: "
+          + ", ".join(f"{n}:{p}" for n, p in streams.items()))
+
     ctx = zmq.Context()
     sockets = {}
-    for name, port in PORTS.items():
+    for name, port in streams.items():
         s = ctx.socket(zmq.SUB)
         s.setsockopt(zmq.CONFLATE, 1)   # must come before connect
         s.setsockopt_string(zmq.SUBSCRIBE, "")
-        s.connect(f"tcp://127.0.0.1:{port}")
+        s.connect(f"tcp://{args.host}:{port}")
         sockets[name] = s
 
     print("Click a cam window, then:  SPACE/c = capture,  y = toggle YOLO,  q = quit")

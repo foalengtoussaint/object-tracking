@@ -1,9 +1,10 @@
-"""Brute-force the stream->calibration mapping by trying all 6 permutations.
+"""Brute-force the stream->calibration mapping by trying all N! permutations.
 
-For each permutation of {cam_0, cam_1, cam_2} assigned to
-{cam_left, cam_center, cam_right}, triangulate the YOLO cup centroid and carve
-on a coarse grid. The correct mapping is the one with the most voxels kept
-across all three views.
+For each permutation of calibration sections assigned to ZMQ stream names,
+triangulate the YOLO cup centroid and carve on a coarse grid. The correct
+mapping is the one with the most voxels kept across all views.
+
+Works with any number of cameras (2, 3, 4, …).
 """
 from __future__ import annotations
 
@@ -13,20 +14,26 @@ from pathlib import Path
 
 import cv2
 import numpy as np
+import toml
 from ultralytics import YOLO
 
 from calibration import load_calibration
+from cam_streams import load_streams
 from visual_hull import (CALIB_TOML, COCO_CUP_CLASS, IMAGE_SIZE,
                          mask_centroid, triangulate_centroid, yolo_cup_mask)
 
 # Coarse grid: 300mm cube at 5mm voxels = 216k voxels (fast)
 SIDE_MM = 300.0
 VOXEL_MM = 5.0
-STREAMS = ("cam_left", "cam_center", "cam_right")
-CALIB_SECTIONS = ("cam_0", "cam_1", "cam_2")
 
 
-def carve_coarse(masks, cams, center):
+def _calib_sections(toml_path: str) -> tuple[str, ...]:
+    """Return all camera section names from a calibration TOML."""
+    data = toml.load(str(toml_path))
+    return tuple(k for k in data if k != "metadata")
+
+
+def carve_coarse(masks, cams, center, min_views: int):
     half = SIDE_MM / 2
     g = np.arange(-half, half, VOXEL_MM)
     gx, gy, gz = np.meshgrid(g, g, g, indexing="ij")
@@ -50,7 +57,7 @@ def carve_coarse(masks, cams, center):
         inside = masks[name][v_i, u_i] > 0
         votes[idx[inside]] += 1
         per_cam_hits[name] = int(inside.sum())
-    kept = int((votes >= 3).sum())
+    kept = int((votes >= min_views).sum())
     return kept, per_cam_hits
 
 
@@ -58,12 +65,25 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("triplet_dir", type=Path)
     ap.add_argument("--calib", default=CALIB_TOML)
+    ap.add_argument("--config", default=None,
+                    help="Path to cam_config_server.yaml (auto-detected if omitted)")
     args = ap.parse_args()
+
+    streams = list(load_streams(args.config).keys())
+    calib_sections = _calib_sections(args.calib)
+    n = len(streams)
+    print(f"streams ({n}): {streams}")
+    print(f"calib sections ({len(calib_sections)}): {calib_sections}")
+    if n != len(calib_sections):
+        raise SystemExit(
+            f"stream count ({n}) != calibration section count ({len(calib_sections)})"
+        )
+    min_views = n  # require all cameras to agree
 
     print("loading frames + running YOLO once per stream...")
     model = YOLO("yolo11n-seg.pt")
     frames, masks = {}, {}
-    for s in STREAMS:
+    for s in streams:
         matches = sorted(args.triplet_dir.glob(f"*{s}.png"))
         if not matches:
             raise SystemExit(f"no *{s}.png in {args.triplet_dir}")
@@ -76,14 +96,11 @@ def main():
 
     print()
     results = []
-    for perm in itertools.permutations(CALIB_SECTIONS):
-        mapping = dict(zip(STREAMS, perm))
+    for perm in itertools.permutations(calib_sections):
+        mapping = dict(zip(streams, perm))
         cams = load_calibration(args.calib, mapping, target_image_size=IMAGE_SIZE)
-        # undistort + reset dist to zero (carve_coarse uses K only)
         masks_u = {}
         for s, cam in cams.items():
-            # the mask is in distorted space, but for a rough mapping search
-            # we can skip undistortion (distortion is tiny: k1<=0.11, rest=0).
             masks_u[s] = masks[s]
             cam.dist = np.zeros(5)
         centroids = {n: mask_centroid(m) for n, m in masks_u.items()}
@@ -92,7 +109,7 @@ def main():
         except Exception as e:
             print(f"  {mapping} -> triangulation failed: {e}")
             continue
-        kept, per_cam = carve_coarse(masks_u, cams, center)
+        kept, per_cam = carve_coarse(masks_u, cams, center, min_views)
         results.append((kept, mapping, center, per_cam))
         print(f"  {mapping}  kept={kept:>6}  center={center.round(0)}  hits={per_cam}")
 
@@ -102,7 +119,7 @@ def main():
     print(f"BEST mapping (kept={best[0]} voxels):")
     for k, v in best[1].items():
         print(f"  {k!r}: {v!r},")
-    print(f"\nReplace CAM_MAPPING in visual_hull.py with the dict above.")
+    print(f"\nPass this as --cam-mapping to visual_hull.py, or set CAM_MAPPING in the file.")
 
 
 if __name__ == "__main__":

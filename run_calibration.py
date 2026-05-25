@@ -1,9 +1,9 @@
-"""Calibrate 3 cameras from Charuco videos using aniposelib (same flow as iMOVE).
+"""Calibrate N cameras from Charuco videos using aniposelib (same flow as iMOVE).
 
-Reads cam-1.mp4 / cam-2.mp4 / cam-3.mp4 from <video_dir>, runs aniposelib's
-CharucoBoard + CameraGroup.calibrate_videos, writes calibration.toml next to
-the videos. The TOML is the same aniposelib format consumed by
-calibration.py / visual_hull.py.
+Reads all cam-*.mp4 files from <video_dir> (cam-1.mp4, cam-2.mp4, …),
+runs aniposelib's CharucoBoard + CameraGroup.calibrate_videos, writes
+calibration.toml next to the videos. The TOML is the same aniposelib format
+consumed by calibration.py / visual_hull.py.
 
 Usage:
     python run_calibration.py <video_dir>
@@ -11,6 +11,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import re
 from pathlib import Path
 
 from aniposelib.boards import CharucoBoard
@@ -31,17 +32,22 @@ BOARD = dict(
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("video_dir", type=Path,
-                    help="Directory containing cam-1.mp4, cam-2.mp4, cam-3.mp4")
+                    help="Directory containing cam-1.mp4, cam-2.mp4, … (any count)")
     ap.add_argument("--out", type=Path, default=None,
                     help="Output TOML path (default: <video_dir>/calibration.toml)")
     args = ap.parse_args()
 
-    cam_names = ["cam1", "cam2", "cam3"]
-    video_files = [args.video_dir / f"cam-{i}.mp4" for i in (1, 2, 3)]
-    for v in video_files:
-        if not v.exists():
-            raise SystemExit(f"missing: {v}")
-    print(f"videos: {[v.name for v in video_files]}")
+    video_files = sorted(
+        args.video_dir.glob("cam-*.mp4"),
+        key=lambda p: int(re.search(r"(\d+)", p.stem).group(1)),
+    )
+    if len(video_files) < 2:
+        raise SystemExit(
+            f"need at least 2 cam-N.mp4 files in {args.video_dir}, "
+            f"found {len(video_files)}"
+        )
+    cam_names = [f"cam{i}" for i in range(1, len(video_files) + 1)]
+    print(f"videos ({len(video_files)}): {[v.name for v in video_files]}")
 
     out_path = args.out or (args.video_dir / "calibration.toml")
     out_path.parent.mkdir(parents=True, exist_ok=True)

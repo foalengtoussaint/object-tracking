@@ -1,4 +1,4 @@
-"""Carve a 3D cup model from 3 calibrated views using YOLOv11-seg silhouettes.
+"""Carve a 3D cup model from N calibrated views using YOLOv11-seg silhouettes.
 
 Inputs:  one PNG per camera (matching the names in CAM_MAPPING) + TOML calib.
 Outputs: <out>/cup_points.ply  (occupied voxel centers as a point cloud)
@@ -31,10 +31,6 @@ IMAGE_SIZE = (1280, 720)
 # usually not where the cup sits, so we don't anchor on (0,0,0).
 VOLUME_SIDE_MM = 400.0
 VOXEL_SIZE_MM = 2.0
-
-# Visual-hull threshold: voxel kept if at least this many masks contain its
-# projection. With 3 cameras, 3 = strict, 2 = tolerant of one bad mask.
-MIN_VIEWS_INSIDE = 3
 
 YOLO_WEIGHTS = "yolo11n-seg.pt"
 COCO_CUP_CLASS = 41
@@ -90,7 +86,7 @@ def triangulate_centroid(centroids: dict[str, np.ndarray],
 
 
 def carve(masks: dict[str, np.ndarray], cams: dict[str, Camera],
-          center: np.ndarray) -> np.ndarray:
+          center: np.ndarray, min_views: int) -> np.ndarray:
     """Returns (M,3) world-space voxel centers (mm) that survived carving."""
     half = VOLUME_SIDE_MM / 2.0
     vmin = center - half
@@ -117,27 +113,49 @@ def carve(masks: dict[str, np.ndarray], cams: dict[str, Camera],
         votes[idx[inside]] += 1
         print(f"  {name}: {inside.sum():,} voxel hits")
 
-    keep = votes >= MIN_VIEWS_INSIDE
-    print(f"  kept {keep.sum():,} voxels (>= {MIN_VIEWS_INSIDE} views)")
+    keep = votes >= min_views
+    print(f"  kept {keep.sum():,} voxels (>= {min_views} views)")
     return pts[keep]
+
+
+def _parse_cam_mapping(s: str) -> dict[str, str]:
+    """Parse 'stream1:section1,stream2:section2,...' into a dict."""
+    result = {}
+    for pair in s.split(","):
+        k, _, v = pair.partition(":")
+        if not k or not v:
+            raise argparse.ArgumentTypeError(
+                f"invalid --cam-mapping entry {pair!r}, expected stream:section"
+            )
+        result[k.strip()] = v.strip()
+    return result
 
 
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("triplet_dir", type=Path,
-                    help="Directory with three PNGs named *<cam_left|cam_center|cam_right>.png")
+                    help="Directory with one PNG per camera named *<stream_name>.png")
     ap.add_argument("--out", type=Path, default=Path("cup_model"))
     ap.add_argument("--calib", default=CALIB_TOML)
+    ap.add_argument("--cam-mapping", default=None, type=_parse_cam_mapping,
+                    help="stream:section pairs, e.g. cam_left:cam_0,cam_center:cam_1 "
+                         "(default: uses CAM_MAPPING constant in this file)")
+    ap.add_argument("--min-views", type=int, default=None,
+                    help="Voxels kept if seen by at least this many cameras "
+                         "(default: all cameras — strict mode)")
     args = ap.parse_args()
 
     args.out.mkdir(parents=True, exist_ok=True)
     (args.out / "masks").mkdir(exist_ok=True)
 
-    cams = load_calibration(args.calib, CAM_MAPPING, target_image_size=IMAGE_SIZE)
+    cam_mapping = args.cam_mapping if args.cam_mapping else CAM_MAPPING
+    cams = load_calibration(args.calib, cam_mapping, target_image_size=IMAGE_SIZE)
+    min_views = args.min_views if args.min_views is not None else len(cams)
+    print(f"cameras: {list(cams.keys())}  min_views={min_views}/{len(cams)}")
 
     # Load one PNG per stream (most-recent file matching the name)
     frames = {}
-    for name in CAM_MAPPING:
+    for name in cam_mapping:
         matches = sorted(args.triplet_dir.glob(f"*{name}.png"))
         if not matches:
             raise SystemExit(f"no file matching *{name}.png in {args.triplet_dir}")
@@ -172,7 +190,7 @@ def main() -> None:
           f"(carving {VOLUME_SIDE_MM:.0f}mm cube around it)")
 
     print("carving...")
-    pts = carve(masks, cams, center)
+    pts = carve(masks, cams, center, min_views)
     if len(pts) == 0:
         raise SystemExit(
             "0 voxels survived. Likely CAM_MAPPING is wrong (cam_left/center/right "

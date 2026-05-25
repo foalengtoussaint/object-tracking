@@ -7,3 +7,11 @@ __pycache__/
 dist/
 build/
 captures/
+
+# Pipeline runtime artifacts
+.claude/
+clips/
+dataset/
+runs/
+*.mp4
+*.pkl

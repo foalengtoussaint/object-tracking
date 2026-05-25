@@ -25,11 +25,8 @@ import cv2
 import numpy as np
 import zmq
 
-PORTS = {
-    "cam_left": (55555, "cam-1"),
-    "cam_center": (55556, "cam-2"),
-    "cam_right": (55557, "cam-3"),
-}
+from cam_streams import load_streams
+
 FPS = 30
 IMAGE_SIZE = (1280, 720)  # (W, H)
 
@@ -37,6 +34,10 @@ IMAGE_SIZE = (1280, 720)  # (W, H)
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("out_dir", nargs="?", default=None, type=Path)
+    ap.add_argument("--host", default="127.0.0.1",
+                    help="IP of the camera server (default: 127.0.0.1)")
+    ap.add_argument("--config", default=None,
+                    help="Path to cam_config_server.yaml (auto-detected if omitted)")
     args = ap.parse_args()
 
     if args.out_dir is None:
@@ -44,19 +45,25 @@ def main() -> None:
     args.out_dir.mkdir(parents=True, exist_ok=True)
     print(f"output: {args.out_dir}")
 
+    streams = load_streams(args.config)
+    # Assign cam-1, cam-2, ... labels in stream order (required by aniposelib)
+    cam_labels = {name: f"cam-{i}" for i, name in enumerate(streams, start=1)}
+    print(f"Connecting to {len(streams)} stream(s) on {args.host}: "
+          + ", ".join(f"{n}:{p}" for n, p in streams.items()))
+
     ctx = zmq.Context()
     sockets, writers, paths = {}, {}, {}
-    for stream, (port, name) in PORTS.items():
+    for stream, port in streams.items():
         s = ctx.socket(zmq.SUB)
         s.setsockopt(zmq.RCVHWM, 60)   # 2s of buffer per cam
         s.setsockopt_string(zmq.SUBSCRIBE, "")
-        s.connect(f"tcp://127.0.0.1:{port}")
+        s.connect(f"tcp://{args.host}:{port}")
         sockets[stream] = s
-        paths[stream] = args.out_dir / f"{name}.mp4"
+        paths[stream] = args.out_dir / f"{cam_labels[stream]}.mp4"
 
     fourcc = cv2.VideoWriter_fourcc(*"mp4v")
     recording = False
-    counts = {s: 0 for s in PORTS}
+    counts = {s: 0 for s in streams}
     t_start = None
 
     print("SPACE = start/stop recording, q = quit  (focus a preview window first)")
