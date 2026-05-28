@@ -10,4 +10,5 @@ filterpy>=1.4.5
 matplotlib>=3.7.0
 pyzmq>=25.0.0
 toml>=0.10.2
+pyyaml>=6.0
 aniposelib>=0.4.3

@@ -1,9 +1,9 @@
 """Record an MP4 clip from one ZMQ camera stream.
 
 Usage:
-    python record_clips.py                              # 60s of the first stream
-    python record_clips.py --stream right_wrist_camera --duration 30
-    python record_clips.py --out clips --duration 60
+    python recording/record_clips.py                                # 60s of the first stream
+    python recording/record_clips.py --stream cam_1 --duration 30
+    python recording/record_clips.py --out data/clips/test --duration 30
 """
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ def main() -> None:
     ap.add_argument("--stream", default=None,
                     help="Stream name (default: first in YAML)")
     ap.add_argument("--duration", type=float, default=60.0)
-    ap.add_argument("--out", type=Path, default=Path("clips"))
+    ap.add_argument("--out", type=Path, default=Path("data/clips/train"))
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--config", default=None)
     ap.add_argument("--fps", type=float, default=30.0)

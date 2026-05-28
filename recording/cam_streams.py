@@ -11,14 +11,14 @@ from __future__ import annotations
 from pathlib import Path
 
 _DEFAULT_CONFIG = Path(__file__).parent / "teleimager" / "cam_config_server.yaml"
-_FALLBACK = {"cam_left": 55555, "cam_center": 55556, "cam_right": 55557}
+_FALLBACK = {f"cam_{i}": 55554 + i for i in range(1, 6)}  # cam_1..cam_5 on 55555..55559
 
 
 def load_streams(config: str | Path | None = None) -> dict[str, int]:
     """Return {stream_name: port} for every ZMQ-enabled camera.
 
     Reads teleimager/cam_config_server.yaml by default. Falls back to
-    three hardcoded defaults if the config is missing or has no ZMQ cameras.
+    five hardcoded defaults if the config is missing or has no ZMQ cameras.
     """
     cfg_path = Path(config) if config else _DEFAULT_CONFIG
     if cfg_path.exists():

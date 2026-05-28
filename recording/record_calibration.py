@@ -1,14 +1,13 @@
 """Record one MP4 per ZMQ camera stream for Charuco calibration.
 
-Subscribes to all three streams, decodes JPEGs, writes each to its own MP4 at
-30 fps. Move the Charuco board through every part of the workspace and through
-every viewing angle each camera can see; aim for ~30 s of footage with the
-board fully visible in at least one cam at all times.
+Subscribes to every ZMQ stream listed in teleimager/cam_config_server.yaml,
+decodes JPEGs, writes each to its own MP4 at 30 fps. Move the Charuco board
+through every part of the workspace and through every viewing angle each
+camera can see; aim for ~30 s of footage with the board fully visible in at
+least one cam at all times.
 
 Output (default out_dir = calib_recordings/<timestamp>/):
-    cam-1.mp4   <- cam_left
-    cam-2.mp4   <- cam_center
-    cam-3.mp4   <- cam_right
+    cam-1.mp4, cam-2.mp4, ...   (one per stream, in YAML order)
 
 The cam-N naming matches what aniposelib / iMOVE expect.
 

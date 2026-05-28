@@ -15,3 +15,14 @@ dataset/
 runs/
 *.mp4
 *.pkl
+
+# Local-only / heavy
+trash/
+data/calib_recordings/
+data/clips/
+data/datasets/
+data/detections_cache/
+data/pretrained/
+data/recordings/
+data/runs/
+data/viz/

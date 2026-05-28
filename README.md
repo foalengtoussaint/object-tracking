@@ -1,128 +1,105 @@
-# Multi-View Object Tracking
+# Object Tracking — Distillation Pipeline
 
-3D visual hull reconstruction of objects from three calibrated cameras. A YOLO segmentation model carves a voxel grid from three synchronized views to produce a point cloud and mesh.
-
-## System overview
+Teacher → pseudo-label (Kalman-filtered) → fine-tune a small student → evaluate.
 
 ```
-[Camera server (Unitree/teleimager)]
-        │  ZMQ streams (ports 55555-55557)
-        ▼
-[This machine]
-  multi_view_client.py   – live preview
-  capture_triplet.py     – save synchronized frames
-  record_calibration.py  – record videos for calibration
-  run_calibration.py     – run Charuco bundle calibration
-  visual_hull.py         – 3D reconstruction from frames
-  find_cam_mapping.py    – auto-detect stream↔calibration mapping
+[teacher YOLO]  ──pseudo_label.py──▶  [dataset]  ──finetune.py──▶  [student]
+                                                                       │
+                                                                       ▼
+                                                       evaluate.py (PR on train + test)
 ```
+
+The Kalman filter in [kalman.py](kalman.py) drops the teacher's bad detections (anything trajectory-inconsistent) and the no-detection frames, so the dataset is just clean labels. The same filter is used at eval time to count what's a real localization error vs. an NMS duplicate.
+
+## Layout
+
+```
+.
+├── kalman.py / pseudo_label.py / finetune.py / evaluate.py    ← the 4 pipeline entrypoints
+├── recording/        camera capture + Charuco calibration scripts (incl. teleimager/)
+├── data/
+│   ├── pretrained/         stock YOLO weights (yolo26n/s/m/l/x-seg)
+│   ├── clips/{train,test}/ recorded mp4s
+│   ├── datasets/{gen1,...}/  pseudo-labeled YOLO-seg datasets
+│   ├── detections_cache/   per-frame JSON dets for evaluate
+│   ├── runs/segment/<run>/ ultralytics fine-tune outputs (weights/best.pt etc.)
+│   └── viz/{train,test}/   rendered mosaic mp4s for visual comparison
+├── experiments/      markdown logs of significant runs (the recipe lives in git)
+└── trash/            archived one-off scripts and old artifacts
+```
+
+## Pipeline (4 files)
+
+| File | Role |
+|---|---|
+| [kalman.py](kalman.py) | `KalmanFilter2D` class + `filter_detections()` — shared by pseudo-label and evaluate |
+| [pseudo_label.py](pseudo_label.py) | Run a teacher on a clip dir, KF-filter, write a YOLO single-class seg dataset |
+| [finetune.py](finetune.py) | Train a YOLO-seg student on that dataset |
+| [evaluate.py](evaluate.py) | Cache per-frame detections + compute PR proxies for any model/clip set |
+
+## End-to-end example
+
+Reproduce a gen2-style run: yolo26x labels `data/clips/train`, train a yolo26n student, evaluate on training + test sets.
+
+```bash
+# 1. Pseudo-label the training clips with a COCO teacher
+python pseudo_label.py data/clips/train --out data/datasets/gen1 \
+    --weights data/pretrained/yolo26x-seg.pt --conf 0.10
+
+# 2. Fine-tune a small student on the resulting dataset
+python finetune.py --data data/datasets/gen1/data.yaml --name cup_run --epochs 10
+
+# 3. Evaluate on the training set (overfit check)
+python evaluate.py --weights data/runs/segment/cup_run/weights/best.pt --clips data/clips/train
+
+# 4. Evaluate on the held-out test set (real generalization)
+python evaluate.py --weights data/runs/segment/cup_run/weights/best.pt --clips data/clips/test
+```
+
+### Self-distillation (use the student you just trained as the next teacher)
+
+```bash
+python pseudo_label.py data/clips/train --out data/datasets/gen2 \
+    --weights data/runs/segment/cup_run/weights/best.pt \
+    --conf 0.25 --classes 0
+
+python finetune.py --data data/datasets/gen2/data.yaml --name cup_run_gen2 --epochs 10
+python evaluate.py --weights data/runs/segment/cup_run_gen2/weights/best.pt --clips data/clips/test
+```
+
+`--classes 0` is needed because the student is single-class (only knows `my_cup`), so the COCO cup-like default won't match.
+
+## Metrics
+
+`evaluate.py` prints recall / P_loose / P_strict / F1 for both. Definitions and the loose-vs-strict rationale are in [experiments/2026-05-26_cup_5cam_demo.md](experiments/2026-05-26_cup_5cam_demo.md) under "Metric definitions" — short version: P_loose ignores NMS duplicates on the same object (the right metric for tracking), P_strict penalizes them too (useful for NMS-quality diagnostics).
+
+## Recording your own clips
+
+Camera capture is in [recording/](recording/). Quick path:
+
+```bash
+# 1. Edit recording/teleimager/cam_config_server.yaml so each camera's video_id
+#    matches `v4l2-ctl --list-devices` on your machine
+python recording/cam_server.py        # publishes 5 ZMQ streams on ports 55555..55559
+
+# 2. Record a clip (one per camera, ~30 s)
+python recording/record_clips.py      # writes clips/cam_N_<timestamp>.mp4
+```
+
+For Charuco calibration: `recording/record_calibration.py` then `recording/run_calibration.py` — only needed for 3D reconstruction, not the distillation pipeline.
 
 ## Setup
 
-### 1. Clone (with submodule)
-
 ```bash
-git clone --recurse-submodules https://github.com/foalengtoussaint/object-tracking.git
-cd object-tracking
-```
-
-If you already cloned without `--recurse-submodules`:
-
-```bash
-git submodule update --init
-```
-
-### 2. Install Python dependencies
-
-Python 3.10+ recommended.
-
-```bash
+conda create -n object_tracking python=3.11 -y
+conda activate object_tracking
 pip install -r requirements.txt
 ```
 
-`aniposelib` may require additional system packages on Linux:
+## Tracking fine-tune runs
 
-```bash
-sudo apt install libgl1 libglib2.0-0
-```
+Datasets and weights are kept out of git (see `.gitignore`). Each significant run gets a markdown file in [experiments/](experiments/) using [experiments/TEMPLATE.md](experiments/TEMPLATE.md) — recipe in git, artifacts on disk.
 
-### 3. Set up the camera server
+## Archived
 
-The camera server runs on the robot (or any machine with three USB cameras) and streams JPEG frames over ZMQ. Follow the setup instructions in [teleimager/README.md](teleimager/README.md):
-
-```bash
-cd teleimager
-pip install -e .
-# Edit cam_config_server.yaml with your camera indices, then:
-python -m teleimager.server
-```
-
-The server publishes on ports **55555** (left), **55556** (center), **55557** (right) by default. Update the `PORTS` dict in the scripts if you use different ports.
-
-### 4. YOLO weights
-
-The YOLO weights (`yolo11n-seg.pt`) are downloaded automatically by `ultralytics` the first time you run a script that needs them. No manual step required.
-
-## Workflow
-
-### View live streams
-
-```bash
-python multi_view_client.py
-# Press q to quit
-```
-
-### Capture a synchronized frame triplet
-
-```bash
-python capture_triplet.py                # saves to captures/
-python capture_triplet.py --yolo         # start with YOLO cup overlay on
-# Controls: SPACE/c = capture,  y = toggle YOLO overlay,  q = quit
-```
-
-### Calibrate the cameras
-
-**Step 1 – Record Charuco footage** (move the board through the whole workspace):
-
-```bash
-python record_calibration.py
-# Controls: SPACE = start/stop recording,  q = quit
-# Aim for ~30 s with the board visible in at least one camera at all times.
-# Output: calib_recordings/<timestamp>/cam-1.mp4, cam-2.mp4, cam-3.mp4
-```
-
-**Step 2 – Run bundle calibration**:
-
-```bash
-python run_calibration.py calib_recordings/<timestamp>/
-# Writes calibration.toml next to the videos (takes a few minutes)
-```
-
-**Step 3 – Find the correct stream↔calibration mapping** (needed once per hardware setup):
-
-```bash
-# First capture a triplet with a cup clearly visible in all three views
-python capture_triplet.py captures/
-
-python find_cam_mapping.py captures/ --calib calib_recordings/<timestamp>/calibration.toml
-# Prints the best CAM_MAPPING — copy it into visual_hull.py
-```
-
-### Reconstruct a 3D model
-
-```bash
-python visual_hull.py captures/ --calib path/to/calibration.toml --out cup_model/
-# Outputs: cup_model/cup_points.ply, cup_model/cup_mesh.ply, cup_model/masks/
-```
-
-Open the `.ply` files in [MeshLab](https://www.meshlab.net/) or any 3D viewer.
-
-## Configuration
-
-| File | Key constants |
-|---|---|
-| `visual_hull.py` | `CALIB_TOML`, `CAM_MAPPING`, `VOLUME_SIDE_MM`, `VOXEL_SIZE_MM`, `MIN_VIEWS_INSIDE` |
-| `capture_triplet.py` / `record_calibration.py` | `PORTS`, `IMAGE_SIZE` |
-| `run_calibration.py` | `BOARD` (Charuco board dimensions) |
-
-Translation units throughout are **millimeters**, matching the iMOVE calibration convention.
+Earlier one-off scripts (live demos, the FastSAM bake-off, the Kalman bug-hunt diagnostic, the autonomous overnight runner, visual hull reconstruction, etc.) live in [trash/](trash/) for reference. They're not maintained and the pipeline doesn't depend on them.
