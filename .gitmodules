@@ -1,3 +1,6 @@
 [submodule "teleimager"]
 	path = teleimager
 	url = https://github.com/unitreerobotics/teleimager.git
+[submodule "gigapose"]
+	path = gigapose
+	url = https://github.com/nv-nguyen/gigapose.git
