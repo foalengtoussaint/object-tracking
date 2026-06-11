@@ -33,8 +33,8 @@ from ultralytics import YOLO
 from pseudo_label import label_clip, CUP_LIKE_CLASSES
 from kalman import GATE, MAX_MISS
 from metrics import train_with_metrics
+from _paths import CLIPS_ROOT          # override with OT_CLIPS_ROOT env var
 
-CLIPS_ROOT = Path("/home/imove/Documents/clips")
 STUDY = ROOT / "experiments" / "drink_study"
 RUNS = STUDY / "runs"
 STAGE = ROOT / "data" / "clips" / "drink_study"      # symlink staging (data artifacts)

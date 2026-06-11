@@ -45,7 +45,7 @@ CONF = 0.25
 CUP_CLASS = [0]                           # student is single-class cup
 PARTICIPANTS = ["P01", "P06", "P19", "P23"]
 STUDENT = "experiments/drink_study/runs/pscale_4/weights/best.pt"
-CLIPS_ROOT = Path("/home/imove/Documents/clips")
+from _paths import CLIPS_ROOT          # override with OT_CLIPS_ROOT env var
 DETCACHE = Path("experiments/drink_study/cache/student_dets")
 GLASS_P01 = np.array([1672, 745])         # cam_10 static-glass pixel (P01 only)
 OUT = Path("experiments/drink_study/cache/kf_accuracy_multi.json")

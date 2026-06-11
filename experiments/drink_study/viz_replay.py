@@ -58,7 +58,7 @@ import viz_rerun as vr             # camera/frame/3D logging helpers (reused)
 # Default trial: P01's cleanest drinking rep (100% reference coverage in the sweep).
 DEFAULT_P = "P01"
 DEFAULT_STEM = "P01_drinking_right_20231220_141546"
-CLIPS = Path("/home/imove/Documents/clips")
+from _paths import CLIPS_ROOT as CLIPS    # override with OT_CLIPS_ROOT env var
 RES = (1920, 1080)
 
 
