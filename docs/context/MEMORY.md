@@ -1,0 +1,25 @@
+- [Calibration source](calibration_source.md) — 5-camera BRIO Charuco TOML lives in iMOVE DATA tree, needs 2/3 intrinsics rescale
+- [Conda envs](conda_envs.md) — project env name and how it's activated
+- [Separate kill / launch](feedback_separate_kill_launch.md) — never chain `kill ... ; ... ; launch ...` in one Bash call; split into separate tool calls
+- [Progress feedback](feedback_progress_feedback.md) — announce what's running + ETA before each long command, never silently dispatch
+- [No silent long tasks](feedback_no_silent_long_tasks.md) — never run >~30s foreground with no output; give a tailable log + incremental prints
+- [Keep all experiment data](feedback_keep_all_experiment_data.md) — never auto-delete checkpoints/datasets/caches; new metrics often need the originals
+- [Verify slowness](feedback_verify_slowness.md) — when user says "stuck/slow", measure etime/file-mtime/GPU before responding; don't reassure based on expectations
+- [Use Monitor](feedback_use_monitor.md) — pair long bg tasks with Monitor tailing the output so errors stream to me live, not after task completes
+- [MegaPose quat order](megapose_quat_order.md) — MegaPose JSON `TWO` quat is xyzw (Eigen `coeffs()`), not wxyz; translation in meters
+- [Position-conditioned YOLO idea](project_position_conditioned_yolo.md) — parked experiment: extend YOLO so detection takes prior KF position as extra input
+- [SOTFormer deferred](project_sotformer_deferred.md) — SOTFormer (CVPR 2026) skipped; weights are LFS-pointer stubs, not real
+- [Cube SAM distill](project_cube_sam_distill.md) — 30 SAM clicks → seed → KF dense pseudo-label → student; 0.59→0.87 recall on held-out P02, self-heals blind cams
+- [Auto pipeline](project_auto_pipeline.md) — pipeline.py: gated standalone CLI for the full new-object distillation; halts only on true forks, logs every decision
+- [Live rig cam mapping](live_rig_cam_mapping.md) — 4 BRIO on video0/4/8/12; USB shuffles order, verify cam→profile with `--check` (<5px) before trusting 3D; cup model is class 0
+- [cam_10 distractor cup](project_cam10_apparent_size.md) — drink_study cam_10 labels are a static side-desk glass (not the task cup); KF can't filter a static FP
+- [cam_4 dominates agreement](project_agreement_cam4_dominates.md) — ~90% of agreement-px variation across checkpoints is cam_4 alone (wrist marker ≈ cup); needs inlier-gated triangulation
+- [Label KF is 2D only](project_label_kf_is_2d_only.md) — teacher→student labels gated by a 2D per-camera KF; blind to smooth-wrong-object, static FPs, cross-camera disagreement; fix = 3D multi-view label filter
+- [E6 camera transfer](project_e6_camera_transfer.md) — single-cam transfer is a viewpoint property not data volume; cam8 hub (707 frames→7/10), cam10 row=1.0/0.0 = glass memorization
+- [pscale glass confound](project_pscale_glass_confound.md) — participant-scaling F1 gain is ~2/3 real generalization + ~1/3 cam10 glass-dilution (+0.17 all / +0.11 excl-cam10)
+- [3D-clean vs drop-cam](project_3dclean_vs_dropcam.md) — 3D-gate cleaning recovers cam10 (0→0.51) but over-prunes (40% dropped) so mean recall loses to crudely dropping cam10; needs looser gate / reproject-fill
+- [KF accuracy budget](project_kf_accuracy_budget.md) — 3D KF tracks cup up to ~±20px detection jitter & needs ≥3 well-spread cams; σ≥40px or 2 cams = catastrophic (>1m, grabs glass)
+- [Robustness envelope](project_robustness_envelope.md) — pipeline shrugs off 90% dropout / 50% corrupted cams / 15fps alone; only hard floor = ≥3 agreeing cams; predictor (logistic AUC .81) → agreement metrics dominate; GT = verified P01 trial frozen
+- [Confident-wrong failures](project_failure_modes_confident_wrong.md) — failures are 213/228 confident-but-wrong (median 1588mm), not graceful; predictor FPs where det/tri look great but cams disagree; inlier_frac as measured doesn't separate good/bad (metric bug); open: fix agreement metric + runtime guard
+- [theinle/ObjectDetection ref](reference_theinle_objectdetection.md) — private repo, dev/swissdino branch; Unity+SwissDINO one-shot DINOv2 onboarding; CC-BY-NC-SA so we clean-room port
+- [SwissDINO port](project_swissdino_port.md) — porting DINOv2 one-shot as swissdino_lib.py for faster onboarding + training-free fallback + env-robust appearance gate; vit_b, idrink env
