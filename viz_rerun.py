@@ -461,19 +461,29 @@ def main() -> None:
                     help="Connect to an existing Rerun viewer at this gRPC URL "
                          "(e.g. rerun+http://127.0.0.1:9876/proxy). Default: "
                          "start a new web viewer on ports 9876/9090.")
+    ap.add_argument("--save", default=None,
+                    help="Write the recording to this .rrd file instead of "
+                         "serving a viewer. Replay later with `rerun PATH.rrd`.")
     ap.add_argument("--web-port", type=int, default=9090)
     ap.add_argument("--grpc-port", type=int, default=9876)
     args = ap.parse_args()
 
     rr.init("object_tracking", recording_id=uuid4())
     if args.connect:
-        rr.connect_grpc(args.connect)
-        print(f"viz_rerun: connected to existing viewer at {args.connect}")
+        if args.save:
+            rr.set_sinks(rr.GrpcSink(args.connect), rr.FileSink(args.save))
+            print(f"viz_rerun: connected to {args.connect} + recording to {args.save}")
+        else:
+            rr.connect_grpc(args.connect)
+            print(f"viz_rerun: connected to existing viewer at {args.connect}")
     else:
         import urllib.parse
         server_uri = rr.serve_grpc(grpc_port=args.grpc_port)
         rr.serve_web_viewer(web_port=args.web_port, open_browser=False,
                             connect_to=server_uri)
+        if args.save:
+            rr.set_sinks(rr.GrpcSink(server_uri), rr.FileSink(args.save))
+            print(f"viz_rerun: also recording to {args.save}")
         encoded = urllib.parse.quote(
             f"rerun+http://127.0.0.1:{args.grpc_port}/proxy", safe="")
         print(f"viz_rerun: open http://127.0.0.1:{args.web_port}/?url={encoded}")

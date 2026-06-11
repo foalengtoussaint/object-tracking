@@ -39,13 +39,16 @@ CUP_LIKE_CLASSES = [39, 40, 41, 45, 75]
 
 
 def label_clip(model: YOLO, clip: Path, conf: float, classes: list[int] | None,
-               gate: float, max_miss: int,
+               gate: float, max_miss: int, use_kf: bool = True,
                ) -> tuple[dict[int, "numpy.ndarray"], dict[str, int]]:
     """Run teacher inference + KF filter on one clip.
 
     Returns:
         accepted  {frame_idx: polygon}  KF-accepted detections, one per frame
         stats     totals for logging
+
+    use_kf=False is the ablation baseline: keep each frame's top-confidence
+    detection (no spatial/temporal gating) instead of running the Kalman filter.
     """
     # Pass 1: collect every candidate detection per frame, with its polygon.
     per_frame: list[list[dict]] = []
@@ -67,68 +70,77 @@ def label_clip(model: YOLO, clip: Path, conf: float, classes: list[int] | None,
         ])
         polys_per_frame.append(polys)
 
-    # Pass 2: single-object Kalman filter decides which (if any) det per frame.
-    filtered = filter_detections(per_frame, gate=gate, max_miss=max_miss)
-
     accepted: dict[int, "numpy.ndarray"] = {}
-    for idx, ff in enumerate(filtered):
-        if ff.accepted is not None:
-            accepted[idx] = polys_per_frame[idx][ff.accepted["_idx"]]
-
-    stats = {
-        "total_frames": len(filtered),
-        "frames_with_detections": sum(1 for p in per_frame if p),
-        "accepted": len(accepted),
-        "rejected": sum(1 for ff in filtered if ff.role == "rejected"),
-        "predicted": sum(1 for ff in filtered if ff.role == "predicted"),
-    }
+    if use_kf:
+        # Pass 2: single-object Kalman filter decides which (if any) det per frame.
+        filtered = filter_detections(per_frame, gate=gate, max_miss=max_miss)
+        for idx, ff in enumerate(filtered):
+            if ff.accepted is not None:
+                accepted[idx] = polys_per_frame[idx][ff.accepted["_idx"]]
+        stats = {
+            "total_frames": len(filtered),
+            "frames_with_detections": sum(1 for p in per_frame if p),
+            "accepted": len(accepted),
+            "rejected": sum(1 for ff in filtered if ff.role == "rejected"),
+            "predicted": sum(1 for ff in filtered if ff.role == "predicted"),
+        }
+    else:
+        # Ablation: keep the top-confidence detection per frame, no gating.
+        for idx, dets in enumerate(per_frame):
+            if dets:
+                top = max(dets, key=lambda d: d["conf"])
+                accepted[idx] = polys_per_frame[idx][top["_idx"]]
+        stats = {
+            "total_frames": len(per_frame),
+            "frames_with_detections": sum(1 for p in per_frame if p),
+            "accepted": len(accepted),
+            "rejected": 0,
+            "predicted": 0,
+        }
     return accepted, stats
 
 
-def main() -> None:
-    ap = argparse.ArgumentParser(description=__doc__,
-                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("clips_dir", type=Path, help="Directory of .mp4 clips")
-    ap.add_argument("--out", type=Path, default=Path("data/datasets/gen1"))
-    ap.add_argument("--weights", default="data/pretrained/yolo26x-seg.pt")
-    ap.add_argument("--conf", type=float, default=0.10)
-    ap.add_argument("--gate", type=float, default=GATE,
-                    help="Mahalanobis gate (default %(default)s ≈ 99.9% chi-sq, 2 DoF)")
-    ap.add_argument("--max-miss", type=int, default=MAX_MISS,
-                    help="Reinit Kalman after this many consecutive missed frames")
-    ap.add_argument("--classes", default="cup-like",
-                    help="'cup-like' (default COCO subset), 'all' (no filter), "
-                         "or comma-separated class ints (e.g. '0' for a "
-                         "single-class fine-tuned model)")
-    args = ap.parse_args()
+def resolve_classes(spec: str) -> list[int] | None:
+    """Map a --classes string ('all' | 'cup-like' | '0,1,2') to a class list."""
+    if spec == "all":
+        return None
+    if spec == "cup-like":
+        return CUP_LIKE_CLASSES
+    return [int(x) for x in spec.split(",")]
 
-    if args.classes == "all":
-        classes = None
-    elif args.classes == "cup-like":
-        classes = CUP_LIKE_CLASSES
-    else:
-        classes = [int(x) for x in args.classes.split(",")]
 
-    img_dir = args.out / "images" / "train"
-    lbl_dir = args.out / "labels" / "train"
+def build_dataset(clips_dir: Path, out: Path, weights: str, conf: float,
+                  classes: list[int] | None, gate: float = GATE,
+                  max_miss: int = MAX_MISS, class_name: str = "object",
+                  model: "YOLO | None" = None, use_kf: bool = True) -> dict:
+    """Pseudo-label every clip in `clips_dir` and write a YOLO-seg dataset.
+
+    Returns aggregate stats: total labeled images and a per-clip breakdown
+    (clip stem -> labeled-frame count). Pass a preloaded `model` to skip
+    reloading weights. Reused by both pseudo_label's CLI and pipeline.py.
+    """
+    img_dir = out / "images" / "train"
+    lbl_dir = out / "labels" / "train"
     for d in (img_dir, lbl_dir):
         if d.exists():
             shutil.rmtree(d)
         d.mkdir(parents=True, exist_ok=True)
 
-    clips = sorted(args.clips_dir.glob("*.mp4"))
+    clips = sorted(clips_dir.glob("*.mp4"))
     if not clips:
-        raise SystemExit(f"no .mp4 files in {args.clips_dir}")
+        raise SystemExit(f"no .mp4 files in {clips_dir}")
 
-    print(f"loading {args.weights}...")
-    model = YOLO(args.weights)
+    if model is None:
+        print(f"loading {weights}...")
+        model = YOLO(weights)
 
     total = 0
+    per_clip: dict[str, int] = {}
     for clip in clips:
         print(f"\nclip: {clip.name}")
         accepted, stats = label_clip(
-            model, clip, conf=args.conf, classes=classes,
-            gate=args.gate, max_miss=args.max_miss)
+            model, clip, conf=conf, classes=classes,
+            gate=gate, max_miss=max_miss, use_kf=use_kf)
         print(f"  total frames:           {stats['total_frames']}")
         print(f"  frames w/ detections:   {stats['frames_with_detections']}")
         print(f"  accepted after Kalman:  {stats['accepted']}")
@@ -151,18 +163,46 @@ def main() -> None:
             frame_idx += 1
         cap.release()
         total += kept
+        per_clip[clip.stem] = kept
         print(f"  wrote {kept} labeled frames")
 
     data_yaml = {
-        "path": str(args.out.resolve()),
+        "path": str(out.resolve()),
         "train": "images/train",
         "val": "images/train",
         "nc": 1,
-        "names": ["my_cup"],
+        "names": [class_name],
     }
-    (args.out / "data.yaml").write_text(yaml.safe_dump(data_yaml, sort_keys=False))
+    (out / "data.yaml").write_text(yaml.safe_dump(data_yaml, sort_keys=False))
     print(f"\ntotal labeled images: {total}")
-    print(f"dataset: {args.out}/data.yaml")
+    print(f"dataset: {out}/data.yaml")
+    return {"total": total, "per_clip": per_clip}
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__,
+                                  formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("clips_dir", type=Path, help="Directory of .mp4 clips")
+    ap.add_argument("--out", type=Path, default=Path("data/datasets/gen1"))
+    ap.add_argument("--weights", default="data/pretrained/yolo26x-seg.pt")
+    ap.add_argument("--conf", type=float, default=0.10)
+    ap.add_argument("--gate", type=float, default=GATE,
+                    help="Mahalanobis gate (default %(default)s ≈ 99.9% chi-sq, 2 DoF)")
+    ap.add_argument("--max-miss", type=int, default=MAX_MISS,
+                    help="Reinit Kalman after this many consecutive missed frames")
+    ap.add_argument("--classes", default="cup-like",
+                    help="'cup-like' (default COCO subset), 'all' (no filter), "
+                         "or comma-separated class ints (e.g. '0' for a "
+                         "single-class fine-tuned model)")
+    ap.add_argument("--name", default="my_cup", help="single-class name in data.yaml")
+    ap.add_argument("--no-kf", action="store_true",
+                    help="ablation: keep top-conf detection per frame, skip the Kalman filter")
+    args = ap.parse_args()
+
+    classes = resolve_classes(args.classes)
+    build_dataset(args.clips_dir, args.out, args.weights, args.conf, classes,
+                  gate=args.gate, max_miss=args.max_miss, class_name=args.name,
+                  use_kf=not args.no_kf)
     print(f"next:    python finetune.py --data {args.out}/data.yaml --name <run_name>")
 
 

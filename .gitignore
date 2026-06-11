@@ -26,3 +26,23 @@ data/pretrained/
 data/recordings/
 data/runs/
 data/viz/
+_swissdino_viz/
+
+# pose_6d heavy artifacts (models, COLMAP scan, photos, meshes) — keep only *.py
+pose_6d/megapose6d/
+pose_6d/alignpose_project/
+pose_6d/cup_scan/
+pose_6d/cup_photos/
+pose_6d/meshes/
+*.bin
+*.ply
+*.ply.vis
+*.glb
+*.obj
+*.db
+
+# experiment logs & debug images (regenerable)
+experiments/drink_study/logs/
+experiments/drink_study/debug_cam10/
+experiments/drink_study/e6/
+experiments/drink_study/__pycache__/

@@ -1,0 +1,105 @@
+{
+  "rep": "P01_drinking_right_20231220_141546",
+  "n_frames": 870,
+  "ref_coverage": 870,
+  "cup_radius_mm": 35.0,
+  "noise_sweep": {
+    "0": {
+      "coverage": 100.0,
+      "median_mm": 3.8,
+      "p90_mm": 153.7,
+      "on_glass_pct": 0.0
+    },
+    "2": {
+      "coverage": 100.0,
+      "median_mm": 4.0,
+      "p90_mm": 155.9,
+      "on_glass_pct": 0.0
+    },
+    "5": {
+      "coverage": 100.0,
+      "median_mm": 5.5,
+      "p90_mm": 168.3,
+      "on_glass_pct": 0.0
+    },
+    "10": {
+      "coverage": 100.0,
+      "median_mm": 9.0,
+      "p90_mm": 204.7,
+      "on_glass_pct": 0.0
+    },
+    "20": {
+      "coverage": 100.0,
+      "median_mm": 23.8,
+      "p90_mm": 218.9,
+      "on_glass_pct": 0.0
+    },
+    "40": {
+      "coverage": 100.0,
+      "median_mm": 1211.3,
+      "p90_mm": 2578.5,
+      "on_glass_pct": 2.5
+    },
+    "80": {
+      "coverage": 99.9,
+      "median_mm": 1457.5,
+      "p90_mm": 3238.6,
+      "on_glass_pct": 0.8
+    }
+  },
+  "cam_sweep": {
+    "2": {
+      "coverage": 100.0,
+      "median_mm": 1840.9,
+      "p90_mm": 7636.7,
+      "on_glass_pct": 0.3
+    },
+    "3": {
+      "coverage": 100.0,
+      "median_mm": 6.8,
+      "p90_mm": 166.9,
+      "on_glass_pct": 0.0
+    },
+    "4": {
+      "coverage": 100.0,
+      "median_mm": 5.8,
+      "p90_mm": 172.2,
+      "on_glass_pct": 0.0
+    },
+    "5": {
+      "coverage": 100.0,
+      "median_mm": 5.7,
+      "p90_mm": 172.2,
+      "on_glass_pct": 0.0
+    },
+    "7": {
+      "coverage": 100.0,
+      "median_mm": 4.1,
+      "p90_mm": 470.8,
+      "on_glass_pct": 0.0
+    },
+    "10": {
+      "coverage": 100.0,
+      "median_mm": 3.8,
+      "p90_mm": 153.7,
+      "on_glass_pct": 0.0
+    }
+  },
+  "sigmas": [
+    0,
+    2,
+    5,
+    10,
+    20,
+    40,
+    80
+  ],
+  "ncams": [
+    2,
+    3,
+    4,
+    5,
+    7,
+    10
+  ]
+}

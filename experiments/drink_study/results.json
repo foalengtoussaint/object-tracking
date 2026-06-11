@@ -1,0 +1,332 @@
+{
+  "baseline": {
+    "cfg_id": "baseline",
+    "train_participants": [
+      "P01"
+    ],
+    "reps": 2,
+    "train_cameras": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "hand": "right",
+    "use_kf": true,
+    "eval_participants": [
+      "P06"
+    ],
+    "eval_reps": 1,
+    "long_run": true,
+    "student_weights": "data/pretrained/yolo26n-seg.pt",
+    "train_frames": 3000,
+    "label_pool": 7652,
+    "train_clips": 20,
+    "eval_clips": 10,
+    "best_weights": "/home/imove/Documents/object_tracking/experiments/drink_study/runs/baseline/weights/best.pt",
+    "agreement": {
+      "reps": 1,
+      "tri_rate": 1.0,
+      "mean_cams_agreeing": 8.07,
+      "median_reproj_px": 6.54,
+      "mean_inlier_frac": 0.753
+    }
+  },
+  "pscale_1": {
+    "cfg_id": "pscale_1",
+    "train_participants": [
+      "P01"
+    ],
+    "reps": 2,
+    "train_cameras": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "hand": "right",
+    "use_kf": true,
+    "eval_participants": [
+      "P06",
+      "P19",
+      "P23"
+    ],
+    "eval_reps": 1,
+    "long_run": false,
+    "student_weights": "data/pretrained/yolo26n-seg.pt",
+    "train_frames": 3000,
+    "label_pool": 7652,
+    "train_clips": 20,
+    "eval_clips": 30,
+    "best_weights": "/home/imove/Documents/object_tracking/experiments/drink_study/runs/pscale_1/weights/best.pt",
+    "agreement": {
+      "reps": 3,
+      "tri_rate": 0.947,
+      "mean_cams_agreeing": 7.26,
+      "median_reproj_px": 4.85,
+      "mean_inlier_frac": 0.871
+    }
+  },
+  "pscale_2": {
+    "cfg_id": "pscale_2",
+    "train_participants": [
+      "P01",
+      "P02"
+    ],
+    "reps": 2,
+    "train_cameras": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "hand": "right",
+    "use_kf": true,
+    "eval_participants": [
+      "P06",
+      "P19",
+      "P23"
+    ],
+    "eval_reps": 1,
+    "long_run": false,
+    "student_weights": "data/pretrained/yolo26n-seg.pt",
+    "train_frames": 3000,
+    "label_pool": 13371,
+    "train_clips": 40,
+    "eval_clips": 30,
+    "best_weights": "/home/imove/Documents/object_tracking/experiments/drink_study/runs/pscale_2/weights/best.pt",
+    "agreement": {
+      "reps": 3,
+      "tri_rate": 0.975,
+      "mean_cams_agreeing": 8.23,
+      "median_reproj_px": 4.3,
+      "mean_inlier_frac": 0.959
+    }
+  },
+  "pscale_4": {
+    "cfg_id": "pscale_4",
+    "train_participants": [
+      "P01",
+      "P02",
+      "P03",
+      "P04"
+    ],
+    "reps": 2,
+    "train_cameras": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "hand": "right",
+    "use_kf": true,
+    "eval_participants": [
+      "P06",
+      "P19",
+      "P23"
+    ],
+    "eval_reps": 1,
+    "long_run": false,
+    "student_weights": "data/pretrained/yolo26n-seg.pt",
+    "train_frames": 3000,
+    "label_pool": 27580,
+    "train_clips": 80,
+    "eval_clips": 30,
+    "best_weights": "/home/imove/Documents/object_tracking/experiments/drink_study/runs/pscale_4/weights/best.pt",
+    "agreement": {
+      "reps": 3,
+      "tri_rate": 1.0,
+      "mean_cams_agreeing": 8.63,
+      "median_reproj_px": 4.94,
+      "mean_inlier_frac": 0.948
+    }
+  },
+  "cscale_1": {
+    "cfg_id": "cscale_1",
+    "train_participants": [
+      "P01"
+    ],
+    "reps": 1,
+    "train_cameras": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "hand": "right",
+    "use_kf": true,
+    "eval_participants": [
+      "P06",
+      "P19",
+      "P23"
+    ],
+    "eval_reps": 1,
+    "long_run": false,
+    "student_weights": "data/pretrained/yolo26n-seg.pt",
+    "train_frames": 3000,
+    "label_pool": 4774,
+    "train_clips": 10,
+    "eval_clips": 30,
+    "best_weights": "/home/imove/Documents/object_tracking/experiments/drink_study/runs/cscale_1/weights/best.pt",
+    "agreement": {
+      "reps": 3,
+      "tri_rate": 0.99,
+      "mean_cams_agreeing": 7.73,
+      "median_reproj_px": 5.11,
+      "mean_inlier_frac": 0.904
+    }
+  },
+  "cscale_3": {
+    "cfg_id": "cscale_3",
+    "train_participants": [
+      "P01"
+    ],
+    "reps": 3,
+    "train_cameras": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "hand": "right",
+    "use_kf": true,
+    "eval_participants": [
+      "P06",
+      "P19",
+      "P23"
+    ],
+    "eval_reps": 1,
+    "long_run": false,
+    "student_weights": "data/pretrained/yolo26n-seg.pt",
+    "train_frames": 3000,
+    "label_pool": 10048,
+    "train_clips": 30,
+    "eval_clips": 30,
+    "best_weights": "/home/imove/Documents/object_tracking/experiments/drink_study/runs/cscale_3/weights/best.pt",
+    "agreement": {
+      "reps": 3,
+      "tri_rate": 0.964,
+      "mean_cams_agreeing": 7.72,
+      "median_reproj_px": 5.83,
+      "mean_inlier_frac": 0.944
+    }
+  },
+  "cscale_5": {
+    "cfg_id": "cscale_5",
+    "train_participants": [
+      "P01"
+    ],
+    "reps": 5,
+    "train_cameras": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "hand": "right",
+    "use_kf": true,
+    "eval_participants": [
+      "P06",
+      "P19",
+      "P23"
+    ],
+    "eval_reps": 1,
+    "long_run": false,
+    "student_weights": "data/pretrained/yolo26n-seg.pt",
+    "train_frames": 3000,
+    "label_pool": 15303,
+    "train_clips": 50,
+    "eval_clips": 30,
+    "best_weights": "/home/imove/Documents/object_tracking/experiments/drink_study/runs/cscale_5/weights/best.pt",
+    "agreement": {
+      "reps": 3,
+      "tri_rate": 0.996,
+      "mean_cams_agreeing": 7.4,
+      "median_reproj_px": 4.98,
+      "mean_inlier_frac": 0.93
+    }
+  },
+  "cscale_10": {
+    "cfg_id": "cscale_10",
+    "train_participants": [
+      "P01"
+    ],
+    "reps": 10,
+    "train_cameras": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "hand": "right",
+    "use_kf": true,
+    "eval_participants": [
+      "P06",
+      "P19",
+      "P23"
+    ],
+    "eval_reps": 1,
+    "long_run": false,
+    "student_weights": "data/pretrained/yolo26n-seg.pt",
+    "train_frames": 3000,
+    "label_pool": 27981,
+    "train_clips": 100,
+    "eval_clips": 30,
+    "best_weights": "/home/imove/Documents/object_tracking/experiments/drink_study/runs/cscale_10/weights/best.pt",
+    "agreement": {
+      "reps": 3,
+      "tri_rate": 0.971,
+      "mean_cams_agreeing": 7.65,
+      "median_reproj_px": 5.33,
+      "mean_inlier_frac": 0.905
+    }
+  }
+}
