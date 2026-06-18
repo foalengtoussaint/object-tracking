@@ -26,3 +26,4 @@
 - [SwissDINO port](project_swissdino_port.md) — porting DINOv2 one-shot as swissdino_lib.py for faster onboarding + training-free fallback + env-robust appearance gate; vit_b, idrink env
 - [Reproject-fill filter](project_reproject_fill_filter.md) — REJECT-THEN-FILL (cam10 glass replaced by consensus cup, 0→912 labels) WINS every axis: cam10 0.74, mean recall 0.803, 3D-prec 2.99px; beats reject/drop/fill. Plain fill (drop the glass) only got cam10 0.21
 - [pscale_4 full det cache](project_pscale4_full_det_cache.md) — pscale_4 detections cached for 370 drinking_right reps (all 23 participants), `cache/student_dets/`; reusable no-GPU; don't re-run the ~12h job; parallel-decode path OOM'd VSCode
+- [Session 2026-06-18 handoff](session_20260618_cache_and_outliers.md) — det cache + 3D trajectory cache (67 calib reps) + outlier analysis; P23 = faster/shallower drink (group, not anomalies); calibrate-others BLOCKED on unmounted SSD; open: within-participant outliers
