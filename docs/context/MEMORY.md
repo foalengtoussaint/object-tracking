@@ -3,6 +3,7 @@
 - [Separate kill / launch](feedback_separate_kill_launch.md) — never chain `kill ... ; ... ; launch ...` in one Bash call; split into separate tool calls
 - [Progress feedback](feedback_progress_feedback.md) — announce what's running + ETA before each long command, never silently dispatch
 - [No silent long tasks](feedback_no_silent_long_tasks.md) — never run >~30s foreground with no output; give a tailable log + incremental prints
+- [Verbose long scripts](feedback_verbose_long_scripts.md) — long eval/inference scripts must print per-clip/per-N progress (flush=True), not just a result block at the end; empty logs look like a hang
 - [Keep all experiment data](feedback_keep_all_experiment_data.md) — never auto-delete checkpoints/datasets/caches; new metrics often need the originals
 - [Verify slowness](feedback_verify_slowness.md) — when user says "stuck/slow", measure etime/file-mtime/GPU before responding; don't reassure based on expectations
 - [Use Monitor](feedback_use_monitor.md) — pair long bg tasks with Monitor tailing the output so errors stream to me live, not after task completes
@@ -23,3 +24,5 @@
 - [Confident-wrong failures](project_failure_modes_confident_wrong.md) — failures are 213/228 confident-but-wrong (median 1588mm), not graceful; predictor FPs where det/tri look great but cams disagree; inlier_frac as measured doesn't separate good/bad (metric bug); open: fix agreement metric + runtime guard
 - [theinle/ObjectDetection ref](reference_theinle_objectdetection.md) — private repo, dev/swissdino branch; Unity+SwissDINO one-shot DINOv2 onboarding; CC-BY-NC-SA so we clean-room port
 - [SwissDINO port](project_swissdino_port.md) — porting DINOv2 one-shot as swissdino_lib.py for faster onboarding + training-free fallback + env-robust appearance gate; vit_b, idrink env
+- [Reproject-fill filter](project_reproject_fill_filter.md) — REJECT-THEN-FILL (cam10 glass replaced by consensus cup, 0→912 labels) WINS every axis: cam10 0.74, mean recall 0.803, 3D-prec 2.99px; beats reject/drop/fill. Plain fill (drop the glass) only got cam10 0.21
+- [pscale_4 full det cache](project_pscale4_full_det_cache.md) — pscale_4 detections cached for 370 drinking_right reps (all 23 participants), `cache/student_dets/`; reusable no-GPU; don't re-run the ~12h job; parallel-decode path OOM'd VSCode

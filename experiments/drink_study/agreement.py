@@ -62,6 +62,42 @@ def cup_centroids(model, clip: Path, conf: float,
     return out
 
 
+def cup_centroids_batched(model, clip: Path, conf: float,
+                          classes: list[int] | None = None,
+                          batch: int = 32) -> list[tuple[float, float] | None]:
+    """Batched-inference equivalent of cup_centroids (GPU-saturating).
+
+    Decodes `batch` frames at a time and runs ONE model() call over the list, so
+    the GPU isn't starved by per-frame python/decode overhead. Output is identical
+    to cup_centroids: per-frame top-confidence cup-box center (or None).
+    """
+    cap = cv2.VideoCapture(str(clip))
+    out: list[tuple[float, float] | None] = []
+    buf: list = []
+
+    def flush(frames):
+        if not frames:
+            return
+        for r in model(frames, conf=conf, classes=classes, verbose=False):
+            if r.boxes is not None and len(r.boxes) > 0:
+                i = int(r.boxes.conf.argmax())
+                b = r.boxes.xyxy[i].cpu().numpy()
+                out.append((float((b[0] + b[2]) / 2), float((b[1] + b[3]) / 2)))
+            else:
+                out.append(None)
+
+    while True:
+        ret, f = cap.read()
+        if not ret:
+            break
+        buf.append(f)
+        if len(buf) == batch:
+            flush(buf); buf = []
+    flush(buf)
+    cap.release()
+    return out
+
+
 def detect_rep(model, rep_clips: dict[str, Path], conf: float,
                classes: list[int] | None = None, verbose: bool = False
                ) -> dict[str, list]:
@@ -75,9 +111,32 @@ def detect_rep(model, rep_clips: dict[str, Path], conf: float,
     return dets
 
 
+def detect_rep_batched(model, rep_clips: dict[str, Path], conf: float,
+                       classes: list[int] | None = None, verbose: bool = False,
+                       batch: int = 32) -> dict[str, list]:
+    """Batched-inference detect_rep (GPU-saturating). Same output as detect_rep."""
+    dets = {}
+    for i, (cam, clip) in enumerate(sorted(rep_clips.items()), 1):
+        dets[cam] = cup_centroids_batched(model, clip, conf, classes, batch=batch)
+        if verbose:
+            hit = sum(1 for d in dets[cam] if d is not None)
+            print(f"    [{i}/{len(rep_clips)}] {cam}: {hit}/{len(dets[cam])} frames", flush=True)
+    return dets
+
+
 def triangulate_per_frame(dets: dict[str, list], calib: dict,
-                          inlier_px: float = 30.0) -> list[dict | None]:
-    """Per-frame triangulation; entry is None when <2 cams saw the cup."""
+                          inlier_px: float = 30.0,
+                          gated: bool = False, minc: int = 3) -> list[dict | None]:
+    """Per-frame triangulation; entry is None when <2 cams saw the cup.
+
+    gated=False : RAW agreement -- triangulate ALL detecting cams (the original
+                  metric; non-discriminative because one outlier cam corrupts it).
+    gated=True  : POST-GATE consensus (OUR new 3D filter) -- iteratively eject the
+                  worst-reprojecting camera until the kept set agrees within
+                  inlier_px; require >=minc. n_cams is then the INLIER count, and
+                  median_err/inlier_frac are measured on the kept set only. This is
+                  the precision signal that actually separates good/bad detections.
+    """
     n = min(len(v) for v in dets.values())
     out: list[dict | None] = []
     for t in range(n):
@@ -85,6 +144,19 @@ def triangulate_per_frame(dets: dict[str, list], calib: dict,
         if len(obs) < 2:
             out.append(None)
             continue
+        if gated:
+            cur = dict(obs)
+            while len(cur) >= 2:
+                X = triangulate_dlt([calib[c] for c in cur], [np.array(cur[c]) for c in cur])
+                e = {c: float(np.hypot(*(project(calib[c], X)[0] - np.array(cur[c])))) for c in cur}
+                w = max(e, key=e.get)
+                if e[w] <= inlier_px:
+                    break
+                del cur[w]
+            if len(cur) < minc:
+                out.append(None)            # no valid consensus -> the filter emits nothing
+                continue
+            obs = cur
         cams = [calib[c] for c in obs]
         pts = [np.array(obs[c]) for c in obs]
         X = triangulate_dlt(cams, pts)
@@ -124,12 +196,15 @@ def agreement_for_rep(model, rep_clips: dict[str, Path], calib: dict,
 def agreement_eval(weights: str, participants: list[str], reps: int,
                    conf: float = 0.25, classes: list[int] | None = None,
                    hand: str = "right", calib_root: str = "data/calib",
-                   clips_root: str = "/home/imove/Documents/clips",
-                   verbose: bool = False) -> dict:
+                   clips_root: str | None = None,
+                   gated: bool = True, verbose: bool = False) -> dict:
     """Aggregate inter-camera agreement for one model across held-out
     participants (each with its own calibration). Returns coverage + fair-ish
     precision summary; `per_rep` holds the breakdown."""
     from ultralytics import YOLO
+    if clips_root is None:                  # default to the portable env-var path
+        from _paths import CLIPS_ROOT
+        clips_root = str(CLIPS_ROOT)
     model = YOLO(weights)
     per_rep = []
     for p in participants:
@@ -150,7 +225,7 @@ def agreement_eval(weights: str, participants: list[str], reps: int,
             if verbose:
                 print(f"  [agreement] {p} {stem}", flush=True)
             dets = detect_rep(model, rep_clips, conf, classes, verbose)
-            s = summarize(triangulate_per_frame(dets, calib))
+            s = summarize(triangulate_per_frame(dets, calib, gated=gated))
             s.update({"participant": p, "rep": stem})
             per_rep.append(s)
     valid = [r for r in per_rep if r.get("frames_triangulated", 0) > 0]
