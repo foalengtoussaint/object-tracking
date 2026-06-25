@@ -46,3 +46,12 @@ experiments/drink_study/logs/
 experiments/drink_study/debug_cam10/
 experiments/drink_study/e6/
 experiments/drink_study/__pycache__/
+
+# drink_study cache: heavy (1GB+ npz/json/c3d/png) -> SSD, NOT git.
+# Keep only the small analysis-output JSONs (whitelisted below).
+experiments/drink_study/cache/*
+!experiments/drink_study/cache/qtm_align.json
+!experiments/drink_study/cache/qtm_video_map.json
+!experiments/drink_study/cache/qtm_takes_to_inspect.txt
+*.npz
+*.c3d

@@ -13,3 +13,10 @@ from pathlib import Path
 
 # Root holding per-participant clip dirs: <CLIPS_ROOT>/P01/P01_drinking_right_*.<cam>.mp4
 CLIPS_ROOT = Path(os.environ.get("OT_CLIPS_ROOT", "/home/imove/Documents/clips"))
+
+# In-repo cache (detections, 3D tracks, QTM mocap, etc.)
+CACHE = Path(__file__).resolve().parent / "cache"
+
+# Qualisys cup mocap: 772 labeled C3D drinking trials (4 cup markers, 100 Hz, mm).
+# Copied off the Windows QTM partition; travels with the project.
+QTM_C3D = Path(os.environ.get("OT_QTM_C3D", str(CACHE / "qtm_c3d")))

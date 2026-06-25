@@ -46,7 +46,12 @@ def main() -> None:
             f"need at least 2 cam-N.mp4 files in {args.video_dir}, "
             f"found {len(video_files)}"
         )
-    cam_names = [f"cam{i}" for i in range(1, len(video_files) + 1)]
+    # Name each camera by the number in its filename (cam-7.mp4 -> "cam7"),
+    # not by position — so a non-contiguous set (e.g. a camera dropped because
+    # it never saw the board) keeps each remaining camera's true identity.
+    # Identical to positional naming for the normal contiguous cam-1..N case.
+    cam_nums = [int(re.search(r"(\d+)", v.stem).group(1)) for v in video_files]
+    cam_names = [f"cam{n}" for n in cam_nums]
     print(f"videos ({len(video_files)}): {[v.name for v in video_files]}")
 
     out_path = args.out or (args.video_dir / "calibration.toml")

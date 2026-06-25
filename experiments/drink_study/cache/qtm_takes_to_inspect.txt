@@ -1,0 +1,47 @@
+QTM takes to inspect (drink_study cup mocap)
+==================================================
+
+REJECTED — non-physical step / marker swap (14) — relabel in QTM:
+  DTL0007      non-physical step 169mm/frame
+  P060022      non-physical step 75mm/frame
+  P060026      non-physical step 473mm/frame
+  P060043      non-physical step 169mm/frame
+  P08_0043     non-physical step 481mm/frame
+  P110036      non-physical step 153mm/frame
+  P13_0012     non-physical step 392mm/frame
+  P13_0027     non-physical step 168mm/frame
+  P13_0032     non-physical step 166mm/frame
+  P13_0036     non-physical step 407mm/frame
+  P17_0042     non-physical step 154mm/frame
+  P19_0026     non-physical step 522mm/frame
+  P19_0047     non-physical step 546mm/frame
+  P23_0034     non-physical step 239mm/frame
+
+REJECTED — dead/static take (14) — check if mislabeled/aborted:
+  P02_0028     dead take (lift 33mm)
+  P14_0031     dead take (lift 0mm)
+  P14_0033     dead take (lift 0mm)
+  P14_0034     dead take (lift 0mm)
+  P14_0035     dead take (lift 0mm)
+  P14_0036     dead take (lift 1mm)
+  P14_0038     dead take (lift 0mm)
+  P14_0039     dead take (lift 0mm)
+  P14_0040     dead take (lift 0mm)
+  P14_0041     dead take (lift 0mm)
+  P14_0042     dead take (lift 0mm)
+  P14_0043     dead take (lift 0mm)
+  P14_0044     dead take (lift 0mm)
+  P19_0046     dead take (lift 1mm)
+
+DESPIKED — short excursion auto-excised (3) — glance:
+  P070029      11 fr excised
+  P070034      12 fr excised
+  P10_0029     43 fr excised
+
+BROKEN — passed gate but won't align to video (subtle GT defect) (6):
+  P02_0014
+  P02_0015
+  P08_0027
+  P13_0029
+  P13_0030
+  P13_0041
