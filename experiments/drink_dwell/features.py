@@ -186,9 +186,10 @@ def head_distance(video: str, cup_world: np.ndarray, T: int) -> np.ndarray | Non
 # =========================================================================================
 # ASSEMBLE: proxy21 / base17 for one rep. Returns None if any required stage is missing.
 # =========================================================================================
-def build_rep(npz):
-    """-> dict with fx17, fx21 (SEQ-resampled), the truth span (track frames), pid, video,
-    T. None if occlusion/head/pairing missing. Truth = dwell_truth mapped onto the rep."""
+def build_rep(npz, include_bad_head=False):
+    """-> dict with fx17, fx21, truth span (track frames), pid, video, T, head_ok. None if
+    occlusion/head/pairing/dwell missing OR (unless include_bad_head) the head is too broken
+    for a trustworthy truth. Truth = dwell_truth mapped onto the rep."""
     from truth import dwell_truth
     video = str(npz["video"])
     fused = np.asarray(npz["fused"], float); T = len(fused)
@@ -203,10 +204,16 @@ def build_rep(npz):
     tsp = dw.span_at(T) if dw.span else None
     if tsp is None:
         return None
+    # EXCLUDE reps whose head is too broken for the truth to be trustworthy, even after
+    # despiking (mocap.head_centroid already despikes; head_quality flags what it can't save).
+    from truth import head_quality
+    hq = head_quality(tr, dw)
+    if not hq["ok"] and not include_bad_head:
+        return None
     # normalise the raw head-distance mm channels to ~unit scale (as the original did)
     hd = hd.copy(); hd[:, 0] /= 600.0; hd[:, 1] /= 20.0
     base = np.concatenate([kin, occ], 1)                    # (T,17)
-    return dict(video=video, pid=video.split("_")[0], T=T, tsp=tsp,
+    return dict(video=video, pid=video.split("_")[0], T=T, tsp=tsp, head_ok=hq["ok"],
                 fx17=base.astype(np.float32),
                 fx21=np.concatenate([base, hd], 1).astype(np.float32))
 

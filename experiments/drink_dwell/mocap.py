@@ -65,12 +65,75 @@ class CupTrial:
     def has_head(self) -> bool:
         return all(l in self.labels for l in FRONT_HEAD + BACK_HEAD)
 
-    def head_centroid(self) -> np.ndarray:
-        """(T,3) mm mean of the head markers — one stable head point (what the future
-        1-landmark biomech model will provide). The dwell keys off cup→this, no mouth proxy."""
+    def head_centroid(self, despike: bool = True, max_step_mm: float = 30.0) -> np.ndarray:
+        """(T,3) mm robust centre of the head markers — one stable head point (what the future
+        1-landmark biomech model will provide). The dwell keys off cup→this.
+
+        The head cluster is far noisier than the rigid cup: markers occlude, drop out, and QTM
+        sometimes gap-fills them with teleport jumps (P19_0042: 172/978 frames missing, 308mm/fr
+        step) — which spikes the cup→head distance and corrupts the dwell truth even though the
+        CUP is clean. despike=True cleans this in two stages, marking bad frames NaN (never
+        fabricating motion — callers already NaN-mask):
+          1. per-marker outlier reject: drop any head marker >max_step_mm from the frame's
+             marker-median before averaging, so one flailing marker can't drag the centroid.
+          2. residual excursion excise: NaN short centroid runs bracketed by >2·max_step_mm
+             jumps (same idea as the cup despike), catching whole-cluster teleports."""
         idx = {l: i for i, l in enumerate(self.labels)}
         cols = [idx[m] for m in HEAD_MARKERS if m in idx]
-        return np.nanmean(self.markers[:, cols], axis=1) if cols else np.full((self.n_frames, 3), np.nan)
+        if not cols:
+            return np.full((self.n_frames, 3), np.nan)
+        pts = self.markers[:, cols].copy()                           # (T,k,3)
+        if not despike:
+            return np.nanmean(pts, axis=1)
+        # 1. per-marker TEMPORAL outlier reject: NaN a marker on a frame where it teleports
+        #    from its OWN previous position (>max_step_mm) — a marker is compared to its own
+        #    trajectory, NOT to the cluster (head markers are legitimately far apart).
+        for k in range(pts.shape[1]):
+            step = np.linalg.norm(np.diff(pts[:, k], axis=0), axis=1)   # (T-1,)
+            jump = np.where(step > max_step_mm)[0]
+            for j in jump:                                              # NaN the post-jump frame
+                pts[j + 1, k] = np.nan
+        c = np.nanmean(pts, axis=1)                                 # (T,3) mean of surviving markers
+        # 2. excise residual teleport excursions (runs bracketed by big jumps)
+        if len(c) >= 3:
+            step = np.linalg.norm(np.diff(c, axis=0), axis=1)
+            jumps = np.where(step > 2 * max_step_mm)[0]
+            if len(jumps) >= 2:
+                bad = np.zeros(len(c), bool)
+                for a, b in zip(jumps[:-1], jumps[1:]):
+                    if (b - a) <= int(self.rate):                   # < ~1s run = a glitch
+                        bad[a + 1: b + 1] = True
+                c[bad] = np.nan
+        return c
+
+    def cup_motion_window(self, disp_frac: float = 0.40):
+        """(s,e) mocap-frame span where the cup is lifted — displacement from rest above
+        `disp_frac` of its peak (the transport+drink arc). Independent of the head, so it's a
+        head-free 'the drink SHOULD be here' window for judging head quality. None if no motion."""
+        cup = self.centroid(despike=True)
+        rw = max(int(0.5 * self.rate), 10)
+        rest = np.nanmedian(cup[:min(rw, len(cup))], axis=0)
+        disp = np.linalg.norm(cup - rest, axis=1)
+        if np.isfinite(disp).sum() < 10:
+            return None
+        above = np.where(disp > disp_frac * np.nanmax(disp))[0]
+        return (int(above.min()), int(above.max())) if len(above) else None
+
+    def head_missing_frac(self, span=None) -> float:
+        """Fraction of frames where the DESPIKED head centroid is missing, measured over
+        `span` (default = the CUP-MOTION window, NOT the dwell). Measuring over the dwell is
+        circular — the dwell is computed from cup→head, which is NaN where the head is missing,
+        so those frames can never be in the dwell (head-miss-in-dwell is ~0 by construction).
+        Over the cup-motion window it correctly catches drinks where the head dropped out and
+        PREVENTED / truncated a proper dwell (P19_0042: 55% head-missing across the lift)."""
+        h = self.head_centroid(despike=True)
+        miss = np.isnan(h[:, 0])
+        if span is None:
+            span = self.cup_motion_window()
+        if span is not None:
+            s, e = span
+            miss = miss[s:e]
+        return float(miss.mean()) if len(miss) else 1.0
 
     # -- STAGE: THE SIGNAL -----------------------------------------------------------------
     def cup_to_head(self) -> np.ndarray:

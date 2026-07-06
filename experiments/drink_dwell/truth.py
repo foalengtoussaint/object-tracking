@@ -85,8 +85,33 @@ def dwell_truth(trial, dwell_frac=DWELL_FRAC, min_dwell_s=MIN_DWELL_S, smooth_n=
     return Dwell(trial.name, trial.rate, ds, float(thr), span)
 
 
+MAX_HEAD_MISS_WINDOW = 0.20   # >20% head missing across the CUP-MOTION window = untrustworthy
+MAX_HEAD_RESID_STEP = 30.0    # a head teleport the despike couldn't excise (mm/frame)
+
+
+def head_quality(trial, dw=None) -> dict:
+    """Is the TRUTH trustworthy, i.e. is the DESPIKED head good enough where the drink happens?
+    Despiking (mocap.head_centroid) fixes most head jumps/gaps; this flags the residual reps it
+    CAN'T save so run.py EXCLUDES them from the headline instead of scoring against a head-
+    corrupted dwell. Head quality is judged over the CUP-MOTION window (not the dwell — that's
+    circular, since the dwell already drops head-missing frames), which catches drinks where the
+    head dropped out and PREVENTED / truncated the dwell. Returns {ok, reason, head_miss, resid_step}."""
+    h = trial.head_centroid(despike=True)
+    miss = trial.head_missing_frac()                          # over cup-motion window
+    resid = float(np.nanmax(np.linalg.norm(np.diff(h, axis=0), axis=1))) if len(h) > 1 else 0.0
+    if not np.isfinite(miss) or miss > MAX_HEAD_MISS_WINDOW:
+        return dict(ok=False, reason=f"head missing {miss*100:.0f}% across the lift",
+                    head_miss=miss, resid_step=resid)
+    if resid > MAX_HEAD_RESID_STEP:
+        return dict(ok=False, reason=f"residual head jump {resid:.0f}mm/fr (unsaveable)",
+                    head_miss=miss, resid_step=resid)
+    return dict(ok=True, reason="ok", head_miss=miss, resid_step=resid)
+
+
 if __name__ == "__main__":   # smoke: print the dwell for one trial
     import sys
     from mocap import load_trial
-    dw = dwell_truth(load_trial(sys.argv[1] if len(sys.argv) > 1 else "P02_0012"))
+    tr = load_trial(sys.argv[1] if len(sys.argv) > 1 else "P02_0012")
+    dw = dwell_truth(tr)
+    print("  head_quality:", head_quality(tr, dw))
     print(f"{dw.name}  thr={dw.thr:.0f}mm  span={dw.span}  dur={dw.dur_s:.2f}s")
