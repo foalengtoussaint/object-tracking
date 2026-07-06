@@ -6,11 +6,11 @@
     "n_bad_gt": 0,
     "n_bad_sync": 0,
     "cls_counts": {
-      "clean": 16,
+      "clean": 18,
       "localized": 5,
-      "broken": 2
+      "broken": 0
     },
-    "inlier_rms_median_mm": 3.2,
+    "inlier_rms_median_mm": 2.4,
     "frac_fail_median": 0.0,
     "reps": [
       {
@@ -207,86 +207,86 @@
       },
       {
         "video": "P02_P02_drinking_right_20240110_110916__clean3d_refill",
-        "c3d": "P02_0014",
+        "c3d": "P02_0017",
         "side": "right",
-        "lag": 41,
-        "sync_corr": 0.957,
-        "n": 468,
-        "inlier_rms_mm": 15.4,
-        "frac_fail": 0.24,
-        "max_err_mm": 116.0,
-        "cls": "broken"
+        "lag": -25,
+        "sync_corr": 0.948,
+        "n": 495,
+        "inlier_rms_mm": 2.0,
+        "frac_fail": 0.14,
+        "max_err_mm": 109.0,
+        "cls": "localized"
       },
       {
         "video": "P02_P02_drinking_right_20240110_110932__clean3d_refill",
-        "c3d": "P02_0015",
+        "c3d": "P02_0023",
         "side": "right",
-        "lag": 6,
-        "sync_corr": 0.93,
-        "n": 534,
-        "inlier_rms_mm": 30.2,
-        "frac_fail": 0.26,
-        "max_err_mm": 148.0,
-        "cls": "broken"
+        "lag": 0,
+        "sync_corr": 0.962,
+        "n": 539,
+        "inlier_rms_mm": 2.0,
+        "frac_fail": 0.14,
+        "max_err_mm": 116.0,
+        "cls": "localized"
       },
       {
         "video": "P02_P02_drinking_right_20240110_111002__clean3d_refill",
-        "c3d": "P02_0019",
+        "c3d": "P02_0024",
         "side": "right",
-        "lag": -18,
-        "sync_corr": 0.925,
-        "n": 466,
-        "inlier_rms_mm": 5.9,
-        "frac_fail": 0.17,
-        "max_err_mm": 113.0,
-        "cls": "localized"
+        "lag": 25,
+        "sync_corr": 1.001,
+        "n": 441,
+        "inlier_rms_mm": 3.8,
+        "frac_fail": 0.0,
+        "max_err_mm": 32.0,
+        "cls": "clean"
       },
       {
         "video": "P02_P02_drinking_right_20240110_111016__clean3d_refill",
-        "c3d": "P02_0020",
+        "c3d": "P02_0025",
         "side": "right",
-        "lag": 4,
-        "sync_corr": 0.948,
-        "n": 497,
-        "inlier_rms_mm": 2.1,
-        "frac_fail": 0.11,
-        "max_err_mm": 96.0,
-        "cls": "localized"
+        "lag": 26,
+        "sync_corr": 1.004,
+        "n": 480,
+        "inlier_rms_mm": 1.5,
+        "frac_fail": 0.0,
+        "max_err_mm": 28.0,
+        "cls": "clean"
       },
       {
         "video": "P02_P02_drinking_right_20240110_111030__clean3d_refill",
-        "c3d": "P02_0021",
+        "c3d": "P02_0026",
         "side": "right",
-        "lag": 17,
-        "sync_corr": 0.959,
-        "n": 458,
-        "inlier_rms_mm": 4.0,
-        "frac_fail": 0.03,
-        "max_err_mm": 57.0,
+        "lag": 19,
+        "sync_corr": 0.997,
+        "n": 456,
+        "inlier_rms_mm": 1.6,
+        "frac_fail": 0.0,
+        "max_err_mm": 29.0,
         "cls": "clean"
       },
       {
         "video": "P02_P02_drinking_right_20240110_111044__clean3d_refill",
-        "c3d": "P02_0025",
+        "c3d": "P02_0027",
         "side": "right",
-        "lag": 35,
-        "sync_corr": 0.974,
-        "n": 455,
-        "inlier_rms_mm": 3.2,
+        "lag": 0,
+        "sync_corr": 0.989,
+        "n": 489,
+        "inlier_rms_mm": 2.2,
         "frac_fail": 0.0,
-        "max_err_mm": 26.0,
+        "max_err_mm": 31.0,
         "cls": "clean"
       },
       {
         "video": "P02_P02_drinking_right_20240110_111121__clean3d_refill",
-        "c3d": "P02_0027",
+        "c3d": "P02_0029",
         "side": "right",
-        "lag": 18,
-        "sync_corr": 0.971,
-        "n": 472,
-        "inlier_rms_mm": 3.2,
+        "lag": 64,
+        "sync_corr": 1.029,
+        "n": 425,
+        "inlier_rms_mm": 2.5,
         "frac_fail": 0.0,
-        "max_err_mm": 37.0,
+        "max_err_mm": 25.0,
         "cls": "clean"
       }
     ],
@@ -1415,7 +1415,7 @@
     "participant": "P06",
     "ok": true,
     "n_reps": 29,
-    "n_bad_gt": 3,
+    "n_bad_gt": 0,
     "n_bad_sync": 0,
     "cls_counts": {
       "clean": 29,
@@ -1774,37 +1774,21 @@
         "cls": "clean"
       }
     ],
-    "bad_gt": [
-      {
-        "c3d": "P060022",
-        "side": "left",
-        "reason": "non-physical step 75mm/frame"
-      },
-      {
-        "c3d": "P060026",
-        "side": "left",
-        "reason": "non-physical step 473mm/frame"
-      },
-      {
-        "c3d": "P060043",
-        "side": "right",
-        "reason": "non-physical step 169mm/frame"
-      }
-    ]
+    "bad_gt": []
   },
   "P07": {
     "participant": "P07",
     "ok": true,
-    "n_reps": 31,
+    "n_reps": 32,
     "n_bad_gt": 0,
     "n_bad_sync": 0,
     "cls_counts": {
-      "clean": 21,
+      "clean": 22,
       "localized": 10,
       "broken": 0
     },
     "inlier_rms_median_mm": 2.0,
-    "frac_fail_median": 0.04,
+    "frac_fail_median": 0.02,
     "reps": [
       {
         "video": "P07_P07_drinking_left_20240124_142730__clean3d_refill",
@@ -2011,6 +1995,18 @@
         "cls": "clean"
       },
       {
+        "video": "P07_P07_drinking_right_20240124_142250__clean3d_refill",
+        "c3d": "P070013",
+        "side": "right",
+        "lag": -1,
+        "sync_corr": 1.015,
+        "n": 572,
+        "inlier_rms_mm": 2.4,
+        "frac_fail": 0.0,
+        "max_err_mm": 38.0,
+        "cls": "clean"
+      },
+      {
         "video": "P07_P07_drinking_right_20240124_142313__clean3d_refill",
         "c3d": "P070014",
         "side": "right",
@@ -2185,7 +2181,7 @@
     "participant": "P08",
     "ok": true,
     "n_reps": 31,
-    "n_bad_gt": 1,
+    "n_bad_gt": 0,
     "n_bad_sync": 0,
     "cls_counts": {
       "clean": 31,
@@ -2568,13 +2564,7 @@
         "cls": "clean"
       }
     ],
-    "bad_gt": [
-      {
-        "c3d": "P08_0043",
-        "side": "left",
-        "reason": "non-physical step 481mm/frame"
-      }
-    ]
+    "bad_gt": []
   },
   "P09": {
     "participant": "P09",
@@ -3004,12 +2994,12 @@
   "P10": {
     "participant": "P10",
     "ok": true,
-    "n_reps": 37,
+    "n_reps": 38,
     "n_bad_gt": 0,
     "n_bad_sync": 0,
     "cls_counts": {
       "clean": 26,
-      "localized": 11,
+      "localized": 12,
       "broken": 0
     },
     "inlier_rms_median_mm": 2.4,
@@ -3206,6 +3196,18 @@
         "frac_fail": 0.03,
         "max_err_mm": 65.0,
         "cls": "clean"
+      },
+      {
+        "video": "P10_P10_drinking_right_20240202_152638__clean3d_refill",
+        "c3d": "P10_0011",
+        "side": "right",
+        "lag": -11,
+        "sync_corr": 0.907,
+        "n": 788,
+        "inlier_rms_mm": 5.1,
+        "frac_fail": 0.22,
+        "max_err_mm": 140.0,
+        "cls": "localized"
       },
       {
         "video": "P10_P10_drinking_right_20240202_152746__clean3d_refill",
@@ -3465,11 +3467,11 @@
   "P11": {
     "participant": "P11",
     "ok": true,
-    "n_reps": 32,
-    "n_bad_gt": 1,
+    "n_reps": 33,
+    "n_bad_gt": 0,
     "n_bad_sync": 0,
     "cls_counts": {
-      "clean": 32,
+      "clean": 33,
       "localized": 0,
       "broken": 0
     },
@@ -3546,6 +3548,18 @@
         "inlier_rms_mm": 2.3,
         "frac_fail": 0.0,
         "max_err_mm": 25.0,
+        "cls": "clean"
+      },
+      {
+        "video": "P11_P11_drinking_left_20240208_145909__clean3d_refill",
+        "c3d": "P110033",
+        "side": "left",
+        "lag": 176,
+        "sync_corr": 0.961,
+        "n": 379,
+        "inlier_rms_mm": 5.4,
+        "frac_fail": 0.0,
+        "max_err_mm": 19.0,
         "cls": "clean"
       },
       {
@@ -3861,13 +3875,7 @@
         "cls": "clean"
       }
     ],
-    "bad_gt": [
-      {
-        "c3d": "P110036",
-        "side": "left",
-        "reason": "non-physical step 153mm/frame"
-      }
-    ]
+    "bad_gt": []
   },
   "P12": {
     "participant": "P12",
@@ -4274,7 +4282,7 @@
     "participant": "P13",
     "ok": true,
     "n_reps": 27,
-    "n_bad_gt": 4,
+    "n_bad_gt": 0,
     "n_bad_sync": 0,
     "cls_counts": {
       "clean": 26,
@@ -4609,28 +4617,7 @@
         "cls": "clean"
       }
     ],
-    "bad_gt": [
-      {
-        "c3d": "P13_0027",
-        "side": "left",
-        "reason": "non-physical step 168mm/frame"
-      },
-      {
-        "c3d": "P13_0032",
-        "side": "left",
-        "reason": "non-physical step 166mm/frame"
-      },
-      {
-        "c3d": "P13_0036",
-        "side": "left",
-        "reason": "non-physical step 407mm/frame"
-      },
-      {
-        "c3d": "P13_0012",
-        "side": "right",
-        "reason": "non-physical step 392mm/frame"
-      }
-    ]
+    "bad_gt": []
   },
   "P14": {
     "participant": "P14",
@@ -5863,7 +5850,7 @@
     "participant": "P19",
     "ok": true,
     "n_reps": 34,
-    "n_bad_gt": 2,
+    "n_bad_gt": 0,
     "n_bad_sync": 0,
     "cls_counts": {
       "clean": 11,
@@ -6282,18 +6269,7 @@
         "cls": "localized"
       }
     ],
-    "bad_gt": [
-      {
-        "c3d": "P19_0047",
-        "side": "left",
-        "reason": "non-physical step 546mm/frame"
-      },
-      {
-        "c3d": "P19_0026",
-        "side": "right",
-        "reason": "non-physical step 522mm/frame"
-      }
-    ]
+    "bad_gt": []
   },
   "P20": {
     "participant": "P20",
@@ -6964,26 +6940,26 @@
       },
       {
         "video": "P16_P16_drinking_right_20240306_105504__clean3d_refill",
-        "c3d": "P16_0015",
+        "c3d": "P16_0014",
         "side": "right",
-        "lag": -1,
-        "sync_corr": 0.878,
-        "n": 481,
-        "inlier_rms_mm": 2.3,
-        "frac_fail": 0.27,
-        "max_err_mm": 144.0,
+        "lag": 16,
+        "sync_corr": 0.896,
+        "n": 464,
+        "inlier_rms_mm": 4.8,
+        "frac_fail": 0.26,
+        "max_err_mm": 129.0,
         "cls": "localized"
       },
       {
         "video": "P16_P16_drinking_right_20240306_105518__clean3d_refill",
-        "c3d": "P16_0016",
+        "c3d": "P16_0015",
         "side": "right",
         "lag": 0,
-        "sync_corr": 0.896,
-        "n": 500,
-        "inlier_rms_mm": 6.0,
-        "frac_fail": 0.2,
-        "max_err_mm": 132.0,
+        "sync_corr": 0.886,
+        "n": 482,
+        "inlier_rms_mm": 3.4,
+        "frac_fail": 0.26,
+        "max_err_mm": 153.0,
         "cls": "localized"
       },
       {
@@ -7113,11 +7089,11 @@
     "participant": "P17",
     "ok": true,
     "n_reps": 31,
-    "n_bad_gt": 1,
+    "n_bad_gt": 0,
     "n_bad_sync": 0,
     "cls_counts": {
-      "clean": 31,
-      "localized": 0,
+      "clean": 29,
+      "localized": 2,
       "broken": 0
     },
     "inlier_rms_median_mm": 3.0,
@@ -7280,28 +7256,28 @@
         "cls": "clean"
       },
       {
-        "video": "P17_P17_drinking_left_20240307_103324__clean3d_refill",
+        "video": "P17_P17_drinking_left_20240307_103337__clean3d_refill",
         "c3d": "P17_0040",
         "side": "left",
-        "lag": -1,
-        "sync_corr": 0.95,
-        "n": 414,
-        "inlier_rms_mm": 5.6,
-        "frac_fail": 0.06,
-        "max_err_mm": 56.0,
-        "cls": "clean"
+        "lag": -16,
+        "sync_corr": 0.864,
+        "n": 400,
+        "inlier_rms_mm": 3.6,
+        "frac_fail": 0.23,
+        "max_err_mm": 94.0,
+        "cls": "localized"
       },
       {
-        "video": "P17_P17_drinking_left_20240307_103337__clean3d_refill",
+        "video": "P17_P17_drinking_left_20240307_103349__clean3d_refill",
         "c3d": "P17_0041",
         "side": "left",
-        "lag": -1,
-        "sync_corr": 0.963,
+        "lag": 7,
+        "sync_corr": 0.949,
         "n": 407,
-        "inlier_rms_mm": 3.3,
-        "frac_fail": 0.03,
-        "max_err_mm": 53.0,
-        "cls": "clean"
+        "inlier_rms_mm": 4.5,
+        "frac_fail": 0.12,
+        "max_err_mm": 88.0,
+        "cls": "localized"
       },
       {
         "video": "P17_P17_drinking_right_20240307_102639__clean3d_refill",
@@ -7496,13 +7472,7 @@
         "cls": "clean"
       }
     ],
-    "bad_gt": [
-      {
-        "c3d": "P17_0042",
-        "side": "left",
-        "reason": "non-physical step 154mm/frame"
-      }
-    ]
+    "bad_gt": []
   },
   "P24": {
     "participant": "P24",
@@ -7965,7 +7935,7 @@
     "participant": "P23",
     "ok": true,
     "n_reps": 37,
-    "n_bad_gt": 1,
+    "n_bad_gt": 0,
     "n_bad_sync": 0,
     "cls_counts": {
       "clean": 23,
@@ -8420,12 +8390,6 @@
         "cls": "localized"
       }
     ],
-    "bad_gt": [
-      {
-        "c3d": "P23_0034",
-        "side": "left",
-        "reason": "non-physical step 239mm/frame"
-      }
-    ]
+    "bad_gt": []
   }
 }

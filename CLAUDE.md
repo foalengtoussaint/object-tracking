@@ -32,6 +32,15 @@ See [docs/context/MEMORY.md](docs/context/MEMORY.md). Most recent thread:
   guard, validate the predictor on real checkpoints. See
   [docs/context/project_failure_modes_confident_wrong.md](docs/context/project_failure_modes_confident_wrong.md).
 
+## Repo layout (drink_study reorganized 2026-07-06)
+`experiments/drink_study/` is no longer flat. Entry point is
+[pipeline.py](experiments/drink_study/pipeline.py) — the whole DAG (clips→dets→3D→seg→dwell),
+cache-first. Spine modules live in `lib/` (imported by BARE name via a per-script path shim +
+`_paths.py`); leaves are grouped `analysis/ cache_scripts/ viz/ render/`; settled threads are in
+`archive/` (kept, not deleted). Paths are anchored in `_paths.py` (`CACHE`, `ROOT`, `DS`) — do
+NOT recompute `parents[N]`. See the README's Layout section and
+[docs/context/project_repo_layout.md](docs/context/project_repo_layout.md).
+
 ## Setup on a new machine
 See [experiments/drink_study/README.md](experiments/drink_study/README.md): conda
 env from `environment.yml`, copy `clips/` + `runs/` (not in git), set
