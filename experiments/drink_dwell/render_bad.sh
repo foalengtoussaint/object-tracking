@@ -1,8 +1,8 @@
 #!/bin/bash
-# Render marker overlays for the worst dwell reps that have LOCAL footage, into
-# experiments/drink_dwell/renders/. cup=green, head=blue, centroid=yellow.
+# Render dwell-bar marker overlays for the worst dwell reps that have LOCAL footage, into
+# experiments/drink_dwell/renders/. Uses overlay.py (features.mocap_to_w0 = the SAME alignment
+# the model uses) + truth/proxy21/base17 dwell bars. Run plot.py first for the model spans.
 cd /home/imove-laptop-01/object-tracking-master
-OUT=experiments/drink_dwell/renders
 REPS=(
   "P07_P07_drinking_left_20240124_142839__clean3d_refill"
   "P10_P10_drinking_right_20240202_153316__clean3d_refill"
@@ -15,10 +15,7 @@ REPS=(
   "P16_P16_drinking_right_20240306_105546__clean3d_refill"
 )
 for i in "${!REPS[@]}"; do
-  r="${REPS[$i]}"
-  short=$(echo "$r" | sed 's/__clean3d_refill//' | sed 's/_P[0-9]*_drinking//')
-  echo "[$((i+1))/${#REPS[@]}] rendering $short"
-  python experiments/drink_study/analysis/overlay_markers.py "$r" \
-    --out "$OUT/BAD_${short}.mp4" 2>&1 | tail -1
+  echo "[$((i+1))/${#REPS[@]}] ${REPS[$i]}"
+  python experiments/drink_dwell/overlay.py "${REPS[$i]}" 2>&1 | grep -E "Kabsch rms|wrote"
 done
 echo "ALL DONE"

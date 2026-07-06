@@ -33,6 +33,15 @@ The dwell definition ASSUMES a symmetric reach (rest→lift→drink→lower→re
 asymmetric reach (|rest_before − rest_after| large, e.g. >150-200mm) and either filter the rep
 or make `_reach_rest` use the higher/farther side (or per-side thresholds) instead of the mean.
 
+**3. CUP gap-fill teleport (OPEN — despike blind spot).** Same class as (1) but on the CUP:
+P07_142730 (c3d P070029) the mocap cup drops out for 3 frames at 285-288 and 296-299 and QTM
+fills across with a ~440mm teleport — at the dwell's LEADING EDGE (dwell starts 302), so it
+shifts the dwell onset. `centroid(despike=True)` did NOT remove it: the cup despike only excises
+excursions bracketed by TWO jumps within ~1s; a single gap-crossing teleport slips through. FIX
+needed: also NaN a single >Nmm/fr gap-crossing step (or reject cup markers whose gap-fill spans
+>k frames). The MMC (video) cup stays continuous through these (overlay.py now draws it magenta),
+so these reps' truth is mocap-only-wrong.
+
 NOTE: despiking does NOT touch P14/P11 (their head is clean, 0 NaN) — those are pure asymmetry
 cases, orthogonal to mechanism 1. Don't confuse the two. P14/P11 local video is NOT present
 (only 092404/092441, 145743/145758 timestamps on disk; the exact bad-rep clips are on the

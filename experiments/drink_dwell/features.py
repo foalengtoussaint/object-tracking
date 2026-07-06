@@ -141,8 +141,11 @@ def _mocap_to_track(sig, rate, lag, T):
     return out
 
 
-def _mocap_to_w0(cup_world, mocap_centroid, rate, lag):
-    """Robust Kabsch mocap(lab)->W0 from the synced cup-centroids. Returns (R,t) or None."""
+def mocap_to_w0(cup_world, mocap_centroid, rate, lag):
+    """THE single mocap(lab)->W0 alignment used everywhere in drink_dwell (features AND the
+    overlay) — one function so they never disagree. Robust Kabsch on the synced cup-centroids
+    at the KNOWN-GOOD lag from qtm_align.json (never re-estimate sync here). Returns
+    (R, t, rms_mm) or None if too few overlapping frames."""
     vr = resample3d(cup_world, VIDEO_FPS)
     mr = resample3d(mocap_centroid, rate)
     if lag >= 0:
@@ -153,8 +156,11 @@ def _mocap_to_w0(cup_world, mocap_centroid, rate, lag):
     ok = ~(np.isnan(v).any(1) | np.isnan(mo).any(1))
     if ok.sum() < 10:
         return None
-    R, t, _ = kabsch(mo[ok], v[ok], robust=True)
-    return R, t
+    R, t, rms = kabsch(mo[ok], v[ok], robust=True)
+    return R, t, rms
+
+
+_mocap_to_w0 = mocap_to_w0     # back-compat alias
 
 
 def head_distance(video: str, cup_world: np.ndarray, T: int) -> np.ndarray | None:
@@ -166,10 +172,10 @@ def head_distance(video: str, cup_world: np.ndarray, T: int) -> np.ndarray | Non
     tr = load_trial(r["c3d"])
     if not tr.has_head():
         return None
-    fit = _mocap_to_w0(np.asarray(cup_world, float), tr.centroid(), tr.rate, r["lag"])
+    fit = mocap_to_w0(np.asarray(cup_world, float), tr.centroid(), tr.rate, r["lag"])
     if fit is None:
         return None
-    R, t = fit
+    R, t, _ = fit
     head_w0 = _mocap_to_track(tr.head_centroid() @ R.T + t, tr.rate, r["lag"], T)   # (T,3)
     d = np.linalg.norm(head_w0 - cup_world, axis=1)                                 # (T,)
     present = np.isfinite(d).astype(np.float32)
