@@ -18,10 +18,10 @@ import sys as _s, pathlib as _p  # drink_study lib path shim
 for _q in _p.Path(__file__).resolve().parents:
     if (_q / 'lib' / 'segment_cup_only.py').exists():
         _s.path.insert(0, str(_q / 'lib')); _s.path.insert(0, str(_q)); _s.path.insert(0, str(_q.parents[1])); break
-import sys, glob, json, time, argparse, numpy as np, torch, torch.nn as nn
-sys.path.insert(0, 'experiments/drink_study')
+import glob, json, time, argparse, numpy as np, torch, torch.nn as nn
 import learn_seg as LS, learn_seq_kf as M, tune_interp as T
 import mouth_features as MF
+from _paths import CACHE
 HZ = LS.HZ; SEQ_L = LS.SEQ; DEV = LS.DEV; TUN = LS.TUN
 LF = LS.CACHE
 OCC_IDX = [3, 14, 15, 16]                       # present, mpx, ncams, occ (as in hybrid)
@@ -167,7 +167,7 @@ def main():
     js['perrep_cols'] = ['tuned'] + [nm for nm, _ in METHODS]
     js['perrep'] = {common[i]: [float(dt[i])] + [float(D[nm][i]) for nm, _ in METHODS]
                     for i in range(len(common))}
-    json.dump(js, open('experiments/drink_study/cache/learn_seg_mouth.json', 'w'), indent=2)
+    json.dump(js, open(CACHE / 'learn_seg_mouth.json', 'w'), indent=2)
     print(f"\nwrote cache/learn_seg_mouth.json  (perrep = {label})", flush=True)
 
 

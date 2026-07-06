@@ -7,18 +7,18 @@ fold (proxy21 features, plain TCN), get the per-frame P(drink), and plot on one 
   - the TCN's predicted P(drink) + its thresholded span,
 so you can SEE the failure mode (late/early edge? split dwell? missed entirely? truth weird?).
 
-    python experiments/drink_study/plot_worst.py [--n 9] [--epochs 250]
+    python experiments/drink_study/analysis/plot_worst.py [--n 9] [--epochs 250]
 Writes slides/worst_proxy21_grid.png
 """
 import sys as _s, pathlib as _p  # drink_study lib path shim
 for _q in _p.Path(__file__).resolve().parents:
     if (_q / 'lib' / 'segment_cup_only.py').exists():
         _s.path.insert(0, str(_q / 'lib')); _s.path.insert(0, str(_q)); _s.path.insert(0, str(_q.parents[1])); break
-import sys, json, argparse, numpy as np, torch
-sys.path.insert(0, 'experiments/drink_study')
+import json, argparse, numpy as np, torch
 import learn_seg_mouth as LM
 import learn_seg as LS
 import mouth_features as MF
+from _paths import CACHE, DS
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -27,7 +27,7 @@ HZ = LS.HZ
 
 def worst_videos(n):
     """Worst n reps by proxy21 vs the BRIDGED truth; errmap[k] = (proxy21_err, base17_err)."""
-    d = json.load(open('experiments/drink_study/cache/learn_seg_mouth.json'))
+    d = json.load(open(CACHE / 'learn_seg_mouth.json'))
     ip = d['perrep_cols'].index('proxy21'); ib = d['perrep_cols'].index('base17')
     rows = sorted(((v[ip], v[ib], k) for k, v in d['perrep'].items() if v[ip] is not None),
                   reverse=True)
@@ -63,7 +63,7 @@ def tcn_prob_for(reps, held, fxkey='fx_prox'):
     return out
 
 
-PRED_CACHE = 'experiments/drink_study/cache/worst_preds_head.json'
+PRED_CACHE = str(CACHE / 'worst_preds_head.json')
 FEATS = [('proxy21', 'fx_prox'), ('base17', 'fx17')]      # both, to show where head helps
 
 
@@ -117,7 +117,7 @@ def main():
         tsp = r['tsp']                                   # bridged mouth truth span
         # green = TRACKED cup->head distance (what proxy21 is actually fed), + mocap as ref
         cup_world = np.asarray(np.load([f for f in __import__('glob').glob(
-            'experiments/drink_study/cache/lopo_fused/*.npz')
+            str(CACHE / 'lopo_fused' / '*.npz'))
             if v in str(np.load(f, allow_pickle=True)['video'])][0],
             allow_pickle=True)['fused'], float)
         mct = MF.tracked_cup_to_head_channels(v, T, cup_world)
@@ -173,7 +173,7 @@ def main():
     fig.suptitle('Worst reps — proxy21 (TRACKED cup→head) vs base17 — dwell bars: truth / proxy21 / base17',
                  fontsize=15, fontweight='bold')
     fig.tight_layout(rect=[0, 0.05, 1, 0.95], h_pad=2.5)
-    out = 'experiments/drink_study/slides/worst_trackedcup_grid.png'
+    out = str(DS / 'slides' / 'worst_proxy21_grid.png')
     fig.savefig(out, dpi=130)
     print(f"\nwrote {out}", flush=True)
 
