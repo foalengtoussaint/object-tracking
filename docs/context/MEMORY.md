@@ -1,4 +1,5 @@
 - [Repo layout](project_repo_layout.md) — drink_study reorganized 2026-07-06: pipeline.py entry point, lib/ spine (bare imports via shim), analysis/ cache_scripts/ viz/ render/, archive/ for settled threads; paths anchored in _paths.py (CACHE/ROOT/DS). NOTE: older notes cite bare filenames now under lib/ or analysis/
+- [drink_dwell experiment](project_drink_dwell_experiment.md) — experiments/drink_dwell/: standalone stage-by-stage rebuild of the proxy21 dwell (mocap/truth/features/model/run/summary/plot, each runs on one trial); base17=proxy21 MINUS head-distance; proxy21 ~85ms vs base17 ~123ms LOPO 666; old learn_seg_mouth/plot_worst retired to archive/dwell_legacy
 - [Calibration source](calibration_source.md) — 5-camera BRIO Charuco TOML lives in iMOVE DATA tree, needs 2/3 intrinsics rescale
 - [Conda envs](conda_envs.md) — project env name and how it's activated
 - [Separate kill / launch](feedback_separate_kill_launch.md) — never chain `kill ... ; ... ; launch ...` in one Bash call; split into separate tool calls

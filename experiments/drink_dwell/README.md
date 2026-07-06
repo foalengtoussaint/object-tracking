@@ -8,9 +8,14 @@ of. Here every stage is a small named function you can run on ONE trial and insp
 ## Run it
 
 ```bash
-python experiments/drink_dwell/run.py        # -> cache/results.json  (the 77ms number)
-python experiments/drink_dwell/plot.py       # -> ../drink_study/slides/worst_proxy21_grid.png
+python experiments/drink_dwell/run.py        # -> cache/results.json  (the headline numbers)
+python experiments/drink_dwell/summary.py    # -> slides/dwell_summary.png  (base17 vs proxy21: CDF + paired + table)
+python experiments/drink_dwell/plot.py       # -> slides/worst_proxy21_grid.png  (worst reps)
 ```
+
+**base17 vs proxy21:** identical inputs (13 kinematics + 4 occlusion); proxy21 just ADDS the
+4 head-distance channels. So base17 is the video-only ceiling and the base17→proxy21 gap is
+exactly what cup→head distance buys.
 
 ## The pipeline, stage by stage (each file runs standalone for a smoke test)
 
