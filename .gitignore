@@ -55,3 +55,4 @@ experiments/drink_study/cache/*
 !experiments/drink_study/cache/qtm_takes_to_inspect.txt
 *.npz
 *.c3d
+experiments/drink_dwell/renders/

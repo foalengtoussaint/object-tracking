@@ -141,11 +141,23 @@ def _mocap_to_track(sig, rate, lag, T):
     return out
 
 
-def mocap_to_w0(cup_world, mocap_centroid, rate, lag):
+ALIGN_EXCLUDE_MM = 15.0        # drop a frame from the Kabsch fit if it aligns worse than this
+
+
+def mocap_to_w0(cup_world, mocap_centroid, rate, lag, exclude=True, exclude_mm=ALIGN_EXCLUDE_MM):
     """THE single mocap(lab)->W0 alignment used everywhere in drink_dwell (features AND the
-    overlay) — one function so they never disagree. Robust Kabsch on the synced cup-centroids
-    at the KNOWN-GOOD lag from qtm_align.json (never re-estimate sync here). Returns
-    (R, t, rms_mm) or None if too few overlapping frames."""
+    overlay) — one function so they never disagree. Kabsch on the synced cup-centroids at the
+    KNOWN-GOOD lag from qtm_align.json (never re-estimate sync here). Returns (R, t, rms_mm) or
+    None if too few overlapping frames.
+
+    With exclude=True: HARD-EXCLUDE by residual, with RE-ADMISSION. The drink phase tilts the
+    cup so the mocap 4-marker centroid and the video track measure different points (~50mm apart,
+    correlates with tilt r=0.54); robust Huber only LINEARISES those frames but a coherent cluster
+    of them still pulls the rotation, leaving the trustworthy (upright) frames misaligned (up to
+    8mm). So we iterate: keep frames with residual < exclude_mm, refit on the kept set; a frame
+    excluded early REJOINS once the fit tightens (fixed physical threshold, recomputed each round).
+    This tightens the good frames to ~1-3mm (P19 8.4->2.9). Falls back to the all-frame robust fit
+    if <10 frames survive (rep tilted throughout). rms reported over the KEPT (trustworthy) frames."""
     vr = resample3d(cup_world, VIDEO_FPS)
     mr = resample3d(mocap_centroid, rate)
     if lag >= 0:
@@ -156,15 +168,36 @@ def mocap_to_w0(cup_world, mocap_centroid, rate, lag):
     ok = ~(np.isnan(v).any(1) | np.isnan(mo).any(1))
     if ok.sum() < 10:
         return None
-    R, t, rms = kabsch(mo[ok], v[ok], robust=True)
+    mo, v = mo[ok], v[ok]
+    R, t, rms = kabsch(mo, v, robust=True)
+    if exclude:
+        keep = np.ones(len(mo), bool)
+        for _ in range(6):
+            r = np.linalg.norm(v - (mo @ R.T + t), axis=1)
+            nk = r < exclude_mm
+            if nk.sum() < 10 or np.array_equal(nk, keep):
+                keep = nk if nk.sum() >= 10 else keep
+                break
+            keep = nk
+            R, t, _ = kabsch(mo[keep], v[keep], robust=False)
+        r = np.linalg.norm((v - (mo @ R.T + t))[keep], axis=1)
+        rms = float(np.sqrt(np.mean(r ** 2))) if keep.any() else rms
     return R, t, rms
 
 
 _mocap_to_w0 = mocap_to_w0     # back-compat alias
 
 
-def head_distance(video: str, cup_world: np.ndarray, T: int) -> np.ndarray | None:
-    """(T,4) [dist mm, approach vel, norm 0..1, present] — tracked cup → mocap head in W0."""
+def head_distance(video: str, cup_world: np.ndarray, T: int,
+                  fit_cup: np.ndarray | None = None) -> np.ndarray | None:
+    """(T,4) [dist mm, approach vel, norm 0..1, present] — tracked cup → mocap head in W0.
+
+    The ALIGNMENT (mocap->W0 Kabsch) is fit on `fit_cup` if given, else `cup_world`. Pass the
+    RAW consensus track as fit_cup: the KF-smoothed 'fused' track overshoots at the fast drink
+    motion and pulls the Kabsch rotation by up to 17deg / 86mm on the worst reps (P10_153316,
+    P19_120423) — visible in the overlay as the mocap markers sliding ~2cm off the real cup.
+    The raw track doesn't overshoot, so it gives the correct rotation. The DISTANCE is still
+    measured to `cup_world` (the tracked cup the pipeline actually outputs)."""
     idx = align_index()
     if video not in idx:
         return None
@@ -172,7 +205,8 @@ def head_distance(video: str, cup_world: np.ndarray, T: int) -> np.ndarray | Non
     tr = load_trial(r["c3d"])
     if not tr.has_head():
         return None
-    fit = mocap_to_w0(np.asarray(cup_world, float), tr.centroid(), tr.rate, r["lag"])
+    fit = mocap_to_w0(np.asarray(fit_cup if fit_cup is not None else cup_world, float),
+                      tr.centroid(), tr.rate, r["lag"])
     if fit is None:
         return None
     R, t, _ = fit
@@ -199,9 +233,10 @@ def build_rep(npz, include_bad_head=False):
     from truth import dwell_truth
     video = str(npz["video"])
     fused = np.asarray(npz["fused"], float); T = len(fused)
+    raw = np.asarray(npz["cons"], float) if "cons" in npz else fused   # unfiltered cup for the FIT
     kin = kinematics(npz)                                   # (T,13)
     occ = occlusion(video, T)                               # (T,4)
-    hd = head_distance(video, fused, T)                     # (T,4)
+    hd = head_distance(video, fused, T, fit_cup=raw)        # (T,4) fit on RAW, distance on fused
     if occ is None or hd is None:
         return None
     r = align_index()[video]

@@ -15,7 +15,7 @@ Writes renders/OVERLAY_<rep>.mp4. Needs local footage + a trained worst_preds.js
 from __future__ import annotations
 import sys as _s, pathlib as _p
 _s.path.insert(0, str(_p.Path(__file__).resolve().parent))
-import argparse, json
+import argparse, json, glob
 import numpy as np
 import cv2
 
@@ -30,6 +30,45 @@ from truth import dwell_truth
 import features as F
 
 RES = (1920, 1080)
+
+
+def _velocity_fit(cup_track, tr, lag0, search=8, hz=60.0, speed=80.0, good=20.0):
+    """VELOCITY-VECTOR rotation: R = argmin |v_video - R v_mocap| on moving drink frames, best lag.
+    Returns (R, drink_good_frac, lag) or (None,0,lag0). Rotation only (translation from centroids)."""
+    from mocap import resample as _rs, VIDEO_FPS as _VF
+    from velfit import _procrustes_rot
+    vd = np.diff(_rs(cup_track, _VF), axis=0) * hz
+    omc60 = _rs(tr.centroid(), tr.rate)
+    n = len(vd) + 1
+    dw = dwell_truth(tr); drink = np.zeros(n - 1, bool)
+    sp = dw.span_at(n) if dw.span else None
+    if sp:
+        drink[sp[0]:min(sp[1], n - 1)] = True
+    vs = np.linalg.norm(vd, axis=1)
+    best = (None, 0.0, lag0)
+    for lag in range(lag0 - search, lag0 + search + 1):
+        idxo = np.arange(n) - lag
+        ok = (idxo >= 1) & (idxo < len(omc60))
+        od = np.full((n, 3), np.nan)
+        od[ok] = (omc60[idxo[ok]] - omc60[idxo[ok] - 1]) * hz
+        od = od[:-1]
+        os = np.linalg.norm(od, axis=1)
+        mv = (vs > speed) & (os > speed) & np.isfinite(vs) & np.isfinite(os)
+        ff = mv & drink
+        if ff.sum() < 6:
+            ff = mv
+        if ff.sum() < 6:
+            continue
+        R = _procrustes_rot(vd[ff], od[ff])
+        rv = od @ R.T; rs = np.linalg.norm(rv, axis=1)
+        cos = np.sum(vd * rv, 1) / (vs * rs + 1e-9)
+        ev = mv & drink
+        if ev.sum() < 4:
+            ev = mv
+        g = float(np.mean(np.degrees(np.arccos(np.clip(cos[ev], -1, 1))) < good))
+        if g > best[1]:
+            best = (R, g, lag)
+    return best
 CLIPS = _p.Path(__import__("os").environ.get("OT_CLIPS_ROOT", str(HERE.parents[1] / "clips")))
 TRACK = _DS / "cache" / "track3d_clean3d_refill"
 ALIGN = _DS / "cache" / "qtm_align.json"
@@ -40,6 +79,24 @@ OUTDIR = HERE / "renders"
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("rep"); ap.add_argument("--cam", default=None); ap.add_argument("--out", default=None)
+    ap.add_argument("--compare-fits", action="store_true",
+                    help="also draw a comparison fit (cyan) next to the main fit (yellow)")
+    ap.add_argument("--session", action="store_true",
+                    help="rotate the mocap cup by the robust SESSION rotation (constant per rig) "
+                         "with per-trial translation — overrides this trial's degenerate per-trial "
+                         "rotation; --compare-fits shows per-trial(cyan) vs session-R(yellow)")
+    ap.add_argument("--scale", action="store_true",
+                    help="session-R held fixed + fit scale s + t on top; prints s")
+    ap.add_argument("--simrot", action="store_true",
+                    help="ONE global (R, s, t) fit JOINTLY over the whole session (rotation AND "
+                         "scale together) via Umeyama")
+    ap.add_argument("--velfit", action="store_true",
+                    help="rotate the mocap cup by the VELOCITY-VECTOR fit (Procrustes on 3D "
+                         "velocity) instead of the position Kabsch — fixes the degenerate-"
+                         "rotation reps (P16); --compare-fits then shows position(cyan) vs velocity(yellow)")
+    ap.add_argument("--fused", action="store_true",
+                    help="fit the alignment on the KF-smoothed fused track (default is RAW consensus, "
+                         "which doesn't overshoot at the drink); with --compare-fits, cyan=fused vs yellow=raw")
     a = ap.parse_args()
 
     al = json.load(open(ALIGN)); V = {}
@@ -65,16 +122,54 @@ def main():
             if fr.get(k) is not None:
                 return fr[k]
         return [np.nan, np.nan, np.nan]
-    cup_w0 = np.array([_xyz(fr) for fr in tj["frames"]], float)
+    cup_w0 = np.array([_xyz(fr) for fr in tj["frames"]], float)     # smoothed (rts/kf) track for display
+    # RAW consensus track (unfiltered, NaN at occlusion). Used for the FIT by default.
+    cup_raw = np.array([fr.get("consensus") if fr.get("consensus") is not None else [np.nan]*3
+                        for fr in tj["frames"]], float)
+    # FUSED = TCN velocity-fill track (fills the occluded gaps) — from the npz, not the JSON.
+    cup_fused = None
+    _npz = glob.glob(str(F.FUSED_DIR / f"*{video}*.npz"))
+    if _npz:
+        cup_fused = np.asarray(np.load(_npz[0], allow_pickle=True)["fused"], float)
     tr = load_trial(c3d)
     lag = rec["lag"]                                    # KNOWN-GOOD sync from qtm_align.json
+    # DEFAULT = fit on the RAW consensus track (matches features.build_rep): the KF-smoothed
+    # track overshoots at the drink and rotates the fit up to 17deg. --fused to compare.
+    use_raw = not a.fused                      # default = fit on RAW consensus
+    fit_track = cup_w0 if a.fused else cup_raw
     # SAME alignment the features use — one function, so overlay and model never disagree.
-    R, t, rms = F.mocap_to_w0(cup_w0, tr.centroid(), tr.rate, lag)
-    print(f"{video} c3d={c3d} cam_{cn}  Kabsch rms={rms:.1f}mm lag={lag} (sync={rec.get('sync_corr')})",
-          flush=True)
+    R, t, rms = F.mocap_to_w0(fit_track, tr.centroid(), tr.rate, lag)
+    print(f"{video} c3d={c3d} cam_{cn}  fit-on={'RAW cons' if use_raw else 'fused'}  "
+          f"Kabsch rms={rms:.1f}mm lag={lag} (sync={rec.get('sync_corr')})", flush=True)
+    # comparison fit (cyan X) = the OTHER track's hard-exclude fit, so --compare-fits shows
+    # raw-fit (yellow) vs fused-fit (cyan) side by side.
+    other = cup_w0 if use_raw else cup_raw
+    Rold, told, rms_old = F.mocap_to_w0(other, tr.centroid(), tr.rate, lag, exclude=True)
+    cmp_label = "fused-fit" if use_raw else "raw-fit"
+    # --session / --velfit: swap in a different rotation. CRITICAL: use the SAME alignment_for()
+    # that the metric scoring uses, so the number and the render can NEVER disagree (the old
+    # overlay reimplemented the translation with a length-mismatched fallback that skipped the
+    # sync -> yellow point off the cup while the metric said 4mm). One code path now.
+    scale_s = 1.0
+    if a.session or a.velfit or a.scale or a.simrot:
+        from session_align import alignment_for
+        mode = ("session" if a.session else "velocity" if a.velfit
+                else "simrot" if a.simrot else "scale")
+        res = alignment_for(video, mode, npz=np.load(_npz[0], allow_pickle=True) if _npz else None, tr=tr)
+        if res is not None:
+            Rold, told, rms_old = R, t, rms          # per-trial position fit -> the comparison
+            cmp_label = "position-fit"
+            R, t, info = res
+            scale_s = info.get("s", 1.0)
+            print(f"  --{mode}: {info}", flush=True)
+    if a.compare_fits:
+        print(f"  compare: main({'raw' if use_raw else 'fused'}) rms={rms:.1f}mm  vs  "
+              f"{cmp_label} rms={rms_old:.1f}mm", flush=True)
 
     def to_w0(X):
-        return X @ R.T + t
+        return scale_s * (X @ R.T) + t
+    def to_w0_old(X):
+        return X @ Rold.T + told
     idx = {l: i for i, l in enumerate(tr.labels)}
     cupm = tr.markers[:, [idx[m] for m in CUP_MARKERS if m in idx]]
     headm = tr.markers[:, [idx[m] for m in HEAD_MARKERS if m in idx]]
@@ -88,6 +183,28 @@ def main():
     # --- dwell spans, all mapped to VIDEO frames ---
     dw = dwell_truth(tr)
     ratio = tr.rate / VIDEO_FPS
+
+    # --- PER-VIDEO-FRAME HUD numbers (a "big combination of numbers", live in the render) ---
+    # Everything on the video-frame grid (len Tv-ish). Computed from the SAME (R,t,scale_s) fit.
+    from mocap import resample as _rs
+    _mocap_w0 = scale_s * (_rs(tr.centroid(), tr.rate) @ R.T) + t     # OMC cup in W0, 60Hz
+    _vid = _rs(cup_fused if cup_fused is not None else cup_w0, VIDEO_FPS)   # MMC cup, 60Hz
+    def _grab(arr, i):
+        return arr[i] if 0 <= i < len(arr) else np.array([np.nan]*3)
+    def hud_at(fr):
+        """dict of live numbers for video frame fr."""
+        j = fr - lag                                  # mocap-index aligned to this video frame
+        vc = _grab(_vid, fr); oc = _grab(_mocap_w0, j)
+        dist = float(np.linalg.norm(vc - oc)) if np.isfinite(vc).all() and np.isfinite(oc).all() else np.nan
+        # velocities (frame-to-frame), angle between them
+        vv = _grab(_vid, fr) - _grab(_vid, fr - 1)
+        ov = _grab(_mocap_w0, j) - _grab(_mocap_w0, j - 1)
+        sv = float(np.linalg.norm(vv) * VIDEO_FPS); so = float(np.linalg.norm(ov) * VIDEO_FPS)
+        ang = np.nan
+        if np.isfinite(vv).all() and np.isfinite(ov).all() and sv > 1e-6 and so > 1e-6:
+            ang = float(np.degrees(np.arccos(np.clip(np.dot(vv, ov)/(np.linalg.norm(vv)*np.linalg.norm(ov)+1e-9), -1, 1))))
+        return dict(dist=dist, ang=ang, sv=sv, so=so)
+
     def mocap_span_to_video(sp):
         if not sp:
             return None
@@ -149,19 +266,29 @@ def main():
             for k in range(headm.shape[1]):
                 draw(img, to_w0(headm[mi, k]), (230, 140, 60))
             draw(img, to_w0(head_c[mi]), (60, 60, 235), x=True)
-            draw(img, to_w0(cup_c[mi]), (60, 220, 235), r=6)                    # OMC cup (yellow)
+            draw(img, to_w0(cup_c[mi]), (60, 220, 235), r=6)                    # NEW-fit cup (yellow)
+            if a.compare_fits:
+                draw(img, to_w0_old(cup_c[mi]), (230, 230, 60), r=6, x=True)    # OLD-fit cup (cyan X)
             d = dist[mi]
             if np.isfinite(d):
                 cv2.putText(img, f"cup->head {d:5.0f} mm", (40, 60),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
-        # MMC = tracked/video cup (already in W0). Track is per-video-frame, so index by fr.
-        if 0 <= fr < len(cup_w0):
-            draw(img, cup_w0[fr], (235, 60, 235), r=7, x=True)                  # MMC cup (magenta X)
+        # MMC tracked/video cups (already in W0), per-video-frame -> index by fr.
+        # RAW consensus = magenta X (blinks out at occlusion); FUSED TCN-fill = orange dot (fills gaps).
+        if 0 <= fr < len(cup_raw):
+            draw(img, cup_raw[fr], (235, 60, 235), r=7, x=True)                 # MMC RAW (magenta X)
+        if cup_fused is not None and 0 <= fr < len(cup_fused):
+            draw(img, cup_fused[fr], (60, 170, 255), r=6)                       # MMC FUSED/TCN (orange)
         # legend
         cv2.putText(img, "OMC cup (mocap)", (40, Hh - 130), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
                     (60, 220, 235), 2)
-        cv2.putText(img, "MMC cup (video track)", (230, Hh - 130), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
+        cv2.putText(img, "MMC raw (X)", (230, Hh - 130), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
                     (235, 60, 235), 2)
+        cv2.putText(img, "MMC fused/TCN", (355, Hh - 130), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
+                    (60, 170, 255), 2)
+        if a.compare_fits:
+            cv2.putText(img, f"OMC {cmp_label}(X)", (500, Hh - 130), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
+                        (230, 230, 60), 2)
         # --- dwell strip ---
         yb = Hh - 90
         for ri, (nm, sp, col) in enumerate(ROWS):
@@ -172,6 +299,24 @@ def main():
                 cv2.rectangle(img, (fx(sp[0]), y - 8), (fx(sp[1]), y + 8), col, -1)
         # playhead
         cv2.line(img, (fx(fr), yb - 12), (fx(fr), yb + len(ROWS) * 24), (255, 255, 255), 2)
+        # --- LIVE NUMBER HUD (top-right): the "big combination of numbers" for this frame ---
+        h = hud_at(fr)
+        in_drink = bool(truth_v and truth_v[0] <= fr <= truth_v[1])
+        phase = "DRINK" if in_drink else ("move" if (np.isfinite(h["sv"]) and h["sv"] > 80) else "still")
+        ang_col = (80, 220, 80) if (np.isfinite(h["ang"]) and h["ang"] < 20) else \
+                  ((60, 180, 235) if (np.isfinite(h["ang"]) and h["ang"] < 45) else (60, 60, 235))
+        lines = [
+            (f"fit: {cmp_label if False else ('session' if a.session else 'sim' if a.simrot else 'scale' if a.scale else 'position')}  s={scale_s:.3f}", (230,230,230)),
+            (f"phase: {phase}", (235,200,60) if in_drink else (200,200,200)),
+            (f"vel angle: {h['ang']:5.0f} deg" if np.isfinite(h['ang']) else "vel angle:   -- ", ang_col),
+            (f"cup-cup:  {h['dist']:5.0f} mm" if np.isfinite(h['dist']) else "cup-cup:   -- ", (200,200,200)),
+            (f"vid speed:{h['sv']:5.0f} mm/s", (200,200,200)),
+            (f"omc speed:{h['so']:5.0f} mm/s", (200,200,200)),
+        ]
+        bx = W - 340
+        cv2.rectangle(img, (bx - 12, 24), (W - 20, 24 + 26*len(lines) + 10), (30,30,30), -1)
+        for li, (txt, col) in enumerate(lines):
+            cv2.putText(img, txt, (bx, 50 + li*26), cv2.FONT_HERSHEY_SIMPLEX, 0.62, col, 2)
         wr.write(img); fr += 1
         if fr % 60 == 0:
             print(f"  frame {fr}/{Tv}", flush=True)

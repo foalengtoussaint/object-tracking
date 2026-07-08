@@ -10,6 +10,9 @@
 - [Keep all experiment data](feedback_keep_all_experiment_data.md) — never auto-delete checkpoints/datasets/caches; new metrics often need the originals
 - [Verify slowness](feedback_verify_slowness.md) — when user says "stuck/slow", measure etime/file-mtime/GPU before responding; don't reassure based on expectations
 - [Use Monitor](feedback_use_monitor.md) — pair long bg tasks with Monitor tailing the output so errors stream to me live, not after task completes
+- [No single number](feedback_dont_claim_definitive.md) — never conclude from one scalar; either WATCH THE VIDEO or read a BIG COMBINATION of numbers together; stop saying "definitive" before verifying; when a number and the eye disagree, the number is suspect
+- [Shared code metric+render](feedback_shared_code_metric_and_render.md) — the number and its visualization MUST call the same function; never reimplement the transform in the renderer (overlay had a length-mismatch fallback that put the marker off the cup while the metric said 4mm)
+- [Good-frame fraction](feedback_good_frame_fraction_not_average.md) — score fixes by FRACTION of frames crossing a usable threshold, not median/mean; the average hides fixes that move nothing usable (lag-retune +40° median but 0%→0% good frames)
 - [MegaPose quat order](megapose_quat_order.md) — MegaPose JSON `TWO` quat is xyzw (Eigen `coeffs()`), not wxyz; translation in meters
 - [Position-conditioned YOLO idea](project_position_conditioned_yolo.md) — parked experiment: extend YOLO so detection takes prior KF position as extra input
 - [SOTFormer deferred](project_sotformer_deferred.md) — SOTFormer (CVPR 2026) skipped; weights are LFS-pointer stubs, not real
