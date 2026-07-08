@@ -24,23 +24,19 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import features as F
-from mocap import load_trial, resample as resample3d, VIDEO_FPS
+from mocap import load_trial
 from truth import dwell_truth
+import agreement as AG            # shared sync math
 
 OUT = Path(__file__).resolve().parent / "slides" / "mmc_omc_angle.png"
-SPEED_MM_S = 80.0     # only score frames where BOTH cups move faster than this (mm/s)
-HZ = 60.0
+SPEED_MM_S = AG.SPEED_MM_S   # only score frames where BOTH cups move faster than this (mm/s)
+HZ = AG.HZ
 
 
 def _synced_pair(cup_world, mocap_centroid, rate, lag, R, t):
-    vr = resample3d(cup_world, VIDEO_FPS)
-    mr = resample3d(mocap_centroid, rate) @ R.T + t
-    if lag >= 0:
-        v = vr[lag:]; mo = mr[:len(v)]
-    else:
-        mo = mr[-lag:]; v = vr[:len(mo)]
-    L = min(len(v), len(mo))
-    return v[:L], mo[:L]
+    """thin wrapper on the shared sync_tracks, then transform the mocap side into W0."""
+    v, mo = AG.sync_tracks(cup_world, mocap_centroid, rate, lag)
+    return v, mo @ R.T + t
 
 
 def _vel(xyz):

@@ -15,11 +15,10 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import features as F
-from mocap import load_trial, resample as resample3d, VIDEO_FPS
+from mocap import load_trial
 from session_align import alignment_for
+import agreement as AG            # shared sync/angle/quality math
 
-HZ = 60.0; SPEED = 80.0
-TRACK = F._DS / "cache" / "track3d_clean3d_refill"
 OUT = Path(__file__).resolve().parent / "slides" / "mmc_quality_corr.png"
 
 
@@ -33,27 +32,17 @@ def rep(npz):
     if al is None:
         return None
     R, t, info = al
-    vr = resample3d(fused, VIDEO_FPS); mr = resample3d(tr.centroid(), tr.rate) @ R.T + t
-    if lag >= 0:
-        vv = vr[lag:]; mm = mr[:len(vv)]
-    else:
-        mm = mr[-lag:]; vv = vr[:len(mm)]
-    L = min(len(vv), len(mm)); vv, mm = vv[:L], mm[:L]
-    a = np.diff(vv, axis=0) * HZ; b = np.diff(mm, axis=0) * HZ
-    sa = np.linalg.norm(a, axis=1); sb = np.linalg.norm(b, axis=1)
-    mv = (sa > SPEED) & (sb > SPEED) & np.isfinite(sa) & np.isfinite(sb)
-    ang = np.degrees(np.arccos(np.clip(np.sum(a * b, 1) / (sa * sb + 1e-9), -1, 1)))
-    tj_p = TRACK / f"{v}.json"
-    if not tj_p.exists():
+    v_s, mo_s = AG.sync_tracks(fused, tr.centroid(), tr.rate, lag)
+    ang, mv = AG.velocity_angles(v_s, mo_s @ R.T + t)
+    q = AG.mmc_quality(v)
+    if q is None:
         return None
-    tj = json.loads(tj_p.read_text())["frames"]
-    ncams = np.array([len(fr.get("kept", [])) for fr in tj], float)
-    mpx = np.array([fr.get("median_px") if fr.get("median_px") is not None else np.nan for fr in tj], float)
+    ncams, mpx = q
     n = len(ang)
-    nc = ncams[lag:lag + n] if lag >= 0 else ncams[:n]
-    mp = mpx[lag:lag + n] if lag >= 0 else mpx[:n]
-    m2 = mv[:n] & np.isfinite(nc) & np.isfinite(mp)
-    A = ang[:n][m2]; NC = nc[m2]; MP = mp[m2]
+    nc = AG.align_quality_to_grid(ncams, lag, n)
+    mp = AG.align_quality_to_grid(mpx, lag, n)
+    m2 = mv & np.isfinite(nc)[:len(mv)] & np.isfinite(mp)[:len(mv)]
+    A = ang[m2]; NC = nc[:len(mv)][m2]; MP = mp[:len(mv)][m2]
     if len(A) < 15 or NC.std() < 1e-6:
         return None
     cN = float(np.corrcoef(A, NC)[0, 1])

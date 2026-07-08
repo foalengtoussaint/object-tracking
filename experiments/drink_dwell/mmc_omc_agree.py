@@ -23,22 +23,11 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import features as F
-from mocap import load_trial, resample as resample3d, VIDEO_FPS
+from mocap import load_trial
 from truth import dwell_truth
+import agreement as AG            # shared sync math
 
 OUT = Path(__file__).resolve().parent / "slides" / "mmc_omc_agree.png"
-
-
-def _synced_pair(cup_world, mocap_centroid, rate, lag, R, t):
-    """Return (mmc, omc_in_w0) synced arrays at the known lag, NaN-masked -> aligned frames."""
-    vr = resample3d(cup_world, VIDEO_FPS)
-    mr = resample3d(mocap_centroid, rate) @ R.T + t
-    if lag >= 0:
-        v = vr[lag:]; mo = mr[:len(v)]
-    else:
-        mo = mr[-lag:]; v = vr[:len(mo)]
-    L = min(len(v), len(mo))
-    return v[:L], mo[:L]
 
 
 def rep_agreement(npz):
@@ -55,7 +44,8 @@ def rep_agreement(npz):
     if fit is None:
         return None
     R, t, _ = fit
-    mmc, omc = _synced_pair(fused, tr.centroid(), tr.rate, r["lag"], R, t)
+    mmc, mo = AG.sync_tracks(fused, tr.centroid(), tr.rate, r["lag"])   # shared
+    omc = mo @ R.T + t
     d = np.linalg.norm(mmc - omc, axis=1)
     ok = np.isfinite(d)
     d_all = d[ok]
