@@ -189,15 +189,20 @@ _mocap_to_w0 = mocap_to_w0     # back-compat alias
 
 
 def head_distance(video: str, cup_world: np.ndarray, T: int,
-                  fit_cup: np.ndarray | None = None) -> np.ndarray | None:
+                  fit_cup: np.ndarray | None = None,
+                  use_session: bool = True) -> np.ndarray | None:
     """(T,4) [dist mm, approach vel, norm 0..1, present] — tracked cup → mocap head in W0.
 
-    The ALIGNMENT (mocap->W0 Kabsch) is fit on `fit_cup` if given, else `cup_world`. Pass the
-    RAW consensus track as fit_cup: the KF-smoothed 'fused' track overshoots at the fast drink
-    motion and pulls the Kabsch rotation by up to 17deg / 86mm on the worst reps (P10_153316,
-    P19_120423) — visible in the overlay as the mocap markers sliding ~2cm off the real cup.
-    The raw track doesn't overshoot, so it gives the correct rotation. The DISTANCE is still
-    measured to `cup_world` (the tracked cup the pipeline actually outputs)."""
+    ALIGNMENT (mocap->W0): by default (use_session=True) the ROTATION is the SESSION constant
+    (participant+date) via session_align.alignment_for(..., "session"), with only translation
+    re-fit per trial. The per-trial Kabsch used to pick the WRONG rotation branch on ~10% of
+    round-cup reps (P16/P19/P23/P24), corrupting the head-distance channel; the session fit is
+    robust to that. alignment_for uses the RAW consensus internally, matching the old fit_cup=raw
+    intent, so fit_cup is no longer needed for the session fit.
+
+    With use_session=False, falls back to the old PER-TRIAL Kabsch fit on `fit_cup` if given, else
+    `cup_world` (the RAW consensus track avoids the KF overshoot that pulled the rotation up to
+    17deg/86mm on P10_153316/P19_120423). The DISTANCE is always measured to `cup_world`."""
     idx = align_index()
     if video not in idx:
         return None
@@ -205,11 +210,18 @@ def head_distance(video: str, cup_world: np.ndarray, T: int,
     tr = load_trial(r["c3d"])
     if not tr.has_head():
         return None
-    fit = mocap_to_w0(np.asarray(fit_cup if fit_cup is not None else cup_world, float),
-                      tr.centroid(), tr.rate, r["lag"])
-    if fit is None:
-        return None
-    R, t, _ = fit
+    if use_session:
+        from session_align import alignment_for   # lazy: session_align imports features
+        al = alignment_for(video, "session", tr=tr)
+        if al is None:
+            return None
+        R, t, _ = al
+    else:
+        fit = mocap_to_w0(np.asarray(fit_cup if fit_cup is not None else cup_world, float),
+                          tr.centroid(), tr.rate, r["lag"])
+        if fit is None:
+            return None
+        R, t, _ = fit
     head_w0 = _mocap_to_track(tr.head_centroid() @ R.T + t, tr.rate, r["lag"], T)   # (T,3)
     d = np.linalg.norm(head_w0 - cup_world, axis=1)                                 # (T,)
     present = np.isfinite(d).astype(np.float32)
@@ -226,7 +238,7 @@ def head_distance(video: str, cup_world: np.ndarray, T: int,
 # =========================================================================================
 # ASSEMBLE: proxy21 / base17 for one rep. Returns None if any required stage is missing.
 # =========================================================================================
-def build_rep(npz, include_bad_head=False):
+def build_rep(npz, include_bad_head=False, use_session=True):
     """-> dict with fx17, fx21, truth span (track frames), pid, video, T, head_ok. None if
     occlusion/head/pairing/dwell missing OR (unless include_bad_head) the head is too broken
     for a trustworthy truth. Truth = dwell_truth mapped onto the rep."""
@@ -236,7 +248,7 @@ def build_rep(npz, include_bad_head=False):
     raw = np.asarray(npz["cons"], float) if "cons" in npz else fused   # unfiltered cup for the FIT
     kin = kinematics(npz)                                   # (T,13)
     occ = occlusion(video, T)                               # (T,4)
-    hd = head_distance(video, fused, T, fit_cup=raw)        # (T,4) fit on RAW, distance on fused
+    hd = head_distance(video, fused, T, fit_cup=raw, use_session=use_session)  # session R by default
     if occ is None or hd is None:
         return None
     r = align_index()[video]

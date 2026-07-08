@@ -28,7 +28,9 @@ from pathlib import Path
 import numpy as np
 import torch
 
-ROOT = Path(__file__).resolve().parents[2]
+# file moved to archive/gapfill/ in the 2026-07-06 reorg; anchor ROOT on the repo root
+# (the dir that contains experiments/) instead of a fixed parents[] depth.
+ROOT = next(q for q in Path(__file__).resolve().parents if (q / "experiments" / "drink_study").is_dir())
 sys.path.insert(0, str(ROOT / "experiments" / "drink_study"))
 import tune_interp as T
 import segment_cup_only as S
