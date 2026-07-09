@@ -1,0 +1,3318 @@
+{
+  "n": 658,
+  "summary": {
+    "base17": {
+      "mean": 196.403242147923,
+      "p50": 83.33333333333348,
+      "p90": 316.66666666666674,
+      "p99": 1978.6666666666636,
+      "max": 3016.6666666666665
+    },
+    "proxy21_pertrial": {
+      "mean": 108.8145896656535,
+      "p50": 66.66666666666674,
+      "p90": 183.33333333333348,
+      "p99": 1078.8333333333242,
+      "max": 2400.0
+    },
+    "proxy21_session": {
+      "mean": 230.85106382978722,
+      "p50": 83.33333333333326,
+      "p90": 455.0000000000011,
+      "p99": 2180.999999999998,
+      "max": 2416.6666666666665
+    }
+  },
+  "perrep": {
+    "P02_P02_drinking_left_20240110_111345__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 116.66666666666652,
+      "proxy21_session": 83.33333333333326
+    },
+    "P02_P02_drinking_left_20240110_111400__clean3d_refill": {
+      "base17": 100.00000000000023,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 66.66666666666697
+    },
+    "P02_P02_drinking_left_20240110_111415__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 33.33333333333326
+    },
+    "P02_P02_drinking_left_20240110_111430__clean3d_refill": {
+      "base17": 183.33333333333326,
+      "proxy21_pertrial": 200.0,
+      "proxy21_session": 183.33333333333326
+    },
+    "P02_P02_drinking_left_20240110_111447__clean3d_refill": {
+      "base17": 50.00000000000023,
+      "proxy21_pertrial": 50.00000000000023,
+      "proxy21_session": 33.33333333333326
+    },
+    "P02_P02_drinking_left_20240110_111501__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 16.666666666666742
+    },
+    "P02_P02_drinking_left_20240110_111516__clean3d_refill": {
+      "base17": 50.00000000000023,
+      "proxy21_pertrial": 50.00000000000023,
+      "proxy21_session": 0.0
+    },
+    "P02_P02_drinking_left_20240110_111531__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 50.0
+    },
+    "P02_P02_drinking_left_20240110_111603__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 16.666666666666515
+    },
+    "P02_P02_drinking_left_20240110_111617__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 133.33333333333326,
+      "proxy21_session": 100.0
+    },
+    "P02_P02_drinking_left_20240110_111632__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 33.333333333333485
+    },
+    "P02_P02_drinking_left_20240110_111645__clean3d_refill": {
+      "base17": 166.66666666666652,
+      "proxy21_pertrial": 166.66666666666652,
+      "proxy21_session": 149.99999999999977
+    },
+    "P02_P02_drinking_left_20240110_111659__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 50.0
+    },
+    "P02_P02_drinking_left_20240110_111714__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 16.66666666666697
+    },
+    "P02_P02_drinking_left_20240110_111729__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 33.33333333333326
+    },
+    "P02_P02_drinking_right_20240110_110916__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 83.33333333333348
+    },
+    "P02_P02_drinking_right_20240110_110932__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 33.33333333333303
+    },
+    "P02_P02_drinking_right_20240110_111002__clean3d_refill": {
+      "base17": 150.0,
+      "proxy21_pertrial": 166.66666666666674,
+      "proxy21_session": 166.66666666666674
+    },
+    "P02_P02_drinking_right_20240110_111016__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 183.33333333333303,
+      "proxy21_session": 166.66666666666652
+    },
+    "P02_P02_drinking_right_20240110_111030__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 133.33333333333326
+    },
+    "P02_P02_drinking_right_20240110_111044__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 50.0
+    },
+    "P02_P02_drinking_right_20240110_111121__clean3d_refill": {
+      "base17": 266.66666666666674,
+      "proxy21_pertrial": 266.66666666666674,
+      "proxy21_session": 283.3333333333335
+    },
+    "P03_P03_drinking_left_20240112_150356__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 133.33333333333348,
+      "proxy21_session": 66.66666666666674
+    },
+    "P03_P03_drinking_left_20240112_150409__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 166.66666666666674,
+      "proxy21_session": 66.66666666666674
+    },
+    "P03_P03_drinking_left_20240112_150424__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 33.33333333333326
+    },
+    "P03_P03_drinking_left_20240112_150438__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 33.33333333333326
+    },
+    "P03_P03_drinking_left_20240112_150453__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 16.666666666666742
+    },
+    "P03_P03_drinking_left_20240112_150507__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 16.666666666666742
+    },
+    "P03_P03_drinking_left_20240112_150521__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 166.66666666666674,
+      "proxy21_session": 66.66666666666674
+    },
+    "P03_P03_drinking_left_20240112_150534__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 166.66666666666652,
+      "proxy21_session": 100.0
+    },
+    "P03_P03_drinking_left_20240112_150549__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 66.66666666666674
+    },
+    "P03_P03_drinking_left_20240112_150603__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 166.66666666666674,
+      "proxy21_session": 83.33333333333348
+    },
+    "P03_P03_drinking_left_20240112_150618__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 16.666666666666742
+    },
+    "P03_P03_drinking_left_20240112_150632__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 50.00000000000023,
+      "proxy21_session": 16.666666666666515
+    },
+    "P03_P03_drinking_left_20240112_150646__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 66.66666666666652
+    },
+    "P03_P03_drinking_left_20240112_150701__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 166.66666666666652,
+      "proxy21_session": 200.0
+    },
+    "P03_P03_drinking_left_20240112_150724__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 150.00000000000023,
+      "proxy21_session": 166.66666666666674
+    },
+    "P03_P03_drinking_right_20240112_145915__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 66.66666666666652
+    },
+    "P03_P03_drinking_right_20240112_145937__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 183.33333333333326,
+      "proxy21_session": 116.66666666666674
+    },
+    "P03_P03_drinking_right_20240112_145951__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 83.33333333333326
+    },
+    "P03_P03_drinking_right_20240112_150005__clean3d_refill": {
+      "base17": 99.99999999999977,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 49.99999999999977
+    },
+    "P03_P03_drinking_right_20240112_150020__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 166.66666666666652,
+      "proxy21_session": 33.33333333333326
+    },
+    "P03_P03_drinking_right_20240112_150035__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 100.00000000000023,
+      "proxy21_session": 16.666666666666742
+    },
+    "P03_P03_drinking_right_20240112_150050__clean3d_refill": {
+      "base17": 33.33333333333303,
+      "proxy21_pertrial": 166.66666666666652,
+      "proxy21_session": 83.33333333333326
+    },
+    "P03_P03_drinking_right_20240112_150104__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 166.66666666666674,
+      "proxy21_session": 50.0
+    },
+    "P03_P03_drinking_right_20240112_150118__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 133.33333333333348,
+      "proxy21_session": 0.0
+    },
+    "P03_P03_drinking_right_20240112_150132__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P03_P03_drinking_right_20240112_150146__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 50.0
+    },
+    "P03_P03_drinking_right_20240112_150200__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 0.0
+    },
+    "P03_P03_drinking_right_20240112_150215__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 100.00000000000023,
+      "proxy21_session": 33.33333333333326
+    },
+    "P03_P03_drinking_right_20240112_150229__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 66.66666666666674
+    },
+    "P03_P03_drinking_right_20240112_150246__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 99.99999999999977,
+      "proxy21_session": 33.33333333333326
+    },
+    "P04_P04_drinking_left_20240116_155223__clean3d_refill": {
+      "base17": 99.99999999999977,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 116.66666666666652
+    },
+    "P04_P04_drinking_left_20240116_155238__clean3d_refill": {
+      "base17": 49.99999999999977,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 49.99999999999977
+    },
+    "P04_P04_drinking_left_20240116_155254__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 116.66666666666674
+    },
+    "P04_P04_drinking_left_20240116_155309__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 150.00000000000023
+    },
+    "P04_P04_drinking_left_20240116_155325__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 116.66666666666697
+    },
+    "P04_P04_drinking_left_20240116_155340__clean3d_refill": {
+      "base17": 16.66666666666697,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 83.33333333333348
+    },
+    "P04_P04_drinking_left_20240116_155355__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 166.66666666666652
+    },
+    "P04_P04_drinking_left_20240116_155412__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.33333333333303
+    },
+    "P04_P04_drinking_left_20240116_155428__clean3d_refill": {
+      "base17": 50.000000000000455,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 133.33333333333348
+    },
+    "P04_P04_drinking_left_20240116_155443__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 49.999999999999545,
+      "proxy21_session": 116.66666666666652
+    },
+    "P04_P04_drinking_left_20240116_155459__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 83.33333333333348
+    },
+    "P04_P04_drinking_left_20240116_155514__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 50.0
+    },
+    "P04_P04_drinking_left_20240116_155530__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 49.99999999999977
+    },
+    "P04_P04_drinking_left_20240116_155545__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.333333333333485
+    },
+    "P04_P04_drinking_left_20240116_155602__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 50.0
+    },
+    "P04_P04_drinking_right_20240116_154723__clean3d_refill": {
+      "base17": 33.33333333333303,
+      "proxy21_pertrial": 33.33333333333394,
+      "proxy21_session": 33.33333333333394
+    },
+    "P04_P04_drinking_right_20240116_154745__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 66.66666666666697
+    },
+    "P04_P04_drinking_right_20240116_154801__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 83.33333333333348
+    },
+    "P04_P04_drinking_right_20240116_154816__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 50.0
+    },
+    "P04_P04_drinking_right_20240116_154833__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 33.33333333333303
+    },
+    "P04_P04_drinking_right_20240116_154849__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 33.333333333333485
+    },
+    "P04_P04_drinking_right_20240116_154906__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 16.666666666666515
+    },
+    "P04_P04_drinking_right_20240116_154922__clean3d_refill": {
+      "base17": 133.33333333333348,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 116.66666666666697
+    },
+    "P04_P04_drinking_right_20240116_154937__clean3d_refill": {
+      "base17": 150.0,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 133.33333333333348
+    },
+    "P04_P04_drinking_right_20240116_154952__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 33.33333333333326
+    },
+    "P04_P04_drinking_right_20240116_155007__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 16.66666666666697
+    },
+    "P04_P04_drinking_right_20240116_155022__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 49.99999999999977,
+      "proxy21_session": 99.99999999999977
+    },
+    "P04_P04_drinking_right_20240116_155038__clean3d_refill": {
+      "base17": 66.66666666666697,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 83.33333333333348
+    },
+    "P04_P04_drinking_right_20240116_155053__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 0.0
+    },
+    "P04_P04_drinking_right_20240116_155115__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 49.99999999999977,
+      "proxy21_session": 83.33333333333326
+    },
+    "P05_P05_drinking_left_20240117_145010__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 50.00000000000023,
+      "proxy21_session": 116.66666666666674
+    },
+    "P05_P05_drinking_left_20240117_145022__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 100.00000000000023
+    },
+    "P05_P05_drinking_left_20240117_145036__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 50.0
+    },
+    "P05_P05_drinking_left_20240117_145048__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 16.666666666666515
+    },
+    "P05_P05_drinking_left_20240117_145101__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.333333333333485
+    },
+    "P05_P05_drinking_left_20240117_145114__clean3d_refill": {
+      "base17": 50.00000000000023,
+      "proxy21_pertrial": 50.00000000000023,
+      "proxy21_session": 16.666666666666742
+    },
+    "P05_P05_drinking_left_20240117_145138__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 66.66666666666674
+    },
+    "P05_P05_drinking_left_20240117_145150__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 33.33333333333303
+    },
+    "P05_P05_drinking_left_20240117_145202__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666742
+    },
+    "P05_P05_drinking_left_20240117_145215__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 0.0
+    },
+    "P05_P05_drinking_left_20240117_145228__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 0.0
+    },
+    "P05_P05_drinking_left_20240117_145242__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 99.99999999999977
+    },
+    "P05_P05_drinking_left_20240117_145301__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 33.33333333333326
+    },
+    "P05_P05_drinking_right_20240117_144447__clean3d_refill": {
+      "base17": 1500.0000000000005,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 1550.0000000000002
+    },
+    "P05_P05_drinking_right_20240117_144509__clean3d_refill": {
+      "base17": 150.0,
+      "proxy21_pertrial": 33.33333333333303,
+      "proxy21_session": 116.66666666666652
+    },
+    "P05_P05_drinking_right_20240117_144530__clean3d_refill": {
+      "base17": 100.00000000000045,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 66.66666666666697
+    },
+    "P05_P05_drinking_right_20240117_144554__clean3d_refill": {
+      "base17": 1250.0000000000002,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 50.0
+    },
+    "P05_P05_drinking_right_20240117_144608__clean3d_refill": {
+      "base17": 1333.3333333333335,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 1216.6666666666667
+    },
+    "P05_P05_drinking_right_20240117_144622__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 16.666666666666515
+    },
+    "P05_P05_drinking_right_20240117_144636__clean3d_refill": {
+      "base17": 49.999999999999545,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 49.999999999999545
+    },
+    "P05_P05_drinking_right_20240117_144649__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 49.999999999999545,
+      "proxy21_session": 16.666666666666515
+    },
+    "P05_P05_drinking_right_20240117_144703__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.333333333333485
+    },
+    "P05_P05_drinking_right_20240117_144715__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 116.66666666666674
+    },
+    "P05_P05_drinking_right_20240117_144728__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 1216.666666666667
+    },
+    "P05_P05_drinking_right_20240117_144754__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 50.0
+    },
+    "P05_P05_drinking_right_20240117_144807__clean3d_refill": {
+      "base17": 33.33333333333303,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 16.66666666666697
+    },
+    "P05_P05_drinking_right_20240117_144819__clean3d_refill": {
+      "base17": 233.33333333333348,
+      "proxy21_pertrial": 266.66666666666674,
+      "proxy21_session": 216.66666666666674
+    },
+    "P05_P05_drinking_right_20240117_144841__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 33.333333333333485
+    },
+    "P05_P05_drinking_right_20240117_144919__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 0.0
+    },
+    "P06_P06_drinking_left_20240123_105418__clean3d_refill": {
+      "base17": 199.99999999999955,
+      "proxy21_pertrial": 116.66666666666697,
+      "proxy21_session": 100.0
+    },
+    "P06_P06_drinking_left_20240123_105447__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 66.66666666666674
+    },
+    "P06_P06_drinking_left_20240123_105505__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 99.99999999999977
+    },
+    "P06_P06_drinking_left_20240123_105519__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 116.66666666666674
+    },
+    "P06_P06_drinking_left_20240123_105533__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 83.33333333333348
+    },
+    "P06_P06_drinking_left_20240123_105548__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 116.66666666666674
+    },
+    "P06_P06_drinking_left_20240123_105602__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 116.66666666666674
+    },
+    "P06_P06_drinking_left_20240123_105615__clean3d_refill": {
+      "base17": 100.00000000000023,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 116.66666666666674
+    },
+    "P06_P06_drinking_left_20240123_105629__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 100.00000000000023
+    },
+    "P06_P06_drinking_left_20240123_105642__clean3d_refill": {
+      "base17": 200.00000000000023,
+      "proxy21_pertrial": 183.33333333333348,
+      "proxy21_session": 200.00000000000023
+    },
+    "P06_P06_drinking_left_20240123_105710__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 133.33333333333348,
+      "proxy21_session": 133.33333333333348
+    },
+    "P06_P06_drinking_left_20240123_105724__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 99.99999999999977
+    },
+    "P06_P06_drinking_left_20240123_105739__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 83.33333333333326
+    },
+    "P06_P06_drinking_left_20240123_105807__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 133.33333333333326
+    },
+    "P06_P06_drinking_right_20240123_105859__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 16.666666666666742
+    },
+    "P06_P06_drinking_right_20240123_105914__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 133.33333333333348
+    },
+    "P06_P06_drinking_right_20240123_105929__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 16.66666666666697
+    },
+    "P06_P06_drinking_right_20240123_105944__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 83.33333333333348
+    },
+    "P06_P06_drinking_right_20240123_105958__clean3d_refill": {
+      "base17": 99.99999999999977,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 83.33333333333326
+    },
+    "P06_P06_drinking_right_20240123_110012__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.33333333333326
+    },
+    "P06_P06_drinking_right_20240123_110026__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 50.00000000000023,
+      "proxy21_session": 50.00000000000023
+    },
+    "P06_P06_drinking_right_20240123_110040__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P06_P06_drinking_right_20240123_110054__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 33.333333333333485
+    },
+    "P06_P06_drinking_right_20240123_110108__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 33.333333333333485
+    },
+    "P06_P06_drinking_right_20240123_110123__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 33.333333333333485
+    },
+    "P06_P06_drinking_right_20240123_110137__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 83.33333333333326
+    },
+    "P06_P06_drinking_right_20240123_110151__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 0.0
+    },
+    "P06_P06_drinking_right_20240123_110206__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 16.666666666666742
+    },
+    "P06_P06_drinking_right_20240123_110221__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 0.0
+    },
+    "P07_P07_drinking_left_20240124_142730__clean3d_refill": {
+      "base17": 366.6666666666665,
+      "proxy21_pertrial": 416.6666666666665,
+      "proxy21_session": 433.33333333333326
+    },
+    "P07_P07_drinking_left_20240124_142745__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 83.33333333333326
+    },
+    "P07_P07_drinking_left_20240124_142759__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 33.333333333333485
+    },
+    "P07_P07_drinking_left_20240124_142812__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 50.0
+    },
+    "P07_P07_drinking_left_20240124_142826__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 50.0
+    },
+    "P07_P07_drinking_left_20240124_142839__clean3d_refill": {
+      "base17": 700.0,
+      "proxy21_pertrial": 700.0,
+      "proxy21_session": 750.0
+    },
+    "P07_P07_drinking_left_20240124_142853__clean3d_refill": {
+      "base17": 99.99999999999977,
+      "proxy21_pertrial": 49.99999999999977,
+      "proxy21_session": 49.99999999999977
+    },
+    "P07_P07_drinking_left_20240124_142906__clean3d_refill": {
+      "base17": 183.33333333333326,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 116.66666666666674
+    },
+    "P07_P07_drinking_left_20240124_142923__clean3d_refill": {
+      "base17": 200.0,
+      "proxy21_pertrial": 99.99999999999977,
+      "proxy21_session": 116.66666666666674
+    },
+    "P07_P07_drinking_left_20240124_142936__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 50.0
+    },
+    "P07_P07_drinking_left_20240124_142951__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 33.333333333333485
+    },
+    "P07_P07_drinking_left_20240124_143005__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 50.0
+    },
+    "P07_P07_drinking_left_20240124_143019__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 66.66666666666652
+    },
+    "P07_P07_drinking_left_20240124_143033__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 0.0
+    },
+    "P07_P07_drinking_left_20240124_143047__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 33.333333333333485
+    },
+    "P07_P07_drinking_left_20240124_143102__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 33.33333333333303,
+      "proxy21_session": 16.666666666666515
+    },
+    "P07_P07_drinking_left_20240124_143120__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 33.33333333333326
+    },
+    "P07_P07_drinking_right_20240124_142250__clean3d_refill": {
+      "base17": 100.00000000000045,
+      "proxy21_pertrial": 133.33333333333348,
+      "proxy21_session": 200.00000000000045
+    },
+    "P07_P07_drinking_right_20240124_142313__clean3d_refill": {
+      "base17": 216.66666666666652,
+      "proxy21_pertrial": 149.99999999999977,
+      "proxy21_session": 149.99999999999977
+    },
+    "P07_P07_drinking_right_20240124_142328__clean3d_refill": {
+      "base17": 133.33333333333303,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 100.0
+    },
+    "P07_P07_drinking_right_20240124_142343__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 66.66666666666652
+    },
+    "P07_P07_drinking_right_20240124_142359__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 66.66666666666674
+    },
+    "P07_P07_drinking_right_20240124_142412__clean3d_refill": {
+      "base17": 266.66666666666674,
+      "proxy21_pertrial": 183.33333333333348,
+      "proxy21_session": 166.66666666666652
+    },
+    "P07_P07_drinking_right_20240124_142449__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 99.99999999999977,
+      "proxy21_session": 66.66666666666652
+    },
+    "P07_P07_drinking_right_20240124_142504__clean3d_refill": {
+      "base17": 166.66666666666697,
+      "proxy21_pertrial": 166.66666666666697,
+      "proxy21_session": 116.66666666666697
+    },
+    "P07_P07_drinking_right_20240124_142518__clean3d_refill": {
+      "base17": 733.3333333333335,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 166.66666666666652
+    },
+    "P07_P07_drinking_right_20240124_142531__clean3d_refill": {
+      "base17": 433.33333333333326,
+      "proxy21_pertrial": 266.66666666666674,
+      "proxy21_session": 450.0
+    },
+    "P07_P07_drinking_right_20240124_142545__clean3d_refill": {
+      "base17": 450.0,
+      "proxy21_pertrial": 516.6666666666665,
+      "proxy21_session": 566.6666666666665
+    },
+    "P07_P07_drinking_right_20240124_142559__clean3d_refill": {
+      "base17": 166.66666666666652,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 116.66666666666652
+    },
+    "P07_P07_drinking_right_20240124_142614__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 50.0
+    },
+    "P07_P07_drinking_right_20240124_142636__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 83.33333333333348
+    },
+    "P07_P07_drinking_right_20240124_142651__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P08_P08_drinking_left_20240130_105708__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 183.3333333333337,
+      "proxy21_session": 50.00000000000023
+    },
+    "P08_P08_drinking_left_20240130_105723__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 49.99999999999977
+    },
+    "P08_P08_drinking_left_20240130_105739__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666742
+    },
+    "P08_P08_drinking_left_20240130_105755__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 166.66666666666697
+    },
+    "P08_P08_drinking_left_20240130_105811__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 49.99999999999977
+    },
+    "P08_P08_drinking_left_20240130_105826__clean3d_refill": {
+      "base17": 100.00000000000045,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 66.66666666666697
+    },
+    "P08_P08_drinking_left_20240130_105842__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 100.0
+    },
+    "P08_P08_drinking_left_20240130_105858__clean3d_refill": {
+      "base17": 116.66666666666697,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 183.33333333333348
+    },
+    "P08_P08_drinking_left_20240130_105914__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 50.000000000000455,
+      "proxy21_session": 66.66666666666652
+    },
+    "P08_P08_drinking_left_20240130_105930__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 83.33333333333348
+    },
+    "P08_P08_drinking_left_20240130_105946__clean3d_refill": {
+      "base17": 83.33333333333303,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 99.99999999999955
+    },
+    "P08_P08_drinking_left_20240130_110001__clean3d_refill": {
+      "base17": 100.00000000000045,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 100.00000000000045
+    },
+    "P08_P08_drinking_left_20240130_110018__clean3d_refill": {
+      "base17": 200.0,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 250.0
+    },
+    "P08_P08_drinking_left_20240130_110034__clean3d_refill": {
+      "base17": 166.66666666666652,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 150.0
+    },
+    "P08_P08_drinking_left_20240130_110051__clean3d_refill": {
+      "base17": 1783.3333333333333,
+      "proxy21_pertrial": 99.99999999999955,
+      "proxy21_session": 2150.0
+    },
+    "P08_P08_drinking_right_20240130_105221__clean3d_refill": {
+      "base17": 3016.6666666666665,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 1899.9999999999998
+    },
+    "P08_P08_drinking_right_20240130_105240__clean3d_refill": {
+      "base17": 1733.3333333333335,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 1366.666666666667
+    },
+    "P08_P08_drinking_right_20240130_105259__clean3d_refill": {
+      "base17": 216.66666666666663,
+      "proxy21_pertrial": 183.33333333333331,
+      "proxy21_session": 1716.666666666667
+    },
+    "P08_P08_drinking_right_20240130_105315__clean3d_refill": {
+      "base17": 1066.6666666666667,
+      "proxy21_pertrial": 450.0000000000001,
+      "proxy21_session": 1183.3333333333333
+    },
+    "P08_P08_drinking_right_20240130_105330__clean3d_refill": {
+      "base17": 50.000000000000455,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 133.33333333333348
+    },
+    "P08_P08_drinking_right_20240130_105346__clean3d_refill": {
+      "base17": 1400.0,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 1333.3333333333333
+    },
+    "P08_P08_drinking_right_20240130_105401__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 1583.333333333333
+    },
+    "P08_P08_drinking_right_20240130_105417__clean3d_refill": {
+      "base17": 83.33333333333303,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 150.0
+    },
+    "P08_P08_drinking_right_20240130_105432__clean3d_refill": {
+      "base17": 1433.3333333333333,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 1900.0
+    },
+    "P08_P08_drinking_right_20240130_105448__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 33.33333333333303,
+      "proxy21_session": 66.66666666666697
+    },
+    "P08_P08_drinking_right_20240130_105503__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 50.0
+    },
+    "P08_P08_drinking_right_20240130_105518__clean3d_refill": {
+      "base17": 83.33333333333303,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 183.33333333333303
+    },
+    "P08_P08_drinking_right_20240130_105534__clean3d_refill": {
+      "base17": 16.66666666666697,
+      "proxy21_pertrial": 49.999999999999545,
+      "proxy21_session": 33.33333333333371
+    },
+    "P08_P08_drinking_right_20240130_105549__clean3d_refill": {
+      "base17": 66.66666666666697,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 166.66666666666697
+    },
+    "P08_P08_drinking_right_20240130_105606__clean3d_refill": {
+      "base17": 850.0000000000005,
+      "proxy21_pertrial": 1383.333333333333,
+      "proxy21_session": 933.3333333333335
+    },
+    "P08_P08_drinking_right_20240130_105622__clean3d_refill": {
+      "base17": 1383.3333333333335,
+      "proxy21_pertrial": 183.33333333333337,
+      "proxy21_session": 1516.6666666666665
+    },
+    "P09_P09_drinking_left_20240202_103931__clean3d_refill": {
+      "base17": 316.66666666666674,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 0.0
+    },
+    "P09_P09_drinking_left_20240202_103944__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 50.0
+    },
+    "P09_P09_drinking_left_20240202_103957__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P09_P09_drinking_left_20240202_104010__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 33.33333333333326
+    },
+    "P09_P09_drinking_left_20240202_104023__clean3d_refill": {
+      "base17": 49.99999999999977,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 16.666666666666742
+    },
+    "P09_P09_drinking_left_20240202_104036__clean3d_refill": {
+      "base17": 33.33333333333303,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.66666666666697
+    },
+    "P09_P09_drinking_left_20240202_104049__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 49.99999999999977,
+      "proxy21_session": 16.666666666666742
+    },
+    "P09_P09_drinking_left_20240202_104102__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P09_P09_drinking_left_20240202_104116__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.333333333333485
+    },
+    "P09_P09_drinking_left_20240202_104129__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 16.666666666666515
+    },
+    "P09_P09_drinking_left_20240202_104142__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 50.0
+    },
+    "P09_P09_drinking_left_20240202_104154__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 33.33333333333326
+    },
+    "P09_P09_drinking_left_20240202_104207__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 83.33333333333326
+    },
+    "P09_P09_drinking_left_20240202_104220__clean3d_refill": {
+      "base17": 100.00000000000023,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 16.666666666666515
+    },
+    "P09_P09_drinking_left_20240202_104233__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 16.666666666666742
+    },
+    "P09_P09_drinking_left_20240202_104247__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 100.0
+    },
+    "P09_P09_drinking_right_20240202_103346__clean3d_refill": {
+      "base17": 66.66666666666697,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 66.66666666666697
+    },
+    "P09_P09_drinking_right_20240202_103419__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 16.666666666666515
+    },
+    "P09_P09_drinking_right_20240202_103434__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 0.0
+    },
+    "P09_P09_drinking_right_20240202_103447__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 50.0
+    },
+    "P09_P09_drinking_right_20240202_103500__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P09_P09_drinking_right_20240202_103513__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P09_P09_drinking_right_20240202_103526__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 33.33333333333326
+    },
+    "P09_P09_drinking_right_20240202_103539__clean3d_refill": {
+      "base17": 49.99999999999977,
+      "proxy21_pertrial": 49.99999999999977,
+      "proxy21_session": 16.666666666666515
+    },
+    "P09_P09_drinking_right_20240202_103551__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P09_P09_drinking_right_20240202_103604__clean3d_refill": {
+      "base17": 166.66666666666674,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 100.0
+    },
+    "P09_P09_drinking_right_20240202_103617__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666742
+    },
+    "P09_P09_drinking_right_20240202_103640__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 66.66666666666674
+    },
+    "P09_P09_drinking_right_20240202_103653__clean3d_refill": {
+      "base17": 99.99999999999977,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P09_P09_drinking_right_20240202_103706__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 100.00000000000023,
+      "proxy21_session": 50.0
+    },
+    "P09_P09_drinking_right_20240202_103718__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 16.666666666666742
+    },
+    "P09_P09_drinking_right_20240202_103731__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 33.33333333333326
+    },
+    "P09_P09_drinking_right_20240202_103743__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 33.33333333333303,
+      "proxy21_session": 16.66666666666697
+    },
+    "P09_P09_drinking_right_20240202_103757__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 0.0
+    },
+    "P10_P10_drinking_left_20240202_153508__clean3d_refill": {
+      "base17": 316.66666666666674,
+      "proxy21_pertrial": 183.33333333333326,
+      "proxy21_session": 300.0000000000002
+    },
+    "P10_P10_drinking_left_20240202_153525__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 150.0
+    },
+    "P10_P10_drinking_left_20240202_153541__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 183.33333333333348
+    },
+    "P10_P10_drinking_left_20240202_153558__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 116.66666666666652
+    },
+    "P10_P10_drinking_left_20240202_153615__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 33.33333333333303
+    },
+    "P10_P10_drinking_left_20240202_153632__clean3d_refill": {
+      "base17": 183.33333333333348,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 216.66666666666697
+    },
+    "P10_P10_drinking_left_20240202_153649__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 133.33333333333326
+    },
+    "P10_P10_drinking_left_20240202_153705__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 166.66666666666697
+    },
+    "P10_P10_drinking_left_20240202_153722__clean3d_refill": {
+      "base17": 216.66666666666697,
+      "proxy21_pertrial": 216.66666666666697,
+      "proxy21_session": 250.0
+    },
+    "P10_P10_drinking_left_20240202_153739__clean3d_refill": {
+      "base17": 216.66666666666697,
+      "proxy21_pertrial": 166.66666666666652,
+      "proxy21_session": 183.33333333333303
+    },
+    "P10_P10_drinking_left_20240202_153757__clean3d_refill": {
+      "base17": 216.66666666666697,
+      "proxy21_pertrial": 166.66666666666697,
+      "proxy21_session": 266.66666666666697
+    },
+    "P10_P10_drinking_left_20240202_153813__clean3d_refill": {
+      "base17": 116.66666666666697,
+      "proxy21_pertrial": 116.66666666666697,
+      "proxy21_session": 200.00000000000045
+    },
+    "P10_P10_drinking_left_20240202_153830__clean3d_refill": {
+      "base17": 150.00000000000045,
+      "proxy21_pertrial": 150.00000000000045,
+      "proxy21_session": 200.0
+    },
+    "P10_P10_drinking_left_20240202_153846__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 133.33333333333303
+    },
+    "P10_P10_drinking_left_20240202_153903__clean3d_refill": {
+      "base17": 316.66666666666697,
+      "proxy21_pertrial": 216.66666666666697,
+      "proxy21_session": 283.3333333333335
+    },
+    "P10_P10_drinking_right_20240202_152638__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 333.33333333333326,
+      "proxy21_session": 66.66666666666674
+    },
+    "P10_P10_drinking_right_20240202_152746__clean3d_refill": {
+      "base17": 283.33333333333303,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 216.66666666666652
+    },
+    "P10_P10_drinking_right_20240202_152807__clean3d_refill": {
+      "base17": 800.0,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 300.0
+    },
+    "P10_P10_drinking_right_20240202_152901__clean3d_refill": {
+      "base17": 333.33333333333326,
+      "proxy21_pertrial": 33.33333333333303,
+      "proxy21_session": 183.33333333333303
+    },
+    "P10_P10_drinking_right_20240202_152919__clean3d_refill": {
+      "base17": 233.33333333333348,
+      "proxy21_pertrial": 33.33333333333394,
+      "proxy21_session": 183.3333333333337
+    },
+    "P10_P10_drinking_right_20240202_152936__clean3d_refill": {
+      "base17": 216.66666666666697,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 83.33333333333303
+    },
+    "P10_P10_drinking_right_20240202_152956__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 50.0
+    },
+    "P10_P10_drinking_right_20240202_153013__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 49.999999999999545,
+      "proxy21_session": 116.66666666666652
+    },
+    "P10_P10_drinking_right_20240202_153030__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 66.66666666666652
+    },
+    "P10_P10_drinking_right_20240202_153048__clean3d_refill": {
+      "base17": 366.6666666666665,
+      "proxy21_pertrial": 166.66666666666697,
+      "proxy21_session": 116.66666666666652
+    },
+    "P10_P10_drinking_right_20240202_153106__clean3d_refill": {
+      "base17": 49.999999999999545,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 83.33333333333348
+    },
+    "P10_P10_drinking_right_20240202_153122__clean3d_refill": {
+      "base17": 266.66666666666697,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 33.333333333333485
+    },
+    "P10_P10_drinking_right_20240202_153157__clean3d_refill": {
+      "base17": 83.33333333333303,
+      "proxy21_pertrial": 300.0,
+      "proxy21_session": 166.66666666666697
+    },
+    "P10_P10_drinking_right_20240202_153224__clean3d_refill": {
+      "base17": 149.99999999999977,
+      "proxy21_pertrial": 116.66666666666697,
+      "proxy21_session": 100.0
+    },
+    "P10_P10_drinking_right_20240202_153239__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 83.33333333333303,
+      "proxy21_session": 166.66666666666652
+    },
+    "P10_P10_drinking_right_20240202_153316__clean3d_refill": {
+      "base17": 1083.3333333333335,
+      "proxy21_pertrial": 1183.3333333333335,
+      "proxy21_session": 1200.0
+    },
+    "P10_P10_drinking_right_20240202_153332__clean3d_refill": {
+      "base17": 99.99999999999955,
+      "proxy21_pertrial": 33.33333333333303,
+      "proxy21_session": 183.33333333333303
+    },
+    "P10_P10_drinking_right_20240202_153348__clean3d_refill": {
+      "base17": 200.0,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 200.0
+    },
+    "P10_P10_drinking_right_20240202_153405__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 66.66666666666697
+    },
+    "P10_P10_drinking_right_20240202_153422__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 316.66666666666674,
+      "proxy21_session": 33.33333333333303
+    },
+    "P11_P11_drinking_left_20240208_145743__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 50.00000000000023,
+      "proxy21_session": 16.666666666666742
+    },
+    "P11_P11_drinking_left_20240208_145758__clean3d_refill": {
+      "base17": 50.00000000000023,
+      "proxy21_pertrial": 116.66666666666652,
+      "proxy21_session": 83.33333333333348
+    },
+    "P11_P11_drinking_left_20240208_145812__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 83.33333333333326
+    },
+    "P11_P11_drinking_left_20240208_145830__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 83.33333333333348
+    },
+    "P11_P11_drinking_left_20240208_145843__clean3d_refill": {
+      "base17": 99.99999999999977,
+      "proxy21_pertrial": 133.33333333333326,
+      "proxy21_session": 99.99999999999977
+    },
+    "P11_P11_drinking_left_20240208_145856__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 133.33333333333326,
+      "proxy21_session": 133.33333333333326
+    },
+    "P11_P11_drinking_left_20240208_145909__clean3d_refill": {
+      "base17": 633.3333333333339,
+      "proxy21_pertrial": 450.00000000000045,
+      "proxy21_session": 633.3333333333339
+    },
+    "P11_P11_drinking_left_20240208_145929__clean3d_refill": {
+      "base17": 100.00000000000023,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 116.66666666666674
+    },
+    "P11_P11_drinking_left_20240208_145942__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 33.33333333333326
+    },
+    "P11_P11_drinking_left_20240208_150008__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 100.00000000000023,
+      "proxy21_session": 0.0
+    },
+    "P11_P11_drinking_left_20240208_150021__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P11_P11_drinking_left_20240208_150034__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 33.33333333333326
+    },
+    "P11_P11_drinking_left_20240208_150047__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 83.33333333333348
+    },
+    "P11_P11_drinking_left_20240208_150100__clean3d_refill": {
+      "base17": 16.66666666666697,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 49.99999999999977
+    },
+    "P11_P11_drinking_left_20240208_150120__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 116.66666666666652,
+      "proxy21_session": 83.33333333333348
+    },
+    "P11_P11_drinking_left_20240208_150132__clean3d_refill": {
+      "base17": 16.66666666666697,
+      "proxy21_pertrial": 100.00000000000023,
+      "proxy21_session": 83.33333333333348
+    },
+    "P11_P11_drinking_left_20240208_150150__clean3d_refill": {
+      "base17": 50.00000000000023,
+      "proxy21_pertrial": 100.00000000000023,
+      "proxy21_session": 66.66666666666674
+    },
+    "P11_P11_drinking_left_20240208_150204__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 0.0
+    },
+    "P11_P11_drinking_right_20240208_145329__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P11_P11_drinking_right_20240208_145346__clean3d_refill": {
+      "base17": 16.66666666666697,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 50.0
+    },
+    "P11_P11_drinking_right_20240208_145359__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 0.0
+    },
+    "P11_P11_drinking_right_20240208_145413__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 50.00000000000023,
+      "proxy21_session": 0.0
+    },
+    "P11_P11_drinking_right_20240208_145428__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 16.666666666666742
+    },
+    "P11_P11_drinking_right_20240208_145441__clean3d_refill": {
+      "base17": 49.99999999999977,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 49.99999999999977
+    },
+    "P11_P11_drinking_right_20240208_145455__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 33.33333333333326
+    },
+    "P11_P11_drinking_right_20240208_145508__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 233.33333333333348,
+      "proxy21_session": 116.66666666666674
+    },
+    "P11_P11_drinking_right_20240208_145522__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 200.0,
+      "proxy21_session": 50.0
+    },
+    "P11_P11_drinking_right_20240208_145535__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 0.0
+    },
+    "P11_P11_drinking_right_20240208_145548__clean3d_refill": {
+      "base17": 16.66666666666697,
+      "proxy21_pertrial": 183.33333333333348,
+      "proxy21_session": 66.66666666666697
+    },
+    "P11_P11_drinking_right_20240208_145602__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 200.0,
+      "proxy21_session": 66.66666666666674
+    },
+    "P11_P11_drinking_right_20240208_145615__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P11_P11_drinking_right_20240208_145628__clean3d_refill": {
+      "base17": 49.99999999999977,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 66.66666666666652
+    },
+    "P11_P11_drinking_right_20240208_145652__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666742
+    },
+    "P12_P12_drinking_left_20240214_105400__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 266.6666666666665
+    },
+    "P12_P12_drinking_left_20240214_105414__clean3d_refill": {
+      "base17": 100.00000000000045,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 266.66666666666697
+    },
+    "P12_P12_drinking_left_20240214_105430__clean3d_refill": {
+      "base17": 100.00000000000023,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 283.3333333333335
+    },
+    "P12_P12_drinking_left_20240214_105446__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 266.6666666666665
+    },
+    "P12_P12_drinking_left_20240214_105536__clean3d_refill": {
+      "base17": 250.0,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 300.0
+    },
+    "P12_P12_drinking_left_20240214_105612__clean3d_refill": {
+      "base17": 333.33333333333326,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 366.6666666666665
+    },
+    "P12_P12_drinking_left_20240214_105626__clean3d_refill": {
+      "base17": 399.9999999999998,
+      "proxy21_pertrial": 83.33333333333303,
+      "proxy21_session": 399.9999999999998
+    },
+    "P12_P12_drinking_left_20240214_105641__clean3d_refill": {
+      "base17": 166.66666666666674,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 250.0
+    },
+    "P12_P12_drinking_left_20240214_105655__clean3d_refill": {
+      "base17": 183.33333333333348,
+      "proxy21_pertrial": 33.33333333333303,
+      "proxy21_session": 333.33333333333326
+    },
+    "P12_P12_drinking_left_20240214_105709__clean3d_refill": {
+      "base17": 233.33333333333326,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 316.66666666666674
+    },
+    "P12_P12_drinking_left_20240214_105724__clean3d_refill": {
+      "base17": 200.00000000000023,
+      "proxy21_pertrial": 49.99999999999977,
+      "proxy21_session": 266.66666666666697
+    },
+    "P12_P12_drinking_left_20240214_105739__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 250.0
+    },
+    "P12_P12_drinking_left_20240214_105754__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 183.33333333333348
+    },
+    "P12_P12_drinking_left_20240214_105808__clean3d_refill": {
+      "base17": 200.00000000000023,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 283.3333333333335
+    },
+    "P12_P12_drinking_left_20240214_105823__clean3d_refill": {
+      "base17": 433.3333333333335,
+      "proxy21_pertrial": 100.00000000000023,
+      "proxy21_session": 366.66666666666697
+    },
+    "P12_P12_drinking_left_20240214_105837__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 266.6666666666665
+    },
+    "P12_P12_drinking_right_20240214_104922__clean3d_refill": {
+      "base17": 216.66666666666697,
+      "proxy21_pertrial": 216.66666666666697,
+      "proxy21_session": 16.666666666666742
+    },
+    "P12_P12_drinking_right_20240214_104954__clean3d_refill": {
+      "base17": 1150.0,
+      "proxy21_pertrial": 850.0,
+      "proxy21_session": 1050.0
+    },
+    "P12_P12_drinking_right_20240214_105009__clean3d_refill": {
+      "base17": 1950.0,
+      "proxy21_pertrial": 433.33333333333337,
+      "proxy21_session": 2050.0
+    },
+    "P12_P12_drinking_right_20240214_105023__clean3d_refill": {
+      "base17": 1550.0,
+      "proxy21_pertrial": 533.3333333333334,
+      "proxy21_session": 1583.333333333333
+    },
+    "P12_P12_drinking_right_20240214_105037__clean3d_refill": {
+      "base17": 133.33333333333348,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 250.0
+    },
+    "P12_P12_drinking_right_20240214_105052__clean3d_refill": {
+      "base17": 166.66666666666652,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 233.33333333333326
+    },
+    "P12_P12_drinking_right_20240214_105107__clean3d_refill": {
+      "base17": 300.0,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 283.3333333333335
+    },
+    "P12_P12_drinking_right_20240214_105121__clean3d_refill": {
+      "base17": 1266.6666666666665,
+      "proxy21_pertrial": 533.3333333333334,
+      "proxy21_session": 1250.0
+    },
+    "P12_P12_drinking_right_20240214_105135__clean3d_refill": {
+      "base17": 1200.0,
+      "proxy21_pertrial": 800.0,
+      "proxy21_session": 1133.3333333333333
+    },
+    "P12_P12_drinking_right_20240214_105149__clean3d_refill": {
+      "base17": 1183.3333333333333,
+      "proxy21_pertrial": 650.0,
+      "proxy21_session": 1133.3333333333335
+    },
+    "P12_P12_drinking_right_20240214_105202__clean3d_refill": {
+      "base17": 1283.3333333333333,
+      "proxy21_pertrial": 483.3333333333333,
+      "proxy21_session": 1200.0
+    },
+    "P12_P12_drinking_right_20240214_105216__clean3d_refill": {
+      "base17": 1733.3333333333335,
+      "proxy21_pertrial": 316.66666666666663,
+      "proxy21_session": 1766.666666666667
+    },
+    "P12_P12_drinking_right_20240214_105230__clean3d_refill": {
+      "base17": 966.6666666666667,
+      "proxy21_pertrial": 900.0,
+      "proxy21_session": 1050.0
+    },
+    "P12_P12_drinking_right_20240214_105244__clean3d_refill": {
+      "base17": 1133.3333333333335,
+      "proxy21_pertrial": 233.33333333333326,
+      "proxy21_session": 1016.6666666666666
+    },
+    "P12_P12_drinking_right_20240214_105258__clean3d_refill": {
+      "base17": 1450.0,
+      "proxy21_pertrial": 16.66666666666663,
+      "proxy21_session": 1333.3333333333333
+    },
+    "P12_P12_drinking_right_20240214_105323__clean3d_refill": {
+      "base17": 933.3333333333334,
+      "proxy21_pertrial": 383.33333333333337,
+      "proxy21_session": 800.0000000000001
+    },
+    "P13_P13_drinking_left_20240216_161825__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P13_P13_drinking_left_20240216_161837__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 50.00000000000023
+    },
+    "P13_P13_drinking_left_20240216_161849__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 16.66666666666697
+    },
+    "P13_P13_drinking_left_20240216_161913__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 16.666666666666742
+    },
+    "P13_P13_drinking_left_20240216_162004__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666742
+    },
+    "P13_P13_drinking_left_20240216_162016__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 16.666666666666742
+    },
+    "P13_P13_drinking_left_20240216_162028__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 50.00000000000023,
+      "proxy21_session": 16.666666666666515
+    },
+    "P13_P13_drinking_left_20240216_162053__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P13_P13_drinking_left_20240216_162108__clean3d_refill": {
+      "base17": 183.33333333333348,
+      "proxy21_pertrial": 100.00000000000023,
+      "proxy21_session": 166.66666666666674
+    },
+    "P13_P13_drinking_right_20240216_161430__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 16.666666666666515
+    },
+    "P13_P13_drinking_right_20240216_161443__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 50.0
+    },
+    "P13_P13_drinking_right_20240216_161455__clean3d_refill": {
+      "base17": 433.3333333333335,
+      "proxy21_pertrial": 316.66666666666697,
+      "proxy21_session": 333.3333333333337
+    },
+    "P13_P13_drinking_right_20240216_161508__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 16.666666666666742
+    },
+    "P13_P13_drinking_right_20240216_161521__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 50.00000000000023
+    },
+    "P13_P13_drinking_right_20240216_161538__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P13_P13_drinking_right_20240216_161551__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666742
+    },
+    "P13_P13_drinking_right_20240216_161605__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 16.66666666666697
+    },
+    "P13_P13_drinking_right_20240216_161618__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 16.666666666666742
+    },
+    "P13_P13_drinking_right_20240216_161630__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 16.666666666666515
+    },
+    "P13_P13_drinking_right_20240216_161643__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 66.66666666666652
+    },
+    "P13_P13_drinking_right_20240216_161655__clean3d_refill": {
+      "base17": 50.00000000000023,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 50.00000000000023
+    },
+    "P13_P13_drinking_right_20240216_161708__clean3d_refill": {
+      "base17": 16.66666666666697,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 0.0
+    },
+    "P13_P13_drinking_right_20240216_161720__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 16.666666666666742
+    },
+    "P14_P14_drinking_left_20240221_092404__clean3d_refill": {
+      "base17": 200.0,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 83.33333333333348
+    },
+    "P14_P14_drinking_left_20240221_092417__clean3d_refill": {
+      "base17": 516.6666666666667,
+      "proxy21_pertrial": 366.66666666666663,
+      "proxy21_session": 700.0
+    },
+    "P14_P14_drinking_left_20240221_092429__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 0.0
+    },
+    "P14_P14_drinking_left_20240221_092441__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 66.66666666666674
+    },
+    "P14_P14_drinking_left_20240221_092453__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 33.33333333333326
+    },
+    "P14_P14_drinking_left_20240221_092508__clean3d_refill": {
+      "base17": 166.66666666666674,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 83.33333333333326
+    },
+    "P14_P14_drinking_left_20240221_092520__clean3d_refill": {
+      "base17": 199.99999999999977,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 133.33333333333326
+    },
+    "P14_P14_drinking_left_20240221_092532__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 50.0
+    },
+    "P14_P14_drinking_left_20240221_092544__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 83.33333333333326
+    },
+    "P14_P14_drinking_left_20240221_092556__clean3d_refill": {
+      "base17": 66.66666666666697,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 16.66666666666697
+    },
+    "P14_P14_drinking_left_20240221_092611__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 33.33333333333326
+    },
+    "P14_P14_drinking_left_20240221_092623__clean3d_refill": {
+      "base17": 466.6666666666665,
+      "proxy21_pertrial": 133.33333333333326,
+      "proxy21_session": 316.6666666666665
+    },
+    "P14_P14_drinking_left_20240221_092642__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 0.0
+    },
+    "P14_P14_drinking_left_20240221_092654__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 66.66666666666652
+    },
+    "P14_P14_drinking_left_20240221_092707__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 116.66666666666652,
+      "proxy21_session": 33.33333333333326
+    },
+    "P14_P14_drinking_left_20240221_092719__clean3d_refill": {
+      "base17": 149.99999999999977,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 49.99999999999977
+    },
+    "P14_P14_drinking_left_20240221_092733__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 16.666666666666515
+    },
+    "P14_P14_drinking_right_20240221_091932__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 33.333333333333485
+    },
+    "P14_P14_drinking_right_20240221_091945__clean3d_refill": {
+      "base17": 49.99999999999977,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.33333333333326
+    },
+    "P14_P14_drinking_right_20240221_091959__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 99.99999999999977,
+      "proxy21_session": 166.66666666666674
+    },
+    "P14_P14_drinking_right_20240221_092012__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 83.33333333333326
+    },
+    "P14_P14_drinking_right_20240221_092024__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 50.0
+    },
+    "P14_P14_drinking_right_20240221_092037__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 50.0
+    },
+    "P14_P14_drinking_right_20240221_092049__clean3d_refill": {
+      "base17": 133.33333333333348,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 116.66666666666652
+    },
+    "P14_P14_drinking_right_20240221_092101__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 50.0
+    },
+    "P14_P14_drinking_right_20240221_092114__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 33.33333333333326
+    },
+    "P14_P14_drinking_right_20240221_092126__clean3d_refill": {
+      "base17": 99.99999999999977,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 66.66666666666652
+    },
+    "P14_P14_drinking_right_20240221_092138__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 66.66666666666652
+    },
+    "P14_P14_drinking_right_20240221_092151__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 16.666666666666742
+    },
+    "P14_P14_drinking_right_20240221_092203__clean3d_refill": {
+      "base17": 166.66666666666674,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 116.66666666666674
+    },
+    "P14_P14_drinking_right_20240221_092215__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 49.99999999999977,
+      "proxy21_session": 16.666666666666515
+    },
+    "P14_P14_drinking_right_20240221_092230__clean3d_refill": {
+      "base17": 1916.6666666666667,
+      "proxy21_pertrial": 2400.0,
+      "proxy21_session": 2400.0
+    },
+    "P14_P14_drinking_right_20240221_092247__clean3d_refill": {
+      "base17": 149.99999999999977,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 99.99999999999977
+    },
+    "P14_P14_drinking_right_20240221_092302__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 33.333333333333485
+    },
+    "P14_P14_drinking_right_20240221_092315__clean3d_refill": {
+      "base17": 183.33333333333348,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 116.66666666666674
+    },
+    "P15_P15_drinking_left_20240229_104637__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 133.33333333333326,
+      "proxy21_session": 133.33333333333326
+    },
+    "P15_P15_drinking_left_20240229_104651__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 16.66666666666697
+    },
+    "P15_P15_drinking_left_20240229_104704__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 66.66666666666652
+    },
+    "P15_P15_drinking_left_20240229_104717__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 33.33333333333326
+    },
+    "P15_P15_drinking_left_20240229_104731__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 66.66666666666652
+    },
+    "P15_P15_drinking_left_20240229_104744__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 83.33333333333326
+    },
+    "P15_P15_drinking_left_20240229_104759__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 50.0
+    },
+    "P15_P15_drinking_left_20240229_104827__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P15_P15_drinking_left_20240229_104841__clean3d_refill": {
+      "base17": 49.99999999999977,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P15_P15_drinking_left_20240229_104856__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 33.33333333333326
+    },
+    "P15_P15_drinking_left_20240229_104910__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 16.666666666666742
+    },
+    "P15_P15_drinking_left_20240229_104924__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 50.0
+    },
+    "P15_P15_drinking_left_20240229_104938__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 33.33333333333326
+    },
+    "P15_P15_drinking_left_20240229_104952__clean3d_refill": {
+      "base17": 166.66666666666697,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 50.000000000000455
+    },
+    "P15_P15_drinking_left_20240229_105007__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 0.0
+    },
+    "P15_P15_drinking_left_20240229_105022__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 49.999999999999545
+    },
+    "P15_P15_drinking_right_20240229_104236__clean3d_refill": {
+      "base17": 299.99999999999955,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 200.0
+    },
+    "P15_P15_drinking_right_20240229_104258__clean3d_refill": {
+      "base17": 249.99999999999977,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 166.66666666666674
+    },
+    "P15_P15_drinking_right_20240229_104311__clean3d_refill": {
+      "base17": 166.66666666666674,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 133.33333333333348
+    },
+    "P15_P15_drinking_right_20240229_104325__clean3d_refill": {
+      "base17": 233.33333333333303,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 116.66666666666652
+    },
+    "P15_P15_drinking_right_20240229_104339__clean3d_refill": {
+      "base17": 266.66666666666697,
+      "proxy21_pertrial": 150.00000000000023,
+      "proxy21_session": 183.33333333333348
+    },
+    "P15_P15_drinking_right_20240229_104352__clean3d_refill": {
+      "base17": 133.33333333333348,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 66.66666666666652
+    },
+    "P15_P15_drinking_right_20240229_104406__clean3d_refill": {
+      "base17": 166.66666666666674,
+      "proxy21_pertrial": 100.00000000000023,
+      "proxy21_session": 100.00000000000023
+    },
+    "P15_P15_drinking_right_20240229_104420__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 83.33333333333326
+    },
+    "P15_P15_drinking_right_20240229_104433__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 50.0
+    },
+    "P15_P15_drinking_right_20240229_104446__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 66.66666666666674
+    },
+    "P15_P15_drinking_right_20240229_104458__clean3d_refill": {
+      "base17": 133.33333333333348,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 83.33333333333348
+    },
+    "P15_P15_drinking_right_20240229_104512__clean3d_refill": {
+      "base17": 183.33333333333348,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 100.00000000000023
+    },
+    "P15_P15_drinking_right_20240229_104526__clean3d_refill": {
+      "base17": 150.00000000000023,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 100.00000000000023
+    },
+    "P15_P15_drinking_right_20240229_104541__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 66.66666666666674
+    },
+    "P15_P15_drinking_right_20240229_104555__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P16_P16_drinking_left_20240306_105818__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 33.333333333333485
+    },
+    "P16_P16_drinking_left_20240306_105832__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P16_P16_drinking_left_20240306_105853__clean3d_refill": {
+      "base17": 233.33333333333337,
+      "proxy21_pertrial": 133.33333333333337,
+      "proxy21_session": 100.0
+    },
+    "P16_P16_drinking_left_20240306_105907__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 16.66666666666663,
+      "proxy21_session": 0.0
+    },
+    "P16_P16_drinking_left_20240306_105920__clean3d_refill": {
+      "base17": 33.33333333333337,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 66.66666666666674
+    },
+    "P16_P16_drinking_left_20240306_105934__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.33333333333337
+    },
+    "P16_P16_drinking_left_20240306_105948__clean3d_refill": {
+      "base17": 66.66666666666663,
+      "proxy21_pertrial": 16.66666666666663,
+      "proxy21_session": 16.666666666666742
+    },
+    "P16_P16_drinking_left_20240306_110004__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 316.66666666666674,
+      "proxy21_session": 216.66666666666652
+    },
+    "P16_P16_drinking_left_20240306_110027__clean3d_refill": {
+      "base17": 150.0,
+      "proxy21_pertrial": 33.33333333333337,
+      "proxy21_session": 50.0
+    },
+    "P16_P16_drinking_left_20240306_110041__clean3d_refill": {
+      "base17": 150.0,
+      "proxy21_pertrial": 100.00000000000011,
+      "proxy21_session": 133.33333333333337
+    },
+    "P16_P16_drinking_left_20240306_110057__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 33.33333333333337,
+      "proxy21_session": 50.0
+    },
+    "P16_P16_drinking_left_20240306_110110__clean3d_refill": {
+      "base17": 166.66666666666663,
+      "proxy21_pertrial": 583.3333333333333,
+      "proxy21_session": 166.66666666666663
+    },
+    "P16_P16_drinking_left_20240306_110123__clean3d_refill": {
+      "base17": 149.9999999999999,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 100.0
+    },
+    "P16_P16_drinking_left_20240306_110136__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 116.66666666666652,
+      "proxy21_session": 83.33333333333326
+    },
+    "P16_P16_drinking_left_20240306_110149__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 33.33333333333326
+    },
+    "P16_P16_drinking_left_20240306_110202__clean3d_refill": {
+      "base17": 150.0000000000001,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 116.66666666666686
+    },
+    "P16_P16_drinking_left_20240306_110216__clean3d_refill": {
+      "base17": 183.33333333333326,
+      "proxy21_pertrial": 116.66666666666652,
+      "proxy21_session": 66.66666666666652
+    },
+    "P16_P16_drinking_left_20240306_110228__clean3d_refill": {
+      "base17": 166.66666666666674,
+      "proxy21_pertrial": 149.9999999999999,
+      "proxy21_session": 133.33333333333326
+    },
+    "P16_P16_drinking_right_20240306_105401__clean3d_refill": {
+      "base17": 383.33333333333326,
+      "proxy21_pertrial": 333.33333333333326,
+      "proxy21_session": 333.33333333333326
+    },
+    "P16_P16_drinking_right_20240306_105424__clean3d_refill": {
+      "base17": 350.0,
+      "proxy21_pertrial": 283.33333333333326,
+      "proxy21_session": 266.66666666666674
+    },
+    "P16_P16_drinking_right_20240306_105439__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 200.0,
+      "proxy21_session": 183.33333333333326
+    },
+    "P16_P16_drinking_right_20240306_105504__clean3d_refill": {
+      "base17": 316.66666666666674,
+      "proxy21_pertrial": 1316.6666666666667,
+      "proxy21_session": 250.0
+    },
+    "P16_P16_drinking_right_20240306_105518__clean3d_refill": {
+      "base17": 250.0,
+      "proxy21_pertrial": 1433.3333333333333,
+      "proxy21_session": 199.99999999999977
+    },
+    "P16_P16_drinking_right_20240306_105532__clean3d_refill": {
+      "base17": 183.33333333333326,
+      "proxy21_pertrial": 299.9999999999998,
+      "proxy21_session": 266.6666666666665
+    },
+    "P16_P16_drinking_right_20240306_105546__clean3d_refill": {
+      "base17": 216.66666666666674,
+      "proxy21_pertrial": 200.0000000000001,
+      "proxy21_session": 200.0000000000001
+    },
+    "P16_P16_drinking_right_20240306_105601__clean3d_refill": {
+      "base17": 150.0,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 83.33333333333326
+    },
+    "P16_P16_drinking_right_20240306_105621__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 33.333333333333485
+    },
+    "P16_P16_drinking_right_20240306_105635__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 66.66666666666652
+    },
+    "P16_P16_drinking_right_20240306_105650__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P16_P16_drinking_right_20240306_105703__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 1233.3333333333335,
+      "proxy21_session": 16.66666666666697
+    },
+    "P16_P16_drinking_right_20240306_105716__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 83.33333333333326
+    },
+    "P16_P16_drinking_right_20240306_105728__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 550.0,
+      "proxy21_session": 66.66666666666663
+    },
+    "P16_P16_drinking_right_20240306_105742__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 16.666666666666856
+    },
+    "P17_P17_drinking_left_20240307_103043__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P17_P17_drinking_left_20240307_103055__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 16.666666666666742
+    },
+    "P17_P17_drinking_left_20240307_103107__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 50.0
+    },
+    "P17_P17_drinking_left_20240307_103119__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 16.666666666666742
+    },
+    "P17_P17_drinking_left_20240307_103132__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 33.333333333333485
+    },
+    "P17_P17_drinking_left_20240307_103147__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 0.0
+    },
+    "P17_P17_drinking_left_20240307_103158__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 50.0
+    },
+    "P17_P17_drinking_left_20240307_103211__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 0.0
+    },
+    "P17_P17_drinking_left_20240307_103222__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 16.666666666666515
+    },
+    "P17_P17_drinking_left_20240307_103234__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666742
+    },
+    "P17_P17_drinking_left_20240307_103246__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.333333333333485
+    },
+    "P17_P17_drinking_left_20240307_103300__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 83.33333333333326
+    },
+    "P17_P17_drinking_left_20240307_103311__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 66.66666666666697
+    },
+    "P17_P17_drinking_left_20240307_103349__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.333333333333485
+    },
+    "P17_P17_drinking_right_20240307_102639__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 66.66666666666652
+    },
+    "P17_P17_drinking_right_20240307_102706__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 116.66666666666674
+    },
+    "P17_P17_drinking_right_20240307_102717__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 133.33333333333348,
+      "proxy21_session": 133.33333333333348
+    },
+    "P17_P17_drinking_right_20240307_102728__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 116.66666666666652,
+      "proxy21_session": 116.66666666666652
+    },
+    "P17_P17_drinking_right_20240307_102740__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 133.33333333333326,
+      "proxy21_session": 133.33333333333326
+    },
+    "P17_P17_drinking_right_20240307_102752__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 100.00000000000023
+    },
+    "P17_P17_drinking_right_20240307_102803__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 100.0
+    },
+    "P17_P17_drinking_right_20240307_102814__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 50.0
+    },
+    "P17_P17_drinking_right_20240307_102825__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 50.00000000000023
+    },
+    "P17_P17_drinking_right_20240307_102837__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 49.99999999999977
+    },
+    "P17_P17_drinking_right_20240307_102849__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P17_P17_drinking_right_20240307_102919__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 33.333333333333485
+    },
+    "P17_P17_drinking_right_20240307_102931__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 0.0
+    },
+    "P17_P17_drinking_right_20240307_102942__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 0.0
+    },
+    "P17_P17_drinking_right_20240307_102954__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 16.666666666666515
+    },
+    "P17_P17_drinking_right_20240307_103006__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 33.33333333333326
+    },
+    "P18_P18_drinking_left_20240311_154626__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 16.666666666666515
+    },
+    "P18_P18_drinking_left_20240311_154639__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.666666666666515
+    },
+    "P18_P18_drinking_left_20240311_154652__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 0.0
+    },
+    "P18_P18_drinking_left_20240311_154703__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 0.0
+    },
+    "P18_P18_drinking_left_20240311_154715__clean3d_refill": {
+      "base17": 33.33333333333303,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 33.333333333333485
+    },
+    "P18_P18_drinking_left_20240311_154727__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 0.0
+    },
+    "P18_P18_drinking_left_20240311_154740__clean3d_refill": {
+      "base17": 150.0,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.333333333333485
+    },
+    "P18_P18_drinking_left_20240311_154752__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 50.0
+    },
+    "P18_P18_drinking_left_20240311_154804__clean3d_refill": {
+      "base17": 150.00000000000023,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 50.0
+    },
+    "P18_P18_drinking_left_20240311_154817__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 16.666666666666515
+    },
+    "P18_P18_drinking_left_20240311_154829__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 0.0
+    },
+    "P18_P18_drinking_left_20240311_154854__clean3d_refill": {
+      "base17": 100.00000000000023,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 0.0
+    },
+    "P18_P18_drinking_left_20240311_154907__clean3d_refill": {
+      "base17": 100.00000000000023,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 0.0
+    },
+    "P18_P18_drinking_left_20240311_154921__clean3d_refill": {
+      "base17": 166.66666666666652,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 50.0
+    },
+    "P18_P18_drinking_left_20240311_154932__clean3d_refill": {
+      "base17": 100.00000000000011,
+      "proxy21_pertrial": 33.33333333333337,
+      "proxy21_session": 0.0
+    },
+    "P18_P18_drinking_right_20240311_154221__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 33.33333333333326
+    },
+    "P18_P18_drinking_right_20240311_154235__clean3d_refill": {
+      "base17": 100.00000000000023,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 33.333333333333485
+    },
+    "P18_P18_drinking_right_20240311_154249__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 66.66666666666674
+    },
+    "P18_P18_drinking_right_20240311_154303__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 16.66666666666663,
+      "proxy21_session": 0.0
+    },
+    "P18_P18_drinking_right_20240311_154315__clean3d_refill": {
+      "base17": 16.666666666666742,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 50.0
+    },
+    "P18_P18_drinking_right_20240311_154327__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 33.333333333333485,
+      "proxy21_session": 16.66666666666697
+    },
+    "P18_P18_drinking_right_20240311_154340__clean3d_refill": {
+      "base17": 250.0,
+      "proxy21_pertrial": 183.33333333333326,
+      "proxy21_session": 216.66666666666652
+    },
+    "P18_P18_drinking_right_20240311_154400__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 33.33333333333326
+    },
+    "P18_P18_drinking_right_20240311_154411__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 0.0
+    },
+    "P18_P18_drinking_right_20240311_154423__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 33.33333333333326
+    },
+    "P18_P18_drinking_right_20240311_154436__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 50.0
+    },
+    "P18_P18_drinking_right_20240311_154448__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 66.66666666666674
+    },
+    "P18_P18_drinking_right_20240311_154501__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 133.33333333333348,
+      "proxy21_session": 133.33333333333348
+    },
+    "P18_P18_drinking_right_20240311_154513__clean3d_refill": {
+      "base17": 0.0,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 66.66666666666674
+    },
+    "P18_P18_drinking_right_20240311_154526__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 0.0
+    },
+    "P18_P18_drinking_right_20240311_154538__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 0.0
+    },
+    "P19_P19_drinking_left_20240312_120019__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 166.66666666666674,
+      "proxy21_session": 166.66666666666674
+    },
+    "P19_P19_drinking_left_20240312_120035__clean3d_refill": {
+      "base17": 99.99999999999977,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 1866.6666666666667
+    },
+    "P19_P19_drinking_left_20240312_120050__clean3d_refill": {
+      "base17": 183.33333333333303,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 2083.3333333333335
+    },
+    "P19_P19_drinking_left_20240312_120105__clean3d_refill": {
+      "base17": 133.33333333333303,
+      "proxy21_pertrial": 50.000000000000455,
+      "proxy21_session": 50.000000000000455
+    },
+    "P19_P19_drinking_left_20240312_120119__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 166.66666666666652,
+      "proxy21_session": 133.33333333333303
+    },
+    "P19_P19_drinking_left_20240312_120134__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 1900.0
+    },
+    "P19_P19_drinking_left_20240312_120148__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 66.66666666666697
+    },
+    "P19_P19_drinking_left_20240312_120204__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 33.33333333333326
+    },
+    "P19_P19_drinking_left_20240312_120218__clean3d_refill": {
+      "base17": 299.99999999999955,
+      "proxy21_pertrial": 233.33333333333303,
+      "proxy21_session": 2066.666666666667
+    },
+    "P19_P19_drinking_left_20240312_120233__clean3d_refill": {
+      "base17": 250.0,
+      "proxy21_pertrial": 166.66666666666652,
+      "proxy21_session": 1733.3333333333335
+    },
+    "P19_P19_drinking_left_20240312_120257__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 1883.3333333333333
+    },
+    "P19_P19_drinking_left_20240312_120312__clean3d_refill": {
+      "base17": 300.0,
+      "proxy21_pertrial": 216.66666666666697,
+      "proxy21_session": 2366.6666666666665
+    },
+    "P19_P19_drinking_left_20240312_120337__clean3d_refill": {
+      "base17": 66.66666666666652,
+      "proxy21_pertrial": 216.66666666666697,
+      "proxy21_session": 200.0
+    },
+    "P19_P19_drinking_left_20240312_120408__clean3d_refill": {
+      "base17": 183.33333333333326,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 1450.0
+    },
+    "P19_P19_drinking_left_20240312_120423__clean3d_refill": {
+      "base17": 283.3333333333335,
+      "proxy21_pertrial": 200.00000000000023,
+      "proxy21_session": 1716.6666666666665
+    },
+    "P19_P19_drinking_left_20240312_120439__clean3d_refill": {
+      "base17": 83.33333333333303,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 2083.3333333333335
+    },
+    "P19_P19_drinking_left_20240312_120455__clean3d_refill": {
+      "base17": 216.66666666666674,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 1866.6666666666667
+    },
+    "P19_P19_drinking_left_20240312_120512__clean3d_refill": {
+      "base17": 250.0,
+      "proxy21_pertrial": 266.6666666666665,
+      "proxy21_session": 1750.0
+    },
+    "P19_P19_drinking_right_20240312_115529__clean3d_refill": {
+      "base17": 900.0,
+      "proxy21_pertrial": 1233.3333333333333,
+      "proxy21_session": 1016.666666666667
+    },
+    "P19_P19_drinking_right_20240312_115549__clean3d_refill": {
+      "base17": 283.33333333333303,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 2250.0
+    },
+    "P19_P19_drinking_right_20240312_115605__clean3d_refill": {
+      "base17": 133.33333333333348,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 2416.6666666666665
+    },
+    "P19_P19_drinking_right_20240312_115622__clean3d_refill": {
+      "base17": 2383.3333333333335,
+      "proxy21_pertrial": 450.0,
+      "proxy21_session": 2283.3333333333335
+    },
+    "P19_P19_drinking_right_20240312_115637__clean3d_refill": {
+      "base17": 1350.0,
+      "proxy21_pertrial": 800.0,
+      "proxy21_session": 1350.0
+    },
+    "P19_P19_drinking_right_20240312_115652__clean3d_refill": {
+      "base17": 1366.666666666667,
+      "proxy21_pertrial": 483.33333333333326,
+      "proxy21_session": 1366.666666666667
+    },
+    "P19_P19_drinking_right_20240312_115707__clean3d_refill": {
+      "base17": 1633.3333333333335,
+      "proxy21_pertrial": 166.66666666666674,
+      "proxy21_session": 1699.9999999999995
+    },
+    "P19_P19_drinking_right_20240312_115722__clean3d_refill": {
+      "base17": 1616.6666666666665,
+      "proxy21_pertrial": 1000.0,
+      "proxy21_session": 1700.0
+    },
+    "P19_P19_drinking_right_20240312_115737__clean3d_refill": {
+      "base17": 2016.666666666667,
+      "proxy21_pertrial": 166.66666666666674,
+      "proxy21_session": 2100.0
+    },
+    "P19_P19_drinking_right_20240312_115753__clean3d_refill": {
+      "base17": 2250.0,
+      "proxy21_pertrial": 350.0,
+      "proxy21_session": 2316.6666666666665
+    },
+    "P19_P19_drinking_right_20240312_115809__clean3d_refill": {
+      "base17": 2100.0,
+      "proxy21_pertrial": 166.66666666666663,
+      "proxy21_session": 2083.3333333333335
+    },
+    "P19_P19_drinking_right_20240312_115824__clean3d_refill": {
+      "base17": 333.3333333333335,
+      "proxy21_pertrial": 250.0,
+      "proxy21_session": 2166.6666666666665
+    },
+    "P19_P19_drinking_right_20240312_115839__clean3d_refill": {
+      "base17": 2100.0,
+      "proxy21_pertrial": 750.0,
+      "proxy21_session": 2083.3333333333335
+    },
+    "P19_P19_drinking_right_20240312_115856__clean3d_refill": {
+      "base17": 1850.0,
+      "proxy21_pertrial": 750.0,
+      "proxy21_session": 1883.3333333333335
+    },
+    "P19_P19_drinking_right_20240312_115919__clean3d_refill": {
+      "base17": 1066.6666666666665,
+      "proxy21_pertrial": 350.0,
+      "proxy21_session": 1133.3333333333335
+    },
+    "P19_P19_drinking_right_20240312_115951__clean3d_refill": {
+      "base17": 2216.666666666667,
+      "proxy21_pertrial": 250.00000000000006,
+      "proxy21_session": 2200.0
+    },
+    "P20_P20_drinking_left_20240505_180032__clean3d_refill": {
+      "base17": 150.0,
+      "proxy21_pertrial": 33.33333333333337,
+      "proxy21_session": 116.66666666666663
+    },
+    "P20_P20_drinking_left_20240505_180045__clean3d_refill": {
+      "base17": 216.66666666666674,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 466.6666666666665
+    },
+    "P20_P20_drinking_left_20240505_180056__clean3d_refill": {
+      "base17": 150.0000000000001,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 116.66666666666674
+    },
+    "P20_P20_drinking_left_20240505_180109__clean3d_refill": {
+      "base17": 200.0000000000001,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 466.6666666666665
+    },
+    "P20_P20_drinking_left_20240505_180121__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 483.33333333333326
+    },
+    "P20_P20_drinking_left_20240505_180132__clean3d_refill": {
+      "base17": 99.99999999999989,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 633.3333333333334
+    },
+    "P20_P20_drinking_left_20240505_180144__clean3d_refill": {
+      "base17": 150.0000000000001,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 433.33333333333326
+    },
+    "P20_P20_drinking_left_20240505_180156__clean3d_refill": {
+      "base17": 166.66666666666674,
+      "proxy21_pertrial": 116.66666666666686,
+      "proxy21_session": 133.33333333333348
+    },
+    "P20_P20_drinking_left_20240505_180208__clean3d_refill": {
+      "base17": 16.66666666666663,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 16.66666666666663
+    },
+    "P20_P20_drinking_left_20240505_180221__clean3d_refill": {
+      "base17": 200.0,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 166.66666666666663
+    },
+    "P20_P20_drinking_left_20240505_180233__clean3d_refill": {
+      "base17": 166.66666666666674,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 133.33333333333348
+    },
+    "P20_P20_drinking_left_20240505_180246__clean3d_refill": {
+      "base17": 299.9999999999999,
+      "proxy21_pertrial": 166.66666666666663,
+      "proxy21_session": 233.33333333333326
+    },
+    "P20_P20_drinking_left_20240505_180258__clean3d_refill": {
+      "base17": 300.0,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 250.0
+    },
+    "P20_P20_drinking_left_20240505_180309__clean3d_refill": {
+      "base17": 316.66666666666663,
+      "proxy21_pertrial": 166.66666666666663,
+      "proxy21_session": 633.3333333333335
+    },
+    "P20_P20_drinking_left_20240505_180324__clean3d_refill": {
+      "base17": 266.66666666666674,
+      "proxy21_pertrial": 116.66666666666686,
+      "proxy21_session": 566.6666666666665
+    },
+    "P20_P20_drinking_left_20240505_180337__clean3d_refill": {
+      "base17": 216.66666666666663,
+      "proxy21_pertrial": 66.66666666666663,
+      "proxy21_session": 983.3333333333334
+    },
+    "P20_P20_drinking_right_20240505_175630__clean3d_refill": {
+      "base17": 233.33333333333337,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 183.33333333333337
+    },
+    "P20_P20_drinking_right_20240505_175642__clean3d_refill": {
+      "base17": 149.99999999999977,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 183.33333333333326
+    },
+    "P20_P20_drinking_right_20240505_175654__clean3d_refill": {
+      "base17": 316.6666666666665,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 283.33333333333314
+    },
+    "P20_P20_drinking_right_20240505_175706__clean3d_refill": {
+      "base17": 183.33333333333348,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 233.33333333333348
+    },
+    "P20_P20_drinking_right_20240505_175718__clean3d_refill": {
+      "base17": 216.66666666666674,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 200.00000000000023
+    },
+    "P20_P20_drinking_right_20240505_175730__clean3d_refill": {
+      "base17": 183.33333333333303,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 183.33333333333303
+    },
+    "P20_P20_drinking_right_20240505_175743__clean3d_refill": {
+      "base17": 166.66666666666674,
+      "proxy21_pertrial": 16.66666666666697,
+      "proxy21_session": 200.0
+    },
+    "P20_P20_drinking_right_20240505_175755__clean3d_refill": {
+      "base17": 250.0,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 250.0
+    },
+    "P20_P20_drinking_right_20240505_175807__clean3d_refill": {
+      "base17": 216.66666666666686,
+      "proxy21_pertrial": 50.00000000000023,
+      "proxy21_session": 199.99999999999977
+    },
+    "P20_P20_drinking_right_20240505_175820__clean3d_refill": {
+      "base17": 216.66666666666663,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 266.66666666666674
+    },
+    "P20_P20_drinking_right_20240505_175831__clean3d_refill": {
+      "base17": 249.9999999999999,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 299.9999999999999
+    },
+    "P20_P20_drinking_right_20240505_175844__clean3d_refill": {
+      "base17": 183.33333333333303,
+      "proxy21_pertrial": 49.99999999999977,
+      "proxy21_session": 400.0000000000002
+    },
+    "P20_P20_drinking_right_20240505_175858__clean3d_refill": {
+      "base17": 166.66666666666674,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 66.66666666666652
+    },
+    "P20_P20_drinking_right_20240505_175909__clean3d_refill": {
+      "base17": 183.33333333333326,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 233.33333333333326
+    },
+    "P20_P20_drinking_right_20240505_175941__clean3d_refill": {
+      "base17": 216.66666666666663,
+      "proxy21_pertrial": 83.33333333333337,
+      "proxy21_session": 266.6666666666665
+    },
+    "P23_P23_drinking_left_20240716_151829__clean3d_refill": {
+      "base17": 150.0,
+      "proxy21_pertrial": 116.66666666666663,
+      "proxy21_session": 150.0
+    },
+    "P23_P23_drinking_left_20240716_151856__clean3d_refill": {
+      "base17": 150.0,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 133.33333333333326
+    },
+    "P23_P23_drinking_left_20240716_151914__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 33.33333333333337,
+      "proxy21_session": 83.33333333333337
+    },
+    "P23_P23_drinking_left_20240716_151925__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 66.66666666666663
+    },
+    "P23_P23_drinking_left_20240716_151936__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 83.33333333333337,
+      "proxy21_session": 83.33333333333337
+    },
+    "P23_P23_drinking_left_20240716_151946__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 83.33333333333337,
+      "proxy21_session": 116.66666666666663
+    },
+    "P23_P23_drinking_left_20240716_151956__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 116.66666666666674
+    },
+    "P23_P23_drinking_left_20240716_152007__clean3d_refill": {
+      "base17": 116.66666666666663,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 116.66666666666663
+    },
+    "P23_P23_drinking_left_20240716_152017__clean3d_refill": {
+      "base17": 116.66666666666663,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 100.0
+    },
+    "P23_P23_drinking_left_20240716_152028__clean3d_refill": {
+      "base17": 166.66666666666663,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 150.0
+    },
+    "P23_P23_drinking_left_20240716_152038__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 83.33333333333337
+    },
+    "P23_P23_drinking_left_20240716_152049__clean3d_refill": {
+      "base17": 66.66666666666663,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 83.33333333333337
+    },
+    "P23_P23_drinking_left_20240716_152100__clean3d_refill": {
+      "base17": 150.00000000000023,
+      "proxy21_pertrial": 83.33333333333337,
+      "proxy21_session": 100.0
+    },
+    "P23_P23_drinking_left_20240716_152114__clean3d_refill": {
+      "base17": 150.0000000000001,
+      "proxy21_pertrial": 116.66666666666686,
+      "proxy21_session": 150.0000000000001
+    },
+    "P23_P23_drinking_left_20240716_152125__clean3d_refill": {
+      "base17": 50.000000000000114,
+      "proxy21_pertrial": 33.33333333333337,
+      "proxy21_session": 50.000000000000114
+    },
+    "P23_P23_drinking_left_20240716_152136__clean3d_refill": {
+      "base17": 116.66666666666663,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 83.33333333333337
+    },
+    "P23_P23_drinking_left_20240716_152150__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 66.66666666666674
+    },
+    "P23_P23_drinking_left_20240716_152207__clean3d_refill": {
+      "base17": 33.33333333333326,
+      "proxy21_pertrial": 16.666666666666742,
+      "proxy21_session": 33.33333333333326
+    },
+    "P23_P23_drinking_right_20240716_151111__clean3d_refill": {
+      "base17": 99.99999999999977,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 149.99999999999977
+    },
+    "P23_P23_drinking_right_20240716_151133__clean3d_refill": {
+      "base17": 249.9999999999999,
+      "proxy21_pertrial": 133.33333333333337,
+      "proxy21_session": 216.66666666666686
+    },
+    "P23_P23_drinking_right_20240716_151202__clean3d_refill": {
+      "base17": 150.0,
+      "proxy21_pertrial": 33.33333333333337,
+      "proxy21_session": 116.66666666666663
+    },
+    "P23_P23_drinking_right_20240716_151214__clean3d_refill": {
+      "base17": 216.66666666666674,
+      "proxy21_pertrial": 100.00000000000023,
+      "proxy21_session": 200.00000000000023
+    },
+    "P23_P23_drinking_right_20240716_151232__clean3d_refill": {
+      "base17": 16.666666666666856,
+      "proxy21_pertrial": 300.0,
+      "proxy21_session": 116.66666666666663
+    },
+    "P23_P23_drinking_right_20240716_151300__clean3d_refill": {
+      "base17": 100.0,
+      "proxy21_pertrial": 66.66666666666663,
+      "proxy21_session": 116.66666666666686
+    },
+    "P23_P23_drinking_right_20240716_151312__clean3d_refill": {
+      "base17": 216.66666666666663,
+      "proxy21_pertrial": 83.33333333333337,
+      "proxy21_session": 183.33333333333326
+    },
+    "P23_P23_drinking_right_20240716_151334__clean3d_refill": {
+      "base17": 99.99999999999977,
+      "proxy21_pertrial": 166.66666666666674,
+      "proxy21_session": 66.66666666666652
+    },
+    "P23_P23_drinking_right_20240716_151347__clean3d_refill": {
+      "base17": 316.66666666666663,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 250.0000000000001
+    },
+    "P23_P23_drinking_right_20240716_151359__clean3d_refill": {
+      "base17": 266.66666666666674,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 200.0
+    },
+    "P23_P23_drinking_right_20240716_151411__clean3d_refill": {
+      "base17": 250.0,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 166.66666666666663
+    },
+    "P23_P23_drinking_right_20240716_151453__clean3d_refill": {
+      "base17": 250.0,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 183.33333333333326
+    },
+    "P23_P23_drinking_right_20240716_151504__clean3d_refill": {
+      "base17": 216.66666666666663,
+      "proxy21_pertrial": 133.33333333333337,
+      "proxy21_session": 200.0
+    },
+    "P23_P23_drinking_right_20240716_151516__clean3d_refill": {
+      "base17": 333.33333333333337,
+      "proxy21_pertrial": 199.9999999999999,
+      "proxy21_session": 249.9999999999999
+    },
+    "P23_P23_drinking_right_20240716_151529__clean3d_refill": {
+      "base17": 133.33333333333337,
+      "proxy21_pertrial": 66.66666666666686,
+      "proxy21_session": 116.66666666666663
+    },
+    "P23_P23_drinking_right_20240716_151543__clean3d_refill": {
+      "base17": 16.66666666666663,
+      "proxy21_pertrial": 16.66666666666663,
+      "proxy21_session": 66.66666666666663
+    },
+    "P23_P23_drinking_right_20240716_151555__clean3d_refill": {
+      "base17": 166.66666666666663,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 133.33333333333337
+    },
+    "P23_P23_drinking_right_20240716_151609__clean3d_refill": {
+      "base17": 183.33333333333348,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 150.0
+    },
+    "P23_P23_drinking_right_20240716_151621__clean3d_refill": {
+      "base17": 133.33333333333337,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 33.33333333333337
+    },
+    "P24_P24_drinking_left_20240724_105836__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 100.0
+    },
+    "P24_P24_drinking_left_20240724_105900__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 133.33333333333326
+    },
+    "P24_P24_drinking_left_20240724_105910__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 100.00000000000023,
+      "proxy21_session": 100.00000000000023
+    },
+    "P24_P24_drinking_left_20240724_105921__clean3d_refill": {
+      "base17": 200.0,
+      "proxy21_pertrial": 183.33333333333348,
+      "proxy21_session": 200.0
+    },
+    "P24_P24_drinking_left_20240724_105932__clean3d_refill": {
+      "base17": 116.66666666666652,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 116.66666666666652
+    },
+    "P24_P24_drinking_left_20240724_105943__clean3d_refill": {
+      "base17": 183.33333333333348,
+      "proxy21_pertrial": 183.33333333333348,
+      "proxy21_session": 200.00000000000023
+    },
+    "P24_P24_drinking_left_20240724_105954__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 150.0,
+      "proxy21_session": 150.0
+    },
+    "P24_P24_drinking_left_20240724_110007__clean3d_refill": {
+      "base17": 16.666666666666515,
+      "proxy21_pertrial": 116.66666666666652,
+      "proxy21_session": 66.66666666666652
+    },
+    "P24_P24_drinking_left_20240724_110019__clean3d_refill": {
+      "base17": 883.3333333333334,
+      "proxy21_pertrial": 166.66666666666674,
+      "proxy21_session": 100.0
+    },
+    "P24_P24_drinking_left_20240724_110030__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 133.33333333333348
+    },
+    "P24_P24_drinking_left_20240724_110041__clean3d_refill": {
+      "base17": 683.3333333333335,
+      "proxy21_pertrial": 133.33333333333326,
+      "proxy21_session": 66.66666666666652
+    },
+    "P24_P24_drinking_left_20240724_110053__clean3d_refill": {
+      "base17": 966.6666666666666,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 50.0
+    },
+    "P24_P24_drinking_left_20240724_110103__clean3d_refill": {
+      "base17": 950.0,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 33.33333333333326
+    },
+    "P24_P24_drinking_left_20240724_110115__clean3d_refill": {
+      "base17": 966.6666666666666,
+      "proxy21_pertrial": 66.66666666666652,
+      "proxy21_session": 83.33333333333348
+    },
+    "P24_P24_drinking_left_20240724_110127__clean3d_refill": {
+      "base17": 1050.0,
+      "proxy21_pertrial": 33.33333333333326,
+      "proxy21_session": 50.0
+    },
+    "P24_P24_drinking_left_20240724_110138__clean3d_refill": {
+      "base17": 183.33333333333326,
+      "proxy21_pertrial": 50.0,
+      "proxy21_session": 100.0
+    },
+    "P24_P24_drinking_right_20240724_105251__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 66.66666666666663,
+      "proxy21_session": 100.0
+    },
+    "P24_P24_drinking_right_20240724_105328__clean3d_refill": {
+      "base17": 49.999999999999886,
+      "proxy21_pertrial": 33.33333333333337,
+      "proxy21_session": 66.66666666666663
+    },
+    "P24_P24_drinking_right_20240724_105433__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 83.33333333333348
+    },
+    "P24_P24_drinking_right_20240724_105447__clean3d_refill": {
+      "base17": 50.00000000000023,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 50.0
+    },
+    "P24_P24_drinking_right_20240724_105457__clean3d_refill": {
+      "base17": 183.33333333333348,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 100.00000000000023
+    },
+    "P24_P24_drinking_right_20240724_105522__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 0.0,
+      "proxy21_session": 0.0
+    },
+    "P24_P24_drinking_right_20240724_105536__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 149.99999999999977,
+      "proxy21_session": 166.66666666666674
+    },
+    "P24_P24_drinking_right_20240724_105546__clean3d_refill": {
+      "base17": 66.66666666666674,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 116.66666666666674
+    },
+    "P24_P24_drinking_right_20240724_105556__clean3d_refill": {
+      "base17": 99.99999999999977,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 83.33333333333326
+    },
+    "P24_P24_drinking_right_20240724_105607__clean3d_refill": {
+      "base17": 33.333333333333485,
+      "proxy21_pertrial": 66.66666666666674,
+      "proxy21_session": 83.33333333333348
+    },
+    "P24_P24_drinking_right_20240724_105617__clean3d_refill": {
+      "base17": 83.33333333333348,
+      "proxy21_pertrial": 66.66666666666697,
+      "proxy21_session": 100.00000000000023
+    },
+    "P24_P24_drinking_right_20240724_105628__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 133.33333333333326,
+      "proxy21_session": 133.33333333333326
+    },
+    "P24_P24_drinking_right_20240724_105639__clean3d_refill": {
+      "base17": 183.33333333333326,
+      "proxy21_pertrial": 149.99999999999977,
+      "proxy21_session": 166.66666666666674
+    },
+    "P24_P24_drinking_right_20240724_105649__clean3d_refill": {
+      "base17": 183.33333333333348,
+      "proxy21_pertrial": 166.66666666666674,
+      "proxy21_session": 166.66666666666674
+    },
+    "P24_P24_drinking_right_20240724_105702__clean3d_refill": {
+      "base17": 50.0,
+      "proxy21_pertrial": 83.33333333333326,
+      "proxy21_session": 83.33333333333326
+    },
+    "P24_P24_drinking_right_20240724_105712__clean3d_refill": {
+      "base17": 83.33333333333326,
+      "proxy21_pertrial": 16.666666666666515,
+      "proxy21_session": 50.0
+    },
+    "P24_P24_drinking_right_20240724_105723__clean3d_refill": {
+      "base17": 116.66666666666674,
+      "proxy21_pertrial": 83.33333333333348,
+      "proxy21_session": 116.66666666666674
+    },
+    "P24_P24_drinking_right_20240724_105734__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 133.33333333333326,
+      "proxy21_session": 150.0
+    },
+    "P24_P24_drinking_right_20240724_105744__clean3d_refill": {
+      "base17": 66.66666666666697,
+      "proxy21_pertrial": 116.66666666666674,
+      "proxy21_session": 150.00000000000023
+    },
+    "P24_P24_drinking_right_20240724_105758__clean3d_refill": {
+      "base17": 133.33333333333326,
+      "proxy21_pertrial": 100.0,
+      "proxy21_session": 16.666666666666742
+    }
+  }
+}
